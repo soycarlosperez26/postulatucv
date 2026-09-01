@@ -10,6 +10,9 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // La extensión de Chrome es JS plano para el navegador, con sus
+    // propios globales (chrome.*). No la construye Next.
+    "extension/**",
   ]),
 ]);
 

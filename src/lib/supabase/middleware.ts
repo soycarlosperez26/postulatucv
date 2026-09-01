@@ -46,7 +46,11 @@ export async function updateSession(request: NextRequest) {
     // esta excepción se redirige a /login y Wompi recibe un 307 en vez
     // del 200 que espera, así que los pagos nunca se acreditarían.
     // Su autenticación es la firma del evento, no la sesión.
-    path.startsWith("/api/wompi");
+    path.startsWith("/api/wompi") ||
+    // Igual que el webhook: la extensión de Chrome no manda cookies, se
+    // autentica con un token Bearer. Sin esta excepción recibiría un 307
+    // a /login en vez del 401 que necesita para pedir reconexión.
+    path.startsWith("/api/extension");
 
   if (!user && !isPublicPath) {
     const url = request.nextUrl.clone();

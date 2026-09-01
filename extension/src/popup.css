@@ -1,0 +1,116 @@
+:root {
+  --canvas: #f6f1e8;
+  --surface: #fffdf9;
+  --line: #e3d9c8;
+  --line-strong: #d3c5ac;
+  --ink: #201b14;
+  --ink-soft: #453c31;
+  --muted: #7c7060;
+  --brand: #1c4d3e;
+  --amber-ink: #8a4a14;
+  --clay: #a63b2a;
+  --clay-tint: #f7e2dc;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  width: 360px;
+  margin: 0;
+  padding: 14px;
+  background: var(--canvas);
+  color: var(--ink);
+  font-family: system-ui, "Segoe UI", sans-serif;
+  font-size: 13px;
+}
+
+.cabecera {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.marca { font-size: 16px; font-weight: 700; letter-spacing: -0.02em; }
+.estado { font-size: 11px; font-weight: 600; color: var(--muted); }
+
+.panel { display: flex; flex-direction: column; gap: 6px; }
+.oculto { display: none !important; }
+
+.aviso {
+  padding: 22px 0;
+  text-align: center;
+  color: var(--muted);
+}
+
+.etiqueta {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink-soft);
+}
+
+.contador { font-weight: 500; color: var(--muted); }
+
+.campo {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.campo:focus { outline: none; border-color: var(--brand); }
+.area { resize: vertical; line-height: 1.5; }
+
+.fila { display: flex; gap: 6px; }
+.fila .campo { flex: 1; }
+
+.boton {
+  margin-top: 10px;
+  padding: 9px 14px;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primario { background: var(--brand); color: var(--surface); display: block; }
+.primario:hover { filter: brightness(0.92); }
+
+.secundario {
+  margin-top: 0;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  color: var(--ink);
+}
+
+.texto { margin: 0; color: var(--ink-soft); line-height: 1.5; }
+
+.pie {
+  margin: 4px 0 0;
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+.alerta {
+  padding: 7px 9px;
+  border-radius: 7px;
+  background: var(--clay-tint);
+  color: var(--clay);
+}
+
+.exito {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--brand);
+}

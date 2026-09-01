@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="cabecera">
+      <span class="marca">Postula</span>
+      <span id="estado" class="estado"></span>
+    </header>
+
+    <div id="cargando" class="aviso">Leyendo la oferta…</div>
+
+    <div id="sin-conectar" class="panel oculto">
+      <p class="texto">
+        Conecta la extensión con tu cuenta para guardar ofertas.
+      </p>
+      <button id="abrir-panel" class="boton primario">Abrir mi panel de Postula</button>
+      <p class="pie">
+        Si ya generaste un token, pégalo aquí:
+      </p>
+      <div class="fila">
+        <input id="token-manual" class="campo" type="password" placeholder="pst_…" />
+        <button id="guardar-token" class="boton secundario">Guardar</button>
+      </div>
+    </div>
+
+    <form id="formulario" class="panel oculto">
+      <label class="etiqueta" for="title">Cargo</label>
+      <input id="title" class="campo" type="text" required />
+
+      <label class="etiqueta" for="company">Empresa</label>
+      <input id="company" class="campo" type="text" required />
+      <p id="aviso-empresa" class="pie oculto">
+        Este portal no publica la empresa. Escríbela si la conoces.
+      </p>
+
+      <label class="etiqueta" for="description">
+        Descripción <span id="contador" class="contador"></span>
+      </label>
+      <textarea id="description" class="campo area" rows="7" required></textarea>
+      <p id="aviso-descripcion" class="pie alerta oculto">
+        Salió muy corta: probablemente no la leímos bien. Pega el texto de la
+        oferta antes de guardar.
+      </p>
+
+      <button id="guardar" type="submit" class="boton primario">
+        Guardar en Postula
+      </button>
+      <p id="error" class="pie alerta oculto"></p>
+    </form>
+
+    <div id="listo" class="panel oculto">
+      <p class="exito" id="mensaje-exito"></p>
+      <a id="ver-oferta" class="boton primario" target="_blank" rel="noreferrer">
+        Ver la oferta en Postula
+      </a>
+      <p class="pie">Guardar no consume créditos. El análisis lo lanzas tú.</p>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

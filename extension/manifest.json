@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "Postula — Guardar ofertas",
+  "version": "0.1.0",
+  "description": "Guarda ofertas laborales en tu cuenta de Postula desde el portal donde las encuentras.",
+  "icons": {
+    "16": "icons/icon-16.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://www.postulatucv.online/*",
+    "https://postulatucv.online/*",
+    "http://localhost:3000/*",
+    "https://postula.co/*",
+    "https://www.postula.co/*"
+  ],
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "action": {
+    "default_popup": "src/popup.html",
+    "default_title": "Guardar esta oferta en Postula",
+    "default_icon": {
+      "16": "icons/icon-16.png",
+      "48": "icons/icon-48.png",
+      "128": "icons/icon-128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://localhost:3000/dashboard/extension*",
+        "https://www.postulatucv.online/dashboard/extension*",
+        "https://www.postula.co/dashboard/extension*"
+      ],
+      "js": [
+        "src/connect.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://co.computrabajo.com/ofertas-de-trabajo/*",
+        "https://www.elempleo.com/co/ofertas-trabajo/*"
+      ],
+      "js": [
+        "src/detectar.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

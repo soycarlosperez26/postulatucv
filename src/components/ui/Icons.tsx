@@ -180,3 +180,11 @@ export function PencilIcon(p: IconProps) {
     </Svg>
   );
 }
+
+export function PuzzleIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M8 3.2a1.7 1.7 0 0 1 3.4 0V4h2.4a1 1 0 0 1 1 1v2.4h.8a1.7 1.7 0 0 1 0 3.4h-.8V13a1 1 0 0 1-1 1h-2.4v.8a1.7 1.7 0 0 1-3.4 0V14H5.6a1 1 0 0 1-1-1v-2.4h-.8a1.7 1.7 0 0 1 0-3.4h.8V5a1 1 0 0 1 1-1H8z" />
+    </Svg>
+  );
+}

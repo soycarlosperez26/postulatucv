@@ -169,6 +169,28 @@ export interface Database {
         Update: Partial<Database["public"]["Tables"]["credit_orders"]["Insert"]>;
         Relationships: [];
       };
+      extension_tokens: {
+        Row: {
+          id: string;
+          user_id: string;
+          token_hash: string;
+          label: string;
+          created_at: string;
+          last_used_at: string | null;
+          revoked_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          token_hash: string;
+          label?: string;
+          created_at?: string;
+          last_used_at?: string | null;
+          revoked_at?: string | null;
+        };
+        Update: Partial<Database["public"]["Tables"]["extension_tokens"]["Insert"]>;
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
     Functions: {
@@ -215,6 +237,20 @@ export interface Database {
       reject_manual_order: {
         Args: { p_reference: string };
         Returns: boolean;
+      };
+      /** Conecta la extensión: guarda el hash y revoca los anteriores. */
+      register_extension_token: {
+        Args: { p_hash: string; p_label?: string };
+        Returns: Database["public"]["Tables"]["extension_tokens"]["Row"];
+      };
+      revoke_extension_tokens: {
+        Args: Record<string, never>;
+        Returns: number;
+      };
+      /** Solo service role: traduce el hash del token a su dueño. */
+      resolve_extension_token: {
+        Args: { p_hash: string };
+        Returns: string | null;
       };
     };
   };

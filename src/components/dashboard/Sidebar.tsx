@@ -9,6 +9,7 @@ import {
   GearIcon,
   PanelIcon,
   SendIcon,
+  PuzzleIcon,
   ShieldIcon,
   SparkIcon,
 } from "@/components/ui/Icons";
@@ -18,6 +19,7 @@ const NAV = [
   { href: "/dashboard/cv", label: "CV Maestro", Icon: DocIcon },
   { href: "/dashboard/offers", label: "Ofertas", Icon: BriefcaseIcon },
   { href: "/dashboard/creditos", label: "Créditos", Icon: SparkIcon },
+  { href: "/dashboard/extension", label: "Extensión", Icon: PuzzleIcon },
   { href: "/dashboard/ajustes", label: "Ajustes", Icon: GearIcon },
 ];
 
