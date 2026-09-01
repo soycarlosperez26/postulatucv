@@ -92,7 +92,7 @@ $("description").addEventListener("input", pintarContador);
 
 $("abrir-panel").addEventListener("click", async () => {
   const { origin } = await chrome.storage.local.get("origin");
-  chrome.tabs.create({ url: `${origin || "https://postula.co"}/dashboard/extension` });
+  chrome.tabs.create({ url: `${origin || "https://www.postulatucv.online"}/dashboard/extension` });
 });
 
 $("guardar-token").addEventListener("click", async () => {
@@ -104,7 +104,7 @@ $("guardar-token").addEventListener("click", async () => {
   }
   // Sin un origen conocido se asume producción; conectarse desde el panel
   // lo registra correctamente y es el camino recomendado.
-  await chrome.storage.local.set({ token, origin: "https://postula.co" });
+  await chrome.storage.local.set({ token, origin: "https://www.postulatucv.online" });
   iniciar();
 });
 
