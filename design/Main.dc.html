@@ -1,0 +1,302 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #F6F1E8; font-family: 'Instrument Sans', system-ui, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #1C4D3E; text-decoration: none; }
+    a:hover { color: #B4551F; }
+    .nav:hover { background: #21584799 !important; color: #FFFDF9 !important; }
+    .row:hover { background: #FBF7F0 !important; }
+    .btn:hover { filter: brightness(0.92); }
+    .ghost:hover { background: #F0E9DC !important; }
+    .tab:hover { border-color: #C9B896 !important; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; height: 980px; display: flex; overflow: hidden; background: #F6F1E8; color: #201B14;">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside style="width: 248px; flex-shrink: 0; background: #173F33; display: flex; flex-direction: column; justify-content: space-between; padding: 24px 14px 18px;">
+
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 0 8px;">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="0" y="0" width="28" height="28" rx="8.5" fill="#DE8B2E"></rect><path d="M9.6 19.5V11.4C9.6 10.1 10.7 9 12 9h2.9c2 0 3.6 1.6 3.6 3.6s-1.6 3.6-3.6 3.6h-2.5" stroke="#173F33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 21px; font-weight: 700; letter-spacing: -0.02em; color: #F5EFE2;">Postula</span>
+      </div>
+
+      <nav style="display: flex; flex-direction: column; gap: 3px;">
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: #215243; color: #FFFDF9; font-size: 14.5px; font-weight: 600; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h6v6H3zM11 3h6v6h-6zM3 11h6v6H3zM11 11h6v6h-6z"></path></svg>
+          Panel
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h6l4 4v11H5z"></path><path d="M11 2.5v4h4"></path><path d="M7.5 10.5h5M7.5 13.5h3"></path></svg>
+          CV Maestro
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="15" height="10.5" rx="2"></rect><path d="M7 6V4.5A1.5 1.5 0 0 1 8.5 3h3A1.5 1.5 0 0 1 13 4.5V6"></path></svg>
+          Ofertas
+          <span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #86A093;">5</span>
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 2.5L9 11"></path><path d="M17.5 2.5l-5.5 15-3-6.5-6.5-3z"></path></svg>
+          Postulaciones
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="2.6"></circle><path d="M10 2.6v2M10 15.4v2M2.6 10h2M15.4 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M15.3 4.7l-1.4 1.4M6.1 13.9l-1.4 1.4"></path></svg>
+          Ajustes
+        </div>
+      </nav>
+    </div>
+
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="height: 1px; background: #27584A;"></div>
+      <div style="display: flex; align-items: center; gap: 11px; padding: 4px 8px;">
+        <div style="width: 34px; height: 34px; border-radius: 999px; background: #DE8B2E; color: #173F33; display: flex; align-items: center; justify-content: center; font-family: Gabarito, 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 14px;">CP</div>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0;">
+          <span style="font-size: 13.5px; font-weight: 600; color: #F5EFE2;">Carlos A. Pérez</span>
+          <span style="font-size: 11.5px; color: #86A093;">Plan Free · 7 créditos</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#86A093" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8l4 4 4-4"></path></svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div style="flex-grow: 1; display: flex; flex-direction: column; min-width: 0;">
+
+    <header style="display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 32px; background: #FFFDF9; border-bottom: 1px solid #E3D9C8;">
+      <div style="display: flex; flex-direction: column; gap: 3px;">
+        <h1 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 23px; font-weight: 700; letter-spacing: -0.02em; color: #201B14;">Hola, Carlos</h1>
+        <p style="margin: 0; font-size: 13.5px; color: #7C7060;">Tienes 2 CV adaptados listos para enviar.</p>
+      </div>
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div style="display: flex; align-items: center; gap: 9px; width: 264px; height: 40px; padding: 0 13px; background: #F6F1E8; border: 1px solid #E3D9C8; border-radius: 10px;">
+          <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="#9C8F7D" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="9" r="5.5"></circle><path d="M13.2 13.2L17 17"></path></svg>
+          <span style="font-size: 13.5px; color: #9C8F7D;">Buscar oferta o empresa</span>
+        </div>
+        <div class="btn" style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 10px; background: {{accent}}; color: #FFFDF9; font-size: 14px; font-weight: 600; cursor: pointer;">
+          <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4.5v11M4.5 10h11"></path></svg>
+          Analizar oferta
+        </div>
+      </div>
+    </header>
+
+    <div style="flex-grow: 1; padding: 26px 32px; display: flex; flex-direction: column; gap: 22px; overflow: hidden;">
+
+      <!-- fila superior -->
+      <div style="display: grid; grid-template-columns: minmax(0, 1fr) 356px; gap: 22px;">
+
+        <!-- CV MAESTRO -->
+        <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 20px 22px; display: flex; flex-direction: column; gap: 16px;">
+          <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 16px;">
+            <div style="display: flex; flex-direction: column; gap: 5px;">
+              <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #B4551F;">Tu CV Maestro</span>
+              <h2 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -0.015em; color: #201B14;">Carlos A. Pérez — Desarrollador Frontend</h2>
+              <p style="margin: 0; font-size: 13px; color: #7C7060;">CV_Carlos_Perez_2026.pdf · actualizado hace 12 días</p>
+            </div>
+            <div style="display: flex; align-items: center; gap: 7px; padding: 6px 11px; border-radius: 999px; background: #E6EEE9; color: #1C4D3E; font-size: 12px; font-weight: 600; white-space: nowrap;">
+              <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8"></path></svg>
+              Fuente única
+            </div>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: baseline; justify-content: space-between;">
+              <span style="font-size: 13px; font-weight: 600; color: #453C31;">Completitud del perfil</span>
+              <span style="font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 15px; font-weight: 700; color: {{accent}};">82%</span>
+            </div>
+            <div style="height: 8px; border-radius: 999px; background: #EFE8DB; overflow: hidden;">
+              <div style="width: 82%; height: 100%; border-radius: 999px; background: {{accent}};"></div>
+            </div>
+            <p style="margin: 0; font-size: 12.5px; color: #7C7060;">Falta tu nivel de inglés certificado y la descripción de una experiencia.</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px;">
+            <div style="background: #F6F1E8; border: 1px solid #E9E0D0; border-radius: 10px; padding: 11px 12px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 19px; font-weight: 700; color: #201B14;">3</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8A7C69;">Experiencias</span>
+            </div>
+            <div style="background: #F6F1E8; border: 1px solid #E9E0D0; border-radius: 10px; padding: 11px 12px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 19px; font-weight: 700; color: #201B14;">12</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8A7C69;">Habilidades</span>
+            </div>
+            <div style="background: #F6F1E8; border: 1px solid #E9E0D0; border-radius: 10px; padding: 11px 12px; display: flex; flex-direction: column; gap: 2px;">
+              <span style="font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 19px; font-weight: 700; color: #201B14;">1</span>
+              <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: #8A7C69;">Estudios</span>
+            </div>
+          </div>
+
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <div class="ghost" style="display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 15px; border-radius: 9px; border: 1px solid #D3C5AC; background: transparent; color: #201B14; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M13.5 3.5l3 3L7 16H4v-3z"></path></svg>
+              Ver y editar
+            </div>
+            <div class="ghost" style="display: flex; align-items: center; gap: 8px; height: 38px; padding: 0 15px; border-radius: 9px; border: 1px solid #D3C5AC; background: transparent; color: #201B14; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13.5V3.5M6 7.5l4-4 4 4"></path><path d="M3.5 14v2.5h13V14"></path></svg>
+              Reemplazar PDF
+            </div>
+            <p style="margin: 0 0 0 auto; font-size: 12.5px; color: #8A7C69; max-width: 260px; text-align: right; text-wrap: pretty;">Nunca se modifica solo. Cada oferta genera una versión aparte.</p>
+          </div>
+        </section>
+
+        <!-- CRÉDITOS -->
+        <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; overflow: hidden; display: flex; flex-direction: column;">
+          <div style="background: #F8E8D5; padding: 13px 20px; display: flex; align-items: center; justify-content: space-between;">
+            <span style="font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #8A4A14;">Créditos</span>
+            <span style="padding: 3px 9px; border-radius: 999px; background: #FFFDF9; color: #8A4A14; font-size: 11.5px; font-weight: 700;">Plan Free</span>
+          </div>
+          <div style="padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 14px;">
+            <div style="display: flex; align-items: baseline; gap: 8px;">
+              <span style="font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 40px; font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: #201B14;">7</span>
+              <span style="font-size: 14px; color: #7C7060;">de 10 este mes</span>
+            </div>
+            <div style="height: 8px; border-radius: 999px; background: #EFE8DB; overflow: hidden;">
+              <div style="width: 70%; height: 100%; border-radius: 999px; background: #DE8B2E;"></div>
+            </div>
+            <p style="margin: 0; font-size: 12.5px; color: #7C7060; text-wrap: pretty;">Cada análisis de oferta + CV adaptado consume 1 crédito. Se renuevan el 1 de cada mes.</p>
+            <div class="btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 42px; border-radius: 10px; background: {{accent}}; color: #FFFDF9; font-size: 14px; font-weight: 600; cursor: pointer;">
+              Pasar a Pro · $19.900/mes
+            </div>
+            <div style="display: flex; align-items: center; justify-content: center;">
+              <a href="#" style="font-size: 13px; font-weight: 600;">o comprar 10 créditos por $9.900</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- OFERTAS -->
+      <section style="display: flex; flex-direction: column; gap: 13px; min-height: 0;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 16px;">
+          <h2 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.015em; color: #201B14;">Tus ofertas</h2>
+          <div style="display: flex; align-items: center; gap: 7px;">
+            <sc-for list="{{tabs}}" as="tab" hint-placeholder-count="4">
+              <div class="tab" onClick="{{tab.pick}}" style="display: flex; align-items: center; gap: 7px; height: 32px; padding: 0 13px; border-radius: 999px; border: 1px solid {{tab.border}}; background: {{tab.bg}}; color: {{tab.color}}; font-size: 13px; font-weight: 600; cursor: pointer;">
+                {{tab.label}}
+                <span style="font-size: 11.5px; font-weight: 700; opacity: 0.65;">{{tab.count}}</span>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; overflow: hidden;">
+          <sc-for list="{{offers}}" as="o" hint-placeholder-count="5">
+            <div class="row" onClick="{{o.pick}}" style="display: flex; align-items: center; gap: 16px; padding: {{o.pad}}; border-bottom: {{o.border}}; background: {{o.rowBg}}; cursor: pointer;">
+              <div style="width: 40px; height: 40px; flex-shrink: 0; border-radius: 11px; background: #F0E9DC; color: #4A4137; display: flex; align-items: center; justify-content: center; font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 16px; font-weight: 700;">{{o.initial}}</div>
+              <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 3px; min-width: 0;">
+                <span style="font-size: 14.5px; font-weight: 600; color: #201B14;">{{o.title}}</span>
+                <span style="font-size: 12.5px; color: #7C7060;">{{o.meta}}</span>
+              </div>
+              <div style="display: flex; align-items: center; gap: 7px; width: 128px; flex-shrink: 0;">
+                <div style="flex-grow: 1; height: 6px; border-radius: 999px; background: #EFE8DB; overflow: hidden;">
+                  <div style="width: {{o.barW}}; height: 100%; border-radius: 999px; background: {{o.barColor}};"></div>
+                </div>
+                <span style="font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 14px; font-weight: 700; color: {{o.scoreColor}}; width: 40px; text-align: right;">{{o.scoreLabel}}</span>
+              </div>
+              <div style="width: 118px; flex-shrink: 0; display: flex; justify-content: flex-start;">
+                <span style="padding: 5px 10px; border-radius: 7px; background: {{o.statusBg}}; color: {{o.statusColor}}; font-size: 12px; font-weight: 600; white-space: nowrap;">{{o.statusLabel}}</span>
+              </div>
+              <span style="width: 84px; flex-shrink: 0; text-align: right; font-size: 12.5px; color: #9C8F7D;">{{o.date}}</span>
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#B5A791" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M7.5 4l6 6-6 6"></path></svg>
+            </div>
+          </sc-for>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#1C4D3E","options":["#1C4D3E","#B4551F","#8A5A12","#2F4858"],"section":"Marca","tsType":"string"},"density":{"editor":"enum","default":"Cómoda","options":["Cómoda","Compacta"],"section":"Layout","tsType":"string"},"$preview":{"width":1440,"height":980}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#1C4D3E';
+    const pad = (this.props.density === 'Compacta') ? '11px 18px' : '15px 18px';
+    const filter = this.state.filter ?? 'todas';
+    const openId = this.state.openId ?? '1';
+
+    const data = [
+      { id: '1', initial: 'R', title: 'Desarrollador Frontend Senior', meta: 'Rappi · Bogotá · Híbrido', score: 87, status: 'lista', date: 'Hace 2 días' },
+      { id: '2', initial: 'H', title: 'Full Stack Developer', meta: 'Habi · Bogotá · Remoto', score: 78, status: 'lista', date: 'Hace 4 días' },
+      { id: '3', initial: 'B', title: 'Ingeniero de Software Backend', meta: 'Bancolombia · Medellín · Presencial', score: 64, status: 'analizada', date: 'Hace 6 días' },
+      { id: '4', initial: 'N', title: 'Tech Lead Frontend', meta: 'Nequi · Remoto Colombia', score: 52, status: 'analizada', date: 'Hace 9 días' },
+      { id: '5', initial: 'T', title: 'Desarrollador React Native', meta: 'Tul · Bogotá · Híbrido', score: null, status: 'sin', date: 'Ayer' }
+    ];
+
+    const band = (s) => {
+      if (s === null) return { color: '#9C8F7D', bar: '#D3C5AC' };
+      if (s >= 80) return { color: '#1C4D3E', bar: '#2E7A62' };
+      if (s >= 65) return { color: '#8A4A14', bar: '#DE8B2E' };
+      return { color: '#A63B2A', bar: '#C7614D' };
+    };
+    const statusMap = {
+      lista: { label: 'CV adaptado listo', bg: '#E6EEE9', color: '#1C4D3E' },
+      analizada: { label: 'Analizada', bg: '#F8E8D5', color: '#8A4A14' },
+      sin: { label: 'Sin analizar', bg: '#F0E9DC', color: '#7C7060' }
+    };
+
+    const counts = {
+      todas: data.length,
+      lista: data.filter((d) => d.status === 'lista').length,
+      analizada: data.filter((d) => d.status === 'analizada').length,
+      sin: data.filter((d) => d.status === 'sin').length
+    };
+
+    const tabDefs = [
+      { id: 'todas', label: 'Todas' },
+      { id: 'lista', label: 'Listas' },
+      { id: 'analizada', label: 'Analizadas' },
+      { id: 'sin', label: 'Sin analizar' }
+    ];
+
+    const tabs = tabDefs.map((t) => {
+      const active = t.id === filter;
+      return {
+        label: t.label,
+        count: counts[t.id],
+        bg: active ? accent : '#FFFDF9',
+        color: active ? '#FFFDF9' : '#453C31',
+        border: active ? accent : '#E3D9C8',
+        pick: () => this.setState({ filter: t.id })
+      };
+    });
+
+    const visible = data.filter((d) => filter === 'todas' || d.status === filter);
+
+    const offers = visible
+      .map((d, i) => {
+        const b = band(d.score);
+        const st = statusMap[d.status];
+        return {
+          initial: d.initial,
+          title: d.title,
+          meta: d.meta,
+          date: d.date,
+          pad: pad,
+          border: i === visible.length - 1 ? 'none' : '1px solid #F0E9DC',
+          rowBg: d.id === openId ? '#FBF7F0' : '#FFFDF9',
+          barW: (d.score === null ? 0 : d.score) + '%',
+          barColor: b.bar,
+          scoreColor: b.color,
+          scoreLabel: d.score === null ? '—' : d.score + '%',
+          statusLabel: st.label,
+          statusBg: st.bg,
+          statusColor: st.color,
+          pick: () => this.setState({ openId: d.id })
+        };
+      });
+
+    return { accent, tabs, offers };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,466 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #F6F1E8; font-family: 'Instrument Sans', system-ui, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #1C4D3E; text-decoration: none; }
+    a:hover { color: #B4551F; }
+    .nav:hover { background: #21584799 !important; color: #FFFDF9 !important; }
+    .btn:hover { filter: brightness(0.92); }
+    .ghost:hover { background: #F0E9DC !important; }
+    .tab:hover { color: #201B14 !important; }
+    .mini:hover { border-color: #B5A791 !important; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; height: 1120px; display: flex; overflow: hidden; background: #F6F1E8; color: #201B14;">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside style="width: 248px; flex-shrink: 0; background: #173F33; display: flex; flex-direction: column; justify-content: space-between; padding: 24px 14px 18px;">
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 0 8px;">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="0" y="0" width="28" height="28" rx="8.5" fill="#DE8B2E"></rect><path d="M9.6 19.5V11.4C9.6 10.1 10.7 9 12 9h2.9c2 0 3.6 1.6 3.6 3.6s-1.6 3.6-3.6 3.6h-2.5" stroke="#173F33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 21px; font-weight: 700; letter-spacing: -0.02em; color: #F5EFE2;">Postula</span>
+      </div>
+      <nav style="display: flex; flex-direction: column; gap: 3px;">
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h6v6H3zM11 3h6v6h-6zM3 11h6v6H3zM11 11h6v6h-6z"></path></svg>
+          Panel
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h6l4 4v11H5z"></path><path d="M11 2.5v4h4"></path><path d="M7.5 10.5h5M7.5 13.5h3"></path></svg>
+          CV Maestro
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: #215243; color: #FFFDF9; font-size: 14.5px; font-weight: 600; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="15" height="10.5" rx="2"></rect><path d="M7 6V4.5A1.5 1.5 0 0 1 8.5 3h3A1.5 1.5 0 0 1 13 4.5V6"></path></svg>
+          Ofertas
+          <span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #C9DBD1;">5</span>
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 2.5L9 11"></path><path d="M17.5 2.5l-5.5 15-3-6.5-6.5-3z"></path></svg>
+          Postulaciones
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="2.6"></circle><path d="M10 2.6v2M10 15.4v2M2.6 10h2M15.4 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M15.3 4.7l-1.4 1.4M6.1 13.9l-1.4 1.4"></path></svg>
+          Ajustes
+        </div>
+      </nav>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="height: 1px; background: #27584A;"></div>
+      <div style="display: flex; align-items: center; gap: 11px; padding: 4px 8px;">
+        <div style="width: 34px; height: 34px; border-radius: 999px; background: #DE8B2E; color: #173F33; display: flex; align-items: center; justify-content: center; font-family: Gabarito, 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 14px;">CP</div>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0;">
+          <span style="font-size: 13.5px; font-weight: 600; color: #F5EFE2;">Carlos A. Pérez</span>
+          <span style="font-size: 11.5px; color: #86A093;">Plan Free · 7 créditos</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#86A093" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8l4 4 4-4"></path></svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div style="flex-grow: 1; display: flex; flex-direction: column; min-width: 0; overflow: hidden;">
+
+    <header style="background: #FFFDF9; border-bottom: 1px solid #E3D9C8; padding: 16px 32px 20px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: #8A7C69;">
+        <a href="#" style="color: #8A7C69; font-weight: 500;">Ofertas</a>
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#B5A791" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4l6 6-6 6"></path></svg>
+        <span style="color: #453C31; font-weight: 600;">Rappi · Desarrollador Frontend Senior</span>
+      </div>
+
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 24px;">
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+          <div style="width: 48px; height: 48px; flex-shrink: 0; border-radius: 12px; background: #F0E9DC; color: #4A4137; display: flex; align-items: center; justify-content: center; font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 19px; font-weight: 700;">R</div>
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <h1 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 24px; font-weight: 700; letter-spacing: -0.02em; color: #201B14;">Desarrollador Frontend Senior</h1>
+            <div style="display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">
+              <span style="padding: 4px 10px; border-radius: 7px; background: #F0E9DC; color: #4A4137; font-size: 12.5px; font-weight: 600;">Rappi</span>
+              <span style="padding: 4px 10px; border-radius: 7px; background: #F0E9DC; color: #4A4137; font-size: 12.5px; font-weight: 600;">Bogotá · Híbrido</span>
+              <span style="padding: 4px 10px; border-radius: 7px; background: #F0E9DC; color: #4A4137; font-size: 12.5px; font-weight: 600;">Senior · 4+ años</span>
+              <span style="font-size: 12.5px; color: #8A7C69;">Guardada el 29 de agosto · enlace de elempleo.com</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 10px; flex-shrink: 0;">
+          <div class="ghost" style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 15px; border-radius: 10px; border: 1px solid #D3C5AC; background: transparent; color: #201B14; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M11 3h6v6"></path><path d="M17 3l-8 8"></path><path d="M15 12v5H3.5V5.5h5"></path></svg>
+            Oferta original
+          </div>
+          <div class="btn" style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 17px; border-radius: 10px; background: {{accent}}; color: #FFFDF9; font-size: 14px; font-weight: 600; cursor: pointer;">
+            <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h6l4 4v11H5z"></path><path d="M11 2.5v4h4"></path></svg>
+            Ver CV adaptado
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div style="flex-grow: 1; padding: 24px 32px; display: grid; grid-template-columns: minmax(0, 1fr) 356px; gap: 22px; align-items: start; overflow: hidden;">
+
+      <!-- ---------- COLUMNA IZQUIERDA ---------- -->
+      <div style="display: flex; flex-direction: column; gap: 16px; min-width: 0;">
+
+        <div style="display: flex; align-items: center; gap: 24px; border-bottom: 1px solid #E3D9C8;">
+          <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+            <div class="tab" onClick="{{t.pick}}" style="padding: 0 2px 11px; border-bottom: 2px solid {{t.border}}; color: {{t.color}}; font-size: 14.5px; font-weight: {{t.weight}}; cursor: pointer; margin-bottom: -1px;">{{t.label}}</div>
+          </sc-for>
+        </div>
+
+        <!-- TAB: ANÁLISIS -->
+        <sc-if value="{{isAnalisis}}" hint-placeholder-val="{{ true }}">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+
+            <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 22px 24px; display: flex; align-items: center; gap: 28px;">
+              <div style="position: relative; width: 132px; height: 132px; flex-shrink: 0;">
+                <svg width="132" height="132" viewBox="0 0 132 132" style="transform: rotate(-90deg);">
+                  <circle cx="66" cy="66" r="54" fill="none" stroke="#EFE8DB" stroke-width="12"></circle>
+                  <circle cx="66" cy="66" r="54" fill="none" stroke="{{ring.color}}" stroke-width="12" stroke-linecap="round" stroke-dasharray="{{ring.dash}}" stroke-dashoffset="{{ring.offset}}"></circle>
+                </svg>
+                <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px;">
+                  <span style="font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 34px; font-weight: 700; line-height: 1; letter-spacing: -0.03em; color: #201B14;">{{ring.label}}</span>
+                  <span style="font-size: 11px; font-weight: 600; letter-spacing: 0.07em; text-transform: uppercase; color: #8A7C69;">Match ATS</span>
+                </div>
+              </div>
+
+              <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 12px; min-width: 0;">
+                <div style="display: flex; flex-direction: column; gap: 4px;">
+                  <h2 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.015em; color: #201B14;">{{ring.headline}}</h2>
+                  <p style="margin: 0; font-size: 13.5px; color: #7C7060; text-wrap: pretty;">{{ring.sub}}</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px 22px;">
+                  <sc-for list="{{breakdown}}" as="b" hint-placeholder-count="4">
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                      <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 8px;">
+                        <span style="font-size: 12.5px; font-weight: 500; color: #453C31;">{{b.label}}</span>
+                        <span style="font-size: 12.5px; font-weight: 700; color: {{b.color}};">{{b.pct}}</span>
+                      </div>
+                      <div style="height: 5px; border-radius: 999px; background: #EFE8DB; overflow: hidden;">
+                        <div style="width: {{b.pct}}; height: 100%; border-radius: 999px; background: {{b.color}};"></div>
+                      </div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </section>
+
+            <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 18px 22px 20px; display: flex; flex-direction: column; gap: 13px;">
+              <div style="display: flex; align-items: center; gap: 9px;">
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#1C4D3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8"></path></svg>
+                <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: #201B14;">Lo que ya cubres</h3>
+                <span style="font-size: 13px; color: #8A7C69;">{{coveredCount}} de {{totalKeywords}} palabras clave de la oferta</span>
+              </div>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px;">
+                <sc-for list="{{covered}}" as="c" hint-placeholder-count="12">
+                  <span style="padding: 6px 11px; border-radius: 8px; background: #E6EEE9; border: 1px solid #CBDDD4; color: #1C4D3E; font-size: 13px; font-weight: 600;">{{c.name}}</span>
+                </sc-for>
+              </div>
+            </section>
+
+            <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 18px 22px 20px; display: flex; flex-direction: column; gap: 14px;">
+              <div style="display: flex; align-items: baseline; gap: 9px;">
+                <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.01em; color: #201B14;">Lo que la oferta pide y no aparece en tu CV</h3>
+                <span style="font-size: 13px; color: #8A7C69;">{{pendingLabel}}</span>
+              </div>
+
+              <sc-if value="{{noPending}}" hint-placeholder-val="{{ false }}">
+                <div style="display: flex; align-items: center; gap: 10px; padding: 14px; border: 1px dashed #DCD0BA; border-radius: 11px; background: #FBF7F0;">
+                  <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="#1C4D3E" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M4.5 10.5l3.5 3.5 7.5-8"></path></svg>
+                  <span style="font-size: 13px; color: #453C31;">Revisaste las cuatro palabras clave que faltaban. Nada más pendiente en esta oferta.</span>
+                </div>
+              </sc-if>
+
+              <div style="display: flex; flex-direction: column; gap: 8px;">
+                <sc-for list="{{pending}}" as="m" hint-placeholder-count="4">
+                  <div style="display: flex; align-items: center; gap: 14px; padding: 12px 14px; border: 1px solid #E9E0D0; border-radius: 11px; background: #FBF7F0;">
+                    <div style="width: 7px; height: 7px; border-radius: 999px; background: {{m.dot}}; flex-shrink: 0;"></div>
+                    <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                      <span style="font-size: 14px; font-weight: 600; color: #201B14;">{{m.name}}</span>
+                      <span style="font-size: 12.5px; color: #7C7060;">{{m.why}}</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 8px; flex-shrink: 0;">
+                      <div class="mini" onClick="{{m.confirm}}" style="display: flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid #CBDDD4; background: #FFFDF9; color: #1C4D3E; font-size: 12.5px; font-weight: 600; cursor: pointer;">
+                        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8"></path></svg>
+                        Sí lo tengo
+                      </div>
+                      <div class="mini" onClick="{{m.dismiss}}" style="display: flex; align-items: center; height: 32px; padding: 0 12px; border-radius: 8px; border: 1px solid #E3D9C8; background: transparent; color: #7C7060; font-size: 12.5px; font-weight: 600; cursor: pointer;">No aplica</div>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+
+              <sc-if value="{{hasConfirmed}}" hint-placeholder-val="{{ true }}">
+                <div style="display: flex; flex-direction: column; gap: 10px; padding: 14px; border-radius: 11px; background: #E6EEE9; border: 1px solid #CBDDD4;">
+                  <div style="display: flex; align-items: baseline; gap: 8px;">
+                    <span style="font-size: 13.5px; font-weight: 700; color: #1C4D3E;">Por verificar antes de incluir</span>
+                    <span style="font-size: 12.5px; color: #3F6B5B;">{{confirmedLabel}} · match proyectado {{ring.label}}</span>
+                  </div>
+                  <div style="display: flex; flex-wrap: wrap; gap: 7px;">
+                    <sc-for list="{{confirmed}}" as="c" hint-placeholder-count="2">
+                      <span onClick="{{c.undo}}" style="display: flex; align-items: center; gap: 7px; padding: 6px 10px; border-radius: 8px; background: #FFFDF9; border: 1px solid #CBDDD4; color: #1C4D3E; font-size: 13px; font-weight: 600; cursor: pointer;">
+                        {{c.name}}
+                        <svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="#7C9E8E" stroke-width="2.2" stroke-linecap="round"><path d="M5.5 5.5l9 9M14.5 5.5l-9 9"></path></svg>
+                      </span>
+                    </sc-for>
+                  </div>
+                  <div class="btn" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 38px; border-radius: 9px; background: {{accent}}; color: #FFFDF9; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+                    Regenerar CV con lo confirmado · 1 crédito
+                  </div>
+                </div>
+              </sc-if>
+
+              <div style="display: flex; align-items: flex-start; gap: 9px; padding-top: 2px;">
+                <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="#B4551F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><circle cx="10" cy="10" r="7.5"></circle><path d="M10 9.2v4.6M10 6.3v.2"></path></svg>
+                <p style="margin: 0; font-size: 12.5px; color: #7C7060; text-wrap: pretty;">Postula no inventa experiencia. Marcar «Sí lo tengo» solo abre el campo para que tú lo escribas con tus propias palabras antes de que entre al CV.</p>
+              </div>
+            </section>
+          </div>
+        </sc-if>
+
+        <!-- TAB: REQUISITOS -->
+        <sc-if value="{{isRequisitos}}" hint-placeholder-val="{{ false }}">
+          <div style="display: flex; flex-direction: column; gap: 16px;">
+            <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 20px 22px; display: flex; flex-direction: column; gap: 14px;">
+              <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 16px; font-weight: 700; color: #201B14;">Requisitos obligatorios</h3>
+              <div style="display: flex; flex-direction: column; gap: 9px;">
+                <sc-for list="{{required}}" as="r" hint-placeholder-count="6">
+                  <div style="display: flex; align-items: center; gap: 11px; padding-bottom: 9px; border-bottom: {{r.border}};">
+                    <span style="width: 20px; height: 20px; flex-shrink: 0; border-radius: 999px; background: {{r.bg}}; display: flex; align-items: center; justify-content: center;">
+                      <svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="{{r.icon}}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="{{r.path}}"></path></svg>
+                    </span>
+                    <span style="flex-grow: 1; font-size: 14px; font-weight: 500; color: #201B14;">{{r.text}}</span>
+                    <span style="font-size: 12.5px; font-weight: 600; color: {{r.icon}};">{{r.state}}</span>
+                  </div>
+                </sc-for>
+              </div>
+            </section>
+            <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 20px 22px; display: flex; flex-direction: column; gap: 13px;">
+              <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 16px; font-weight: 700; color: #201B14;">Deseables</h3>
+              <div style="display: flex; flex-wrap: wrap; gap: 7px;">
+                <sc-for list="{{nice}}" as="n" hint-placeholder-count="6">
+                  <span style="padding: 6px 11px; border-radius: 8px; background: #F6F1E8; border: 1px solid #E9E0D0; color: #453C31; font-size: 13px; font-weight: 500;">{{n.name}}</span>
+                </sc-for>
+              </div>
+            </section>
+          </div>
+        </sc-if>
+
+        <!-- TAB: DESCRIPCIÓN -->
+        <sc-if value="{{isDescripcion}}" hint-placeholder-val="{{ false }}">
+          <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 24px 26px; display: flex; flex-direction: column; gap: 14px;">
+            <p style="margin: 0; font-size: 12.5px; color: #8A7C69;">Descripción pegada por ti el 29 de agosto · 4.120 caracteres</p>
+            <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 17px; font-weight: 700; color: #201B14;">Sobre el rol</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #453C31; text-wrap: pretty;">Buscamos un Desarrollador Frontend Senior para el squad de Checkout. Serás responsable de construir y mantener interfaces de alto tráfico en React y TypeScript, definir estándares de calidad de código y acompañar técnicamente a desarrolladores semi-senior del equipo.</p>
+            <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 17px; font-weight: 700; color: #201B14;">Responsabilidades</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #453C31; text-wrap: pretty;">Diseñar componentes reutilizables con Next.js. Optimizar Core Web Vitals en flujos de pago. Integrar servicios vía GraphQL y REST. Liderar sesiones de revisión de código y mentoría del equipo. Participar en la definición de la arquitectura frontend junto a Platform.</p>
+            <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 17px; font-weight: 700; color: #201B14;">Requisitos</h3>
+            <p style="margin: 0; font-size: 14px; line-height: 1.65; color: #453C31; text-wrap: pretty;">Mínimo 4 años en desarrollo frontend. Dominio de React, TypeScript y testing automatizado. Experiencia con GraphQL y despliegues en Kubernetes. Inglés B2 o superior para trabajar con equipos regionales. Experiencia liderando equipos pequeños.</p>
+          </section>
+        </sc-if>
+      </div>
+
+      <!-- ---------- COLUMNA DERECHA ---------- -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+
+        <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px;">
+          <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 15px; font-weight: 700; color: #201B14;">Estado de esta postulación</h3>
+          <div style="display: flex; flex-direction: column; gap: 0;">
+            <sc-for list="{{steps}}" as="s" hint-placeholder-count="4">
+              <div style="display: flex; gap: 12px;">
+                <div style="display: flex; flex-direction: column; align-items: center; width: 20px; flex-shrink: 0;">
+                  <span style="width: 20px; height: 20px; border-radius: 999px; border: 2px solid {{s.ring}}; background: {{s.fill}}; display: flex; align-items: center; justify-content: center;">
+                    <svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="{{s.check}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8"></path></svg>
+                  </span>
+                  <div style="width: 2px; flex-grow: 1; background: {{s.line}}; min-height: {{s.minH}};"></div>
+                </div>
+                <div style="display: flex; flex-direction: column; gap: 1px; padding-bottom: {{s.padB}};">
+                  <span style="font-size: 13.5px; font-weight: 600; color: {{s.titleColor}};">{{s.title}}</span>
+                  <span style="font-size: 12px; color: #8A7C69;">{{s.when}}</span>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+          <div class="ghost" style="display: flex; align-items: center; justify-content: center; gap: 8px; height: 38px; border-radius: 9px; border: 1px solid #D3C5AC; background: transparent; color: #201B14; font-size: 13.5px; font-weight: 600; cursor: pointer;">
+            Marcar como postulada
+          </div>
+        </section>
+
+        <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 13px;">
+          <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 15px; font-weight: 700; color: #201B14;">Datos de la oferta</h3>
+          <div style="display: flex; flex-direction: column; gap: 10px;">
+            <sc-for list="{{facts}}" as="f" hint-placeholder-count="5">
+              <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px;">
+                <span style="font-size: 13px; color: #8A7C69;">{{f.k}}</span>
+                <span style="font-size: 13px; font-weight: 600; color: #201B14; text-align: right;">{{f.v}}</span>
+              </div>
+            </sc-for>
+          </div>
+        </section>
+
+        <section style="background: #173F33; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 11px;">
+          <div style="display: flex; align-items: center; gap: 9px;">
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="#DE8B2E" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3l1.8 4.7L16.5 9.5l-4.7 1.8L10 16l-1.8-4.7L3.5 9.5l4.7-1.8z"></path></svg>
+            <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 15px; font-weight: 700; color: #F5EFE2;">Antes de enviar</h3>
+          </div>
+          <p style="margin: 0; font-size: 13px; line-height: 1.6; color: #B9CCC3; text-wrap: pretty;">Tu match está por encima del corte típico de un ATS (75%). Lo que más te suma ahora es certificar tu inglés: aparece como requisito obligatorio en esta y en otras 3 ofertas que guardaste.</p>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#1C4D3E","options":["#1C4D3E","#B4551F","#8A5A12","#2F4858"],"section":"Marca","tsType":"string"},"baseScore":{"editor":"range","default":87,"min":0,"max":100,"step":1,"unit":"%","section":"Datos","tsType":"number"},"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#1C4D3E';
+    const base = this.props.baseScore ?? 87;
+    const tab = this.state.tab ?? 'analisis';
+    const confirmedIds = this.state.confirmed ?? [];
+    const dismissedIds = this.state.dismissed ?? [];
+
+    const MISSING = [
+      { id: 'k8s', name: 'Kubernetes', why: 'Requisito obligatorio · aparece 3 veces en la oferta' },
+      { id: 'gql', name: 'GraphQL', why: 'Requisito obligatorio · en responsabilidades del rol' },
+      { id: 'lead', name: 'Liderazgo de equipo', why: 'Mencionado como «mentoría del equipo»' },
+      { id: 'ing', name: 'Inglés B2 o superior', why: 'Requisito obligatorio · equipos regionales' }
+    ];
+    const COVERED = ['React', 'TypeScript', 'Next.js', 'Node.js', 'Testing automatizado', 'Jest', 'REST APIs', 'Core Web Vitals', 'Git', 'CI/CD', 'Metodologías ágiles', 'PostgreSQL'];
+
+    const score = Math.min(100, base + confirmedIds.length * 3);
+    const C = 2 * Math.PI * 54;
+    const ringColor = score >= 80 ? '#2E7A62' : (score >= 65 ? '#DE8B2E' : '#C7614D');
+    const headline = score >= 80
+      ? 'Perfil fuerte para esta oferta'
+      : (score >= 65 ? 'Competitivo, con vacíos que puedes cerrar' : 'Vas a competir en desventaja');
+    const sub = confirmedIds.length > 0
+      ? 'Proyección con las ' + confirmedIds.length + ' palabras clave que marcaste como tuyas, aún sin verificar.'
+      : 'Calculado cruzando las palabras clave de la oferta contra tu CV Maestro, igual que un filtro ATS.';
+
+    const tabs = [
+      { id: 'analisis', label: 'Análisis ATS' },
+      { id: 'requisitos', label: 'Requisitos' },
+      { id: 'descripcion', label: 'Descripción original' }
+    ].map((t) => ({
+      label: t.label,
+      border: t.id === tab ? accent : 'transparent',
+      color: t.id === tab ? '#201B14' : '#8A7C69',
+      weight: t.id === tab ? '700' : '500',
+      pick: () => this.setState({ tab: t.id })
+    }));
+
+    const ingConfirmado = confirmedIds.indexOf('ing') !== -1;
+    const tecConfirmado = confirmedIds.indexOf('k8s') !== -1 || confirmedIds.indexOf('gql') !== -1;
+    const breakdown = [
+      { label: 'Habilidades técnicas', pct: tecConfirmado ? '96%' : '92%', color: tecConfirmado ? '#DE8B2E' : '#2E7A62' },
+      { label: 'Experiencia relevante', pct: '78%', color: '#2E7A62' },
+      { label: 'Formación', pct: '100%', color: '#2E7A62' },
+      { label: 'Idiomas', pct: ingConfirmado ? '75%' : '40%', color: ingConfirmado ? '#DE8B2E' : '#C7614D' }
+    ];
+
+    const covered = COVERED.map((name) => ({ name: name }));
+
+    const pending = MISSING
+      .filter((m) => confirmedIds.indexOf(m.id) === -1 && dismissedIds.indexOf(m.id) === -1)
+      .map((m) => ({
+        name: m.name,
+        why: m.why,
+        dot: '#C7614D',
+        confirm: () => this.setState({ confirmed: confirmedIds.concat([m.id]) }),
+        dismiss: () => this.setState({ dismissed: dismissedIds.concat([m.id]) })
+      }));
+
+    const confirmed = confirmedIds.map((id) => {
+      const m = MISSING.find((x) => x.id === id);
+      return {
+        name: m.name,
+        undo: () => this.setState({ confirmed: confirmedIds.filter((x) => x !== id) })
+      };
+    });
+
+    const okPath = 'M4.5 10.5l3.5 3.5 7.5-8';
+    const noPath = 'M5.5 5.5l9 9M14.5 5.5l-9 9';
+    const required = [
+      { text: '4+ años en desarrollo frontend', ok: true },
+      { text: 'React y TypeScript a nivel avanzado', ok: true },
+      { text: 'Testing automatizado (Jest / Testing Library)', ok: true },
+      { text: 'GraphQL', ok: false },
+      { text: 'Despliegues en Kubernetes', ok: false },
+      { text: 'Inglés B2 o superior', ok: false }
+    ].map((r, i, arr) => ({
+      text: r.text,
+      state: r.ok ? 'En tu CV' : 'No aparece',
+      icon: r.ok ? '#1C4D3E' : '#A63B2A',
+      bg: r.ok ? '#E6EEE9' : '#F7E2DC',
+      path: r.ok ? okPath : noPath,
+      border: i === arr.length - 1 ? 'none' : '1px solid #F0E9DC'
+    }));
+
+    const nice = ['Next.js App Router', 'Core Web Vitals', 'Design systems', 'Figma', 'Mentoría técnica', 'Fintech o delivery'].map((n) => ({ name: n }));
+
+    const steps = [
+      { title: 'Oferta guardada', when: '29 de agosto', done: true },
+      { title: 'Análisis ATS', when: '29 de agosto · 1 crédito', done: true },
+      { title: 'CV adaptado generado', when: '30 de agosto · versión 2', done: true },
+      { title: 'Postulación enviada', when: 'Aún no la marcas', done: false }
+    ].map((s, i, arr) => ({
+      title: s.title,
+      when: s.when,
+      ring: s.done ? '#2E7A62' : '#D3C5AC',
+      fill: s.done ? '#2E7A62' : 'transparent',
+      check: s.done ? '#FFFDF9' : 'transparent',
+      line: i === arr.length - 1 ? 'transparent' : (arr[i + 1].done ? '#2E7A62' : '#E3D9C8'),
+      minH: i === arr.length - 1 ? '0px' : '22px',
+      padB: i === arr.length - 1 ? '0px' : '14px',
+      titleColor: s.done ? '#201B14' : '#8A7C69'
+    }));
+
+    const facts = [
+      { k: 'Seniority', v: 'Senior' },
+      { k: 'Modalidad', v: 'Híbrido · 3 días' },
+      { k: 'Ciudad', v: 'Bogotá D.C.' },
+      { k: 'Contrato', v: 'Término indefinido' },
+      { k: 'Salario', v: 'No publicado' }
+    ];
+
+    return {
+      accent: accent,
+      tabs: tabs,
+      isAnalisis: tab === 'analisis',
+      isRequisitos: tab === 'requisitos',
+      isDescripcion: tab === 'descripcion',
+      ring: {
+        dash: C,
+        offset: C * (1 - score / 100),
+        color: ringColor,
+        label: score + '%',
+        headline: headline,
+        sub: sub
+      },
+      breakdown: breakdown,
+      covered: covered,
+      coveredCount: covered.length,
+      totalKeywords: COVERED.length + MISSING.length,
+      pending: pending,
+      pendingLabel: pending.length === 1 ? '1 pendiente' : pending.length + ' pendientes',
+      noPending: pending.length === 0,
+      confirmed: confirmed,
+      confirmedLabel: confirmed.length === 1 ? '1 marcada' : confirmed.length + ' marcadas',
+      hasConfirmed: confirmed.length > 0,
+      required: required,
+      nice: nice,
+      steps: steps,
+      facts: facts
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,368 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #F6F1E8; font-family: 'Instrument Sans', system-ui, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #1C4D3E; text-decoration: none; }
+    a:hover { color: #B4551F; }
+    .nav:hover { background: #21584799 !important; color: #FFFDF9 !important; }
+    .btn:hover { filter: brightness(0.92); }
+    .ghost:hover { background: #F0E9DC !important; }
+  </style>
+</helmet>
+
+<div style="width: 1440px; height: 1120px; display: flex; overflow: hidden; background: #F6F1E8; color: #201B14;">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside style="width: 248px; flex-shrink: 0; background: #173F33; display: flex; flex-direction: column; justify-content: space-between; padding: 24px 14px 18px;">
+    <div style="display: flex; flex-direction: column; gap: 30px;">
+      <div style="display: flex; align-items: center; gap: 10px; padding: 0 8px;">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none"><rect x="0" y="0" width="28" height="28" rx="8.5" fill="#DE8B2E"></rect><path d="M9.6 19.5V11.4C9.6 10.1 10.7 9 12 9h2.9c2 0 3.6 1.6 3.6 3.6s-1.6 3.6-3.6 3.6h-2.5" stroke="#173F33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        <span style="font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 21px; font-weight: 700; letter-spacing: -0.02em; color: #F5EFE2;">Postula</span>
+      </div>
+      <nav style="display: flex; flex-direction: column; gap: 3px;">
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h6v6H3zM11 3h6v6h-6zM3 11h6v6H3zM11 11h6v6h-6z"></path></svg>
+          Panel
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h6l4 4v11H5z"></path><path d="M11 2.5v4h4"></path><path d="M7.5 10.5h5M7.5 13.5h3"></path></svg>
+          CV Maestro
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: #215243; color: #FFFDF9; font-size: 14.5px; font-weight: 600; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="15" height="10.5" rx="2"></rect><path d="M7 6V4.5A1.5 1.5 0 0 1 8.5 3h3A1.5 1.5 0 0 1 13 4.5V6"></path></svg>
+          Ofertas
+          <span style="margin-left: auto; font-size: 12px; font-weight: 600; color: #C9DBD1;">5</span>
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 2.5L9 11"></path><path d="M17.5 2.5l-5.5 15-3-6.5-6.5-3z"></path></svg>
+          Postulaciones
+        </div>
+        <div class="nav" style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 9px; background: transparent; color: #A6BCB1; font-size: 14.5px; font-weight: 500; cursor: pointer;">
+          <svg width="19" height="19" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="2.6"></circle><path d="M10 2.6v2M10 15.4v2M2.6 10h2M15.4 10h2M4.7 4.7l1.4 1.4M13.9 13.9l1.4 1.4M15.3 4.7l-1.4 1.4M6.1 13.9l-1.4 1.4"></path></svg>
+          Ajustes
+        </div>
+      </nav>
+    </div>
+    <div style="display: flex; flex-direction: column; gap: 14px;">
+      <div style="height: 1px; background: #27584A;"></div>
+      <div style="display: flex; align-items: center; gap: 11px; padding: 4px 8px;">
+        <div style="width: 34px; height: 34px; border-radius: 999px; background: #DE8B2E; color: #173F33; display: flex; align-items: center; justify-content: center; font-family: Gabarito, 'Trebuchet MS', sans-serif; font-weight: 700; font-size: 14px;">CP</div>
+        <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px; min-width: 0;">
+          <span style="font-size: 13.5px; font-weight: 600; color: #F5EFE2;">Carlos A. Pérez</span>
+          <span style="font-size: 11.5px; color: #86A093;">Plan Free · 7 créditos</span>
+        </div>
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#86A093" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8l4 4 4-4"></path></svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ============ MAIN ============ -->
+  <div style="flex-grow: 1; display: flex; flex-direction: column; min-width: 0; overflow: hidden;">
+
+    <header style="background: #FFFDF9; border-bottom: 1px solid #E3D9C8; padding: 16px 32px 18px; display: flex; flex-direction: column; gap: 14px;">
+      <div style="display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: #8A7C69;">
+        <a href="#" style="color: #8A7C69; font-weight: 500;">Ofertas</a>
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#B5A791" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4l6 6-6 6"></path></svg>
+        <a href="#" style="color: #8A7C69; font-weight: 500;">Desarrollador Frontend Senior · Rappi</a>
+        <svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#B5A791" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4l6 6-6 6"></path></svg>
+        <span style="color: #453C31; font-weight: 600;">CV adaptado</span>
+      </div>
+
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+        <div style="display: flex; flex-direction: column; gap: 3px;">
+          <h1 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 23px; font-weight: 700; letter-spacing: -0.02em; color: #201B14;">CV adaptado a esta oferta</h1>
+          <p style="margin: 0; font-size: 13px; color: #7C7060;">Versión 2 · generada el 30 de agosto · match ATS 87%</p>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <div style="display: flex; align-items: center; gap: 3px; padding: 3px; border-radius: 10px; background: #F0E9DC;">
+            <sc-for list="{{views}}" as="v" hint-placeholder-count="2">
+              <div onClick="{{v.pick}}" style="height: 32px; display: flex; align-items: center; padding: 0 13px; border-radius: 7px; background: {{v.bg}}; color: {{v.color}}; font-size: 13px; font-weight: 600; cursor: pointer; box-shadow: {{v.shadow}};">{{v.label}}</div>
+            </sc-for>
+          </div>
+
+          <div onClick="{{toggleHl}}" style="display: flex; align-items: center; gap: 9px; cursor: pointer; user-select: none;">
+            <div style="width: 40px; height: 23px; border-radius: 999px; background: {{sw.track}}; padding: 3px; display: flex; justify-content: {{sw.justify}}; transition: all .15s;">
+              <div style="width: 17px; height: 17px; border-radius: 999px; background: #FFFDF9;"></div>
+            </div>
+            <span style="font-size: 13.5px; font-weight: 600; color: {{sw.label}};">Resaltar cambios</span>
+          </div>
+
+          <div style="width: 1px; height: 26px; background: #E3D9C8;"></div>
+
+          <div class="ghost" style="display: flex; align-items: center; height: 40px; padding: 0 14px; border-radius: 10px; border: 1px solid #D3C5AC; background: transparent; color: #201B14; font-size: 13.5px; font-weight: 600; cursor: pointer;">DOCX</div>
+          <div class="btn" style="display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 17px; border-radius: 10px; background: {{accent}}; color: #FFFDF9; font-size: 14px; font-weight: 600; cursor: pointer;">
+            <svg width="17" height="17" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3.5v9.5M6 9.5l4 4 4-4"></path><path d="M3.5 16.5h13"></path></svg>
+            Descargar PDF
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div style="flex-grow: 1; padding: 26px 32px; display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 24px; align-items: start; overflow: hidden;">
+
+      <!-- ---------- HOJA DE VIDA ---------- -->
+      <div style="display: flex; justify-content: center;">
+        <article style="width: 100%; max-width: 740px; background: #FFFFFF; border: 1px solid #E9E0D0; border-radius: 6px; box-shadow: 0 12px 32px -18px rgba(32, 27, 20, 0.35); padding: 36px 48px 40px; display: flex; flex-direction: column; gap: 20px;">
+
+          <div style="display: flex; flex-direction: column; gap: 7px;">
+            <h2 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 27px; font-weight: 700; letter-spacing: -0.02em; color: #17130E;">Carlos Alfredo Pérez</h2>
+            <p style="margin: 0; font-size: 14.5px; font-weight: 600; color: #B4551F;"><span style="background: {{hl}}; border-radius: 3px; padding: 1px 3px;">{{doc.role}}</span></p>
+            <p style="margin: 0; font-size: 12.5px; color: #6B6153;">Bogotá D.C., Colombia · +57 300 000 0000 · carlos.perez@correo.com · linkedin.com/in/carlosperez</p>
+          </div>
+
+          <div style="height: 1px; background: #E9E0D0;"></div>
+
+          <section style="display: flex; flex-direction: column; gap: 8px;">
+            <h3 style="margin: 0; font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8A7C69;">Perfil profesional</h3>
+            <p style="margin: 0; font-size: 13.5px; line-height: 1.65; color: #2E2820; text-wrap: pretty;"><span style="background: {{hl}}; border-radius: 3px; padding: 1px 3px;">{{doc.summary}}</span></p>
+          </section>
+
+          <section style="display: flex; flex-direction: column; gap: 14px;">
+            <h3 style="margin: 0; font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8A7C69;">Experiencia profesional</h3>
+
+            <sc-for list="{{doc.jobs}}" as="j" hint-placeholder-count="2">
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
+                  <span style="font-size: 14.5px; font-weight: 700; color: #17130E;">{{j.role}}</span>
+                  <span style="font-size: 12.5px; color: #6B6153; white-space: nowrap;">{{j.dates}}</span>
+                </div>
+                <span style="font-size: 13px; font-weight: 500; color: #6B6153;">{{j.company}}</span>
+                <div style="display: flex; flex-direction: column; gap: 5px; padding-top: 2px;">
+                  <sc-for list="{{j.bullets}}" as="b" hint-placeholder-count="3">
+                    <div style="display: flex; gap: 9px;">
+                      <span style="color: #C9B896; font-size: 13.5px; line-height: 1.6;">—</span>
+                      <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #2E2820; text-wrap: pretty;"><span style="background: {{b.hl}}; border-radius: 3px; padding: 1px 3px;">{{b.text}}</span></p>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+
+            <sc-if value="{{doc.showHidden}}" hint-placeholder-val="{{ false }}">
+              <div style="display: flex; flex-direction: column; gap: 6px;">
+                <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
+                  <span style="font-size: 14.5px; font-weight: 700; color: #17130E;">Diseñador y desarrollador web freelance</span>
+                  <span style="font-size: 12.5px; color: #6B6153; white-space: nowrap;">2019 — 2020</span>
+                </div>
+                <span style="font-size: 13px; font-weight: 500; color: #6B6153;">Independiente · Medellín</span>
+                <div style="display: flex; gap: 9px; padding-top: 2px;">
+                  <span style="color: #C9B896; font-size: 13.5px; line-height: 1.6;">—</span>
+                  <p style="margin: 0; font-size: 13.5px; line-height: 1.6; color: #2E2820;">Desarrollé sitios en WordPress para pequeños negocios locales.</p>
+                </div>
+              </div>
+            </sc-if>
+
+            <sc-if value="{{doc.showOmitted}}" hint-placeholder-val="{{ true }}">
+              <div style="display: flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px dashed #DCD0BA; border-radius: 8px; background: #FBF7F0;">
+                <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#9C8F7D" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;"><path d="M3 10s2.6-4.5 7-4.5S17 10 17 10s-2.6 4.5-7 4.5S3 10 3 10z"></path><path d="M4 16L16 4"></path></svg>
+                <span style="flex-grow: 1; font-size: 12.5px; color: #6B6153;">1 experiencia sin relación con la oferta quedó fuera de esta versión (WordPress freelance, 2019 — 2020).</span>
+                <a href="#" style="font-size: 12.5px; font-weight: 600;">Incluirla</a>
+              </div>
+            </sc-if>
+          </section>
+
+          <section style="display: flex; flex-direction: column; gap: 9px;">
+            <h3 style="margin: 0; font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8A7C69;">Habilidades</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px;">
+              <sc-for list="{{doc.skills}}" as="s" hint-placeholder-count="12">
+                <span style="padding: 4px 10px; border: 1px solid #E9E0D0; border-radius: 6px; background: {{s.hl}}; font-size: 12.5px; font-weight: 500; color: #2E2820;">{{s.name}}</span>
+              </sc-for>
+            </div>
+          </section>
+
+          <section style="display: flex; flex-direction: column; gap: 7px;">
+            <h3 style="margin: 0; font-size: 11.5px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #8A7C69;">Educación</h3>
+            <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 16px;">
+              <span style="font-size: 13.5px; font-weight: 600; color: #17130E;">Ingeniería de Sistemas — Universidad Nacional de Colombia</span>
+              <span style="font-size: 12.5px; color: #6B6153; white-space: nowrap;">2015 — 2020</span>
+            </div>
+          </section>
+        </article>
+      </div>
+
+      <!-- ---------- PANEL DE CAMBIOS ---------- -->
+      <div style="display: flex; flex-direction: column; gap: 16px;">
+
+        <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: baseline; justify-content: space-between;">
+            <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 15px; font-weight: 700; color: #201B14;">Qué cambió</h3>
+            <span style="font-size: 12.5px; color: #8A7C69;">frente a tu CV Maestro</span>
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 11px;">
+            <sc-for list="{{changes}}" as="c" hint-placeholder-count="4">
+              <div style="display: flex; gap: 11px;">
+                <span style="width: 26px; height: 26px; flex-shrink: 0; border-radius: 8px; background: #F8E8D5; color: #8A4A14; display: flex; align-items: center; justify-content: center; font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700;">{{c.n}}</span>
+                <p style="margin: 0; font-size: 13px; line-height: 1.55; color: #453C31; text-wrap: pretty;">{{c.text}}</p>
+              </div>
+            </sc-for>
+          </div>
+
+          <div style="height: 1px; background: #F0E9DC;"></div>
+
+          <div style="display: flex; align-items: flex-start; gap: 9px;">
+            <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#1C4D3E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0; margin-top: 1px;"><path d="M4.5 10.5l3.5 3.5 7.5-8"></path></svg>
+            <p style="margin: 0; font-size: 12.5px; line-height: 1.55; color: #7C7060; text-wrap: pretty;">Ninguna experiencia nueva fue inventada. Solo se reordenó, se priorizó y se reescribió lo que ya estaba en tu CV Maestro.</p>
+          </div>
+        </section>
+
+        <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 18px 20px; display: flex; flex-direction: column; gap: 12px;">
+          <h3 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 15px; font-weight: 700; color: #201B14;">Versiones</h3>
+          <div style="display: flex; flex-direction: column; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 10px; border: 1px solid #CBDDD4; background: #E6EEE9;">
+              <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px;">
+                <span style="font-size: 13.5px; font-weight: 600; color: #1C4D3E;">Versión 2 · actual</span>
+                <span style="font-size: 12px; color: #3F6B5B;">30 ago · match 87%</span>
+              </div>
+              <svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="#1C4D3E" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 10.5l3.5 3.5 7.5-8"></path></svg>
+            </div>
+            <div style="display: flex; align-items: center; gap: 11px; padding: 10px 12px; border-radius: 10px; border: 1px solid #E9E0D0; background: transparent; cursor: pointer;">
+              <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 1px;">
+                <span style="font-size: 13.5px; font-weight: 600; color: #453C31;">Versión 1</span>
+                <span style="font-size: 12px; color: #8A7C69;">29 ago · match 81%</span>
+              </div>
+              <span style="font-size: 12.5px; font-weight: 600; color: #8A7C69;">Ver</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#1C4D3E","options":["#1C4D3E","#B4551F","#8A5A12","#2F4858"],"section":"Marca","tsType":"string"},"$preview":{"width":1440,"height":1120}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#1C4D3E';
+    const view = this.state.view ?? 'adaptado';
+    const highlight = this.state.highlight ?? true;
+    const isAdaptado = view === 'adaptado';
+    const hl = (highlight && isAdaptado) ? '#FBEBD6' : 'transparent';
+
+    const views = [
+      { id: 'adaptado', label: 'CV adaptado' },
+      { id: 'maestro', label: 'CV Maestro' }
+    ].map((v) => ({
+      label: v.label,
+      bg: v.id === view ? '#FFFDF9' : 'transparent',
+      color: v.id === view ? '#201B14' : '#7C7060',
+      shadow: v.id === view ? '0 1px 3px rgba(32,27,20,0.14)' : 'none',
+      pick: () => this.setState({ view: v.id })
+    }));
+
+    const ADAPTADO = {
+      role: 'Desarrollador Frontend Senior · React, TypeScript y Next.js',
+      summary: 'Desarrollador frontend senior con más de 5 años construyendo interfaces en React y TypeScript para productos de alto tráfico. Lideré la migración a Next.js del checkout de un e-commerce con 200 mil transacciones mensuales y acompaño técnicamente al equipo con revisiones de código y mentoría.',
+      jobs: [
+        {
+          role: 'Desarrollador Frontend Senior',
+          company: 'Mercado Libre Colombia · Bogotá',
+          dates: 'Ene 2023 — Actualidad',
+          bullets: [
+            { text: 'Lideré la migración del checkout a Next.js, bajando el LCP de 3,8 s a 1,4 s en el flujo de pago.', on: true },
+            { text: 'Definí el design system en React y TypeScript que hoy consumen 4 squads de producto.', on: true },
+            { text: 'Acompañé a 3 desarrolladores del equipo con revisiones de código semanales y mentoría técnica.', on: true }
+          ]
+        },
+        {
+          role: 'Desarrollador Web',
+          company: 'Grupo Éxito · Medellín',
+          dates: 'Mar 2021 — Dic 2022',
+          bullets: [
+            { text: 'Construí el catálogo de productos en React consumiendo APIs REST con más de 40 mil visitas diarias.', on: true },
+            { text: 'Implementé pruebas automatizadas con Jest, llevando la cobertura del módulo de 20% a 78%.', on: false }
+          ]
+        }
+      ],
+      skills: [
+        { name: 'React', on: true }, { name: 'TypeScript', on: true }, { name: 'Next.js', on: true },
+        { name: 'Testing (Jest)', on: true }, { name: 'Core Web Vitals', on: true },
+        { name: 'REST APIs', on: false }, { name: 'Node.js', on: false }, { name: 'PostgreSQL', on: false },
+        { name: 'Git', on: false }, { name: 'CI/CD', on: false }, { name: 'Docker', on: false },
+        { name: 'Metodologías ágiles', on: false }
+      ]
+    };
+
+    const MAESTRO = {
+      role: 'Desarrollador de software',
+      summary: 'Desarrollador de software con más de 5 años de experiencia en aplicaciones web. He trabajado en equipos de producto en Colombia, en frontend con React y TypeScript y en integraciones de backend con Node.js y PostgreSQL. Actualmente trabajo en el checkout de un e-commerce con 200 mil transacciones mensuales.',
+      jobs: [
+        {
+          role: 'Desarrollador Frontend Senior',
+          company: 'Mercado Libre Colombia · Bogotá',
+          dates: 'Ene 2023 — Actualidad',
+          bullets: [
+            { text: 'Trabajé en el equipo de checkout migrando la aplicación a Next.js. El tiempo de carga pasó de 3,8 s a 1,4 s.', on: false },
+            { text: 'Construí componentes reutilizables en React y TypeScript que hoy usan 4 equipos de producto.', on: false },
+            { text: 'Participé en las revisiones de código semanales y acompañé a 3 desarrolladores con menos experiencia.', on: false }
+          ]
+        },
+        {
+          role: 'Desarrollador Web',
+          company: 'Grupo Éxito · Medellín',
+          dates: 'Mar 2021 — Dic 2022',
+          bullets: [
+            { text: 'Desarrollé el catálogo de productos de la tienda en línea en React con APIs REST. Recibe unas 40 mil visitas diarias.', on: false },
+            { text: 'Agregué pruebas automatizadas con Jest al catálogo; la cobertura pasó de 20% a 78%.', on: false }
+          ]
+        }
+      ],
+      skills: [
+        { name: 'JavaScript', on: false }, { name: 'Node.js', on: false }, { name: 'PostgreSQL', on: false },
+        { name: 'React', on: false }, { name: 'Docker', on: false }, { name: 'Git', on: false },
+        { name: 'WordPress', on: false }, { name: 'TypeScript', on: false }, { name: 'Next.js', on: false },
+        { name: 'CI/CD', on: false }, { name: 'REST APIs', on: false }, { name: 'Metodologías ágiles', on: false }
+      ]
+    };
+
+    const src = isAdaptado ? ADAPTADO : MAESTRO;
+
+    const doc = {
+      role: src.role,
+      summary: src.summary,
+      showHidden: !isAdaptado,
+      showOmitted: isAdaptado,
+      jobs: src.jobs.map((j) => ({
+        role: j.role,
+        company: j.company,
+        dates: j.dates,
+        bullets: j.bullets.map((b) => ({ text: b.text, hl: b.on ? hl : 'transparent' }))
+      })),
+      skills: src.skills.map((s) => ({ name: s.name, hl: s.on ? hl : 'transparent' }))
+    };
+
+    const changes = [
+      { n: '1', text: 'El perfil profesional se reescribió alrededor de React, TypeScript y liderazgo técnico, las tres palabras que más pesan en esta oferta.' },
+      { n: '2', text: 'Cinco habilidades se movieron al frente de la lista para que el ATS las lea primero.' },
+      { n: '3', text: 'Cuatro logros se reformularon con el vocabulario de la oferta, usando las cifras que ya estaban en tu CV Maestro.' },
+      { n: '4', text: 'Una experiencia sin relación con el rol quedó fuera de esta versión. Sigue intacta en tu CV Maestro.' }
+    ];
+
+    return {
+      accent: accent,
+      views: views,
+      hl: hl,
+      sw: {
+        track: highlight ? accent : '#D3C5AC',
+        justify: highlight ? 'flex-end' : 'flex-start',
+        label: highlight ? '#201B14' : '#7C7060'
+      },
+      toggleHl: () => this.setState({ highlight: !highlight }),
+      doc: doc,
+      changes: changes
+    };
+  }
+}
+</script>
+</body>
+</html>

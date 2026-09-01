@@ -1,0 +1,73 @@
+@import "tailwindcss";
+
+/*
+ * Sistema visual de Postula — dirección "cálido colombiano".
+ * Fuente de verdad: design/*.dc.html (lienzo de diseño).
+ * Es un tema claro único a propósito: el CV se lee como papel impreso,
+ * y una versión oscura del documento rompería esa lectura.
+ */
+@theme {
+  /* superficies y texto */
+  --color-canvas: #f6f1e8;
+  --color-surface: #fffdf9;
+  --color-sunken: #efe8db;
+  --color-line: #e3d9c8;
+  --color-line-soft: #f0e9dc;
+  --color-line-strong: #d3c5ac;
+  --color-ink: #201b14;
+  --color-ink-soft: #453c31;
+  --color-muted: #7c7060;
+  --color-muted-soft: #8a7c69;
+  --color-faint: #9c8f7d;
+
+  /* barra lateral */
+  --color-forest: #173f33;
+  --color-forest-soft: #215243;
+  --color-forest-line: #27584a;
+  --color-forest-ink: #a6bcb1;
+  --color-forest-ink-strong: #c9dbd1;
+  --color-cream: #f5efe2;
+
+  /* verde primario: match alto, acciones principales */
+  --color-brand: #1c4d3e;
+  --color-brand-tint: #e6eee9;
+  --color-brand-line: #cbddd4;
+  --color-brand-bar: #2e7a62;
+  --color-brand-ink: #3f6b5b;
+
+  /* ámbar: créditos, proyecciones, marcas de cambio */
+  --color-amber: #de8b2e;
+  --color-amber-ink: #8a4a14;
+  --color-amber-tint: #f8e8d5;
+  --color-rust: #b4551f;
+
+  /* terracota: match bajo, requisitos que no se cumplen */
+  --color-clay: #a63b2a;
+  --color-clay-bar: #c7614d;
+  --color-clay-tint: #f7e2dc;
+
+  /* rampa aparte para la hoja de vida: se lee como papel, no como app */
+  --color-paper: #ffffff;
+  --color-paper-ink: #17130e;
+  --color-paper-body: #2e2820;
+  --color-paper-muted: #6b6153;
+  --color-paper-line: #e9e0d0;
+  --color-mark: #fbebd6;
+
+  --font-display: var(--font-gabarito), "Trebuchet MS", system-ui, sans-serif;
+  --font-sans: var(--font-instrument-sans), system-ui, "Segoe UI", sans-serif;
+
+  --radius-card: 14px;
+  --radius-control: 10px;
+}
+
+body {
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-mark);
+  color: var(--color-ink);
+}

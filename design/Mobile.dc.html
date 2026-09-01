@@ -1,0 +1,200 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gabarito:wght@500;600;700&family=Instrument+Sans:wght@400;500;600;700&display=swap">
+  <style>
+    body { margin: 0; background: #F6F1E8; font-family: 'Instrument Sans', system-ui, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #1C4D3E; text-decoration: none; }
+    a:hover { color: #B4551F; }
+  </style>
+</helmet>
+
+<div style="width: 390px; height: 844px; display: flex; flex-direction: column; overflow: hidden; background: #F6F1E8; color: #201B14;">
+
+  <!-- barra superior -->
+  <header style="flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 16px; background: #FFFDF9; border-bottom: 1px solid #E3D9C8;">
+    <div style="display: flex; align-items: center; gap: 9px;">
+      <svg width="26" height="26" viewBox="0 0 28 28" fill="none"><rect x="0" y="0" width="28" height="28" rx="8.5" fill="#DE8B2E"></rect><path d="M9.6 19.5V11.4C9.6 10.1 10.7 9 12 9h2.9c2 0 3.6 1.6 3.6 3.6s-1.6 3.6-3.6 3.6h-2.5" stroke="#173F33" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      <span style="font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 19px; font-weight: 700; letter-spacing: -0.02em; color: #201B14;">Postula</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 8px;">
+      <div style="height: 44px; display: flex; align-items: center; gap: 7px; padding: 0 13px; border-radius: 999px; background: #F8E8D5; color: #8A4A14; font-size: 12.5px; font-weight: 700; cursor: pointer;">
+        <svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3l1.8 4.7L16.5 9.5l-4.7 1.8L10 16l-1.8-4.7L3.5 9.5l4.7-1.8z"></path></svg>
+        7 créditos
+      </div>
+      <div style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer;">
+        <div style="width: 36px; height: 36px; border-radius: 999px; background: #173F33; color: #F5EFE2; display: flex; align-items: center; justify-content: center; font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 13px; font-weight: 700;">CP</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- contenido -->
+  <div style="flex-grow: 1; overflow: hidden; padding: 16px; display: flex; flex-direction: column; gap: 14px;">
+
+    <!-- CV Maestro -->
+    <section style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 14px; padding: 15px 16px; display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px;">
+        <div style="display: flex; flex-direction: column; gap: 3px; min-width: 0;">
+          <span style="font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #B4551F;">Tu CV Maestro</span>
+          <span style="font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: -0.015em; color: #201B14;">Carlos A. Pérez</span>
+          <span style="font-size: 12px; color: #7C7060;">Actualizado hace 12 días</span>
+        </div>
+        <span style="padding: 5px 10px; border-radius: 999px; background: #E6EEE9; color: #1C4D3E; font-size: 11.5px; font-weight: 700; white-space: nowrap;">82%</span>
+      </div>
+      <div style="height: 7px; border-radius: 999px; background: #EFE8DB; overflow: hidden;">
+        <div style="width: 82%; height: 100%; border-radius: 999px; background: {{accent}};"></div>
+      </div>
+      <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px;">
+        <span style="font-size: 12px; color: #7C7060; max-width: 200px; text-wrap: pretty;">Falta tu nivel de inglés certificado.</span>
+        <a href="#" style="height: 44px; display: flex; align-items: center; padding-left: 12px; font-size: 12.5px; font-weight: 700;">Completar</a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 9px; height: 50px; border-radius: 12px; background: {{accent}}; color: #FFFDF9; font-size: 15px; font-weight: 600; cursor: pointer;">
+      <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M10 4.5v11M4.5 10h11"></path></svg>
+      Analizar una oferta
+    </div>
+
+    <!-- ofertas -->
+    <div style="display: flex; flex-direction: column; gap: 10px; min-height: 0;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between;">
+        <h2 style="margin: 0; font-family: Gabarito, 'Trebuchet MS', system-ui, sans-serif; font-size: 17px; font-weight: 700; letter-spacing: -0.015em; color: #201B14;">Tus ofertas</h2>
+
+        <a href="#" style="height: 44px; display: flex; align-items: center; padding-left: 12px; font-size: 12.5px; font-weight: 600;">Ver todas</a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 7px;">
+        <sc-for list="{{tabs}}" as="t" hint-placeholder-count="3">
+          <div onClick="{{t.pick}}" style="display: flex; align-items: center; gap: 6px; height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid {{t.border}}; background: {{t.bg}}; color: {{t.color}}; font-size: 13px; font-weight: 600; cursor: pointer;">
+            {{t.label}}
+            <span style="font-size: 11.5px; font-weight: 700; opacity: 0.65;">{{t.count}}</span>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display: flex; flex-direction: column; gap: 9px;">
+        <sc-for list="{{offers}}" as="o" hint-placeholder-count="3">
+          <div style="background: #FFFDF9; border: 1px solid #E3D9C8; border-radius: 13px; padding: 13px 14px; display: flex; flex-direction: column; gap: 10px; cursor: pointer;">
+            <div style="display: flex; align-items: flex-start; gap: 11px;">
+              <div style="width: 36px; height: 36px; flex-shrink: 0; border-radius: 10px; background: #F0E9DC; color: #4A4137; display: flex; align-items: center; justify-content: center; font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 15px; font-weight: 700;">{{o.initial}}</div>
+              <div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px; min-width: 0;">
+                <span style="font-size: 14px; font-weight: 600; color: #201B14;">{{o.title}}</span>
+                <span style="font-size: 12px; color: #7C7060;">{{o.meta}}</span>
+              </div>
+              <span style="font-family: Gabarito, 'Trebuchet MS', sans-serif; font-size: 16px; font-weight: 700; color: {{o.scoreColor}}; flex-shrink: 0;">{{o.scoreLabel}}</span>
+            </div>
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <div style="flex-grow: 1; height: 6px; border-radius: 999px; background: #EFE8DB; overflow: hidden;">
+                <div style="width: {{o.barW}}; height: 100%; border-radius: 999px; background: {{o.barColor}};"></div>
+              </div>
+              <span style="padding: 4px 9px; border-radius: 6px; background: {{o.statusBg}}; color: {{o.statusColor}}; font-size: 11.5px; font-weight: 600; white-space: nowrap;">{{o.statusLabel}}</span>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- barra inferior -->
+  <nav style="flex-shrink: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: #FFFDF9; border-top: 1px solid #E3D9C8; padding: 6px 8px 12px;">
+    <div style="height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-radius: 10px; color: #1C4D3E; cursor: pointer;">
+      <svg width="21" height="21" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3h6v6H3zM11 3h6v6h-6zM3 11h6v6H3zM11 11h6v6h-6z"></path></svg>
+      <span style="font-size: 10.5px; font-weight: 700;">Panel</span>
+    </div>
+    <div style="height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-radius: 10px; color: #9C8F7D; cursor: pointer;">
+      <svg width="21" height="21" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 2.5h6l4 4v11H5z"></path><path d="M11 2.5v4h4"></path></svg>
+      <span style="font-size: 10.5px; font-weight: 600;">CV</span>
+    </div>
+    <div style="height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-radius: 10px; color: #9C8F7D; cursor: pointer;">
+      <svg width="21" height="21" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6" width="15" height="10.5" rx="2"></rect><path d="M7 6V4.5A1.5 1.5 0 0 1 8.5 3h3A1.5 1.5 0 0 1 13 4.5V6"></path></svg>
+      <span style="font-size: 10.5px; font-weight: 600;">Ofertas</span>
+    </div>
+    <div style="height: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; border-radius: 10px; color: #9C8F7D; cursor: pointer;">
+      <svg width="21" height="21" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 2.5L9 11"></path><path d="M17.5 2.5l-5.5 15-3-6.5-6.5-3z"></path></svg>
+      <span style="font-size: 10.5px; font-weight: 600;">Enviadas</span>
+    </div>
+  </nav>
+</div>
+</x-dc>
+
+<script data-dc-script data-props='{"accent":{"editor":"color","default":"#1C4D3E","options":["#1C4D3E","#B4551F","#8A5A12","#2F4858"],"section":"Marca","tsType":"string"},"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const accent = this.props.accent ?? '#1C4D3E';
+    const filter = this.state.filter ?? 'todas';
+
+    const data = [
+      { id: '1', initial: 'R', title: 'Desarrollador Frontend Senior', meta: 'Rappi · Bogotá · Híbrido', score: 87, status: 'lista' },
+      { id: '2', initial: 'H', title: 'Full Stack Developer', meta: 'Habi · Bogotá · Remoto', score: 78, status: 'lista' },
+      { id: '3', initial: 'B', title: 'Ingeniero de Software Backend', meta: 'Bancolombia · Medellín', score: 64, status: 'analizada' },
+      { id: '4', initial: 'N', title: 'Tech Lead Frontend', meta: 'Nequi · Remoto Colombia', score: 52, status: 'analizada' },
+      { id: '5', initial: 'T', title: 'Desarrollador React Native', meta: 'Tul · Bogotá · Híbrido', score: null, status: 'sin' }
+    ];
+
+    const band = (s) => {
+      if (s === null) return { color: '#9C8F7D', bar: '#D3C5AC' };
+      if (s >= 80) return { color: '#1C4D3E', bar: '#2E7A62' };
+      if (s >= 65) return { color: '#8A4A14', bar: '#DE8B2E' };
+      return { color: '#A63B2A', bar: '#C7614D' };
+    };
+    const statusMap = {
+      lista: { label: 'CV listo', bg: '#E6EEE9', color: '#1C4D3E' },
+      analizada: { label: 'Analizada', bg: '#F8E8D5', color: '#8A4A14' },
+      sin: { label: 'Sin analizar', bg: '#F0E9DC', color: '#7C7060' }
+    };
+
+    const counts = {
+      todas: data.length,
+      lista: data.filter((d) => d.status === 'lista').length,
+      analizada: data.filter((d) => d.status === 'analizada').length
+    };
+
+    const tabs = [
+      { id: 'todas', label: 'Todas' },
+      { id: 'lista', label: 'Listas' },
+      { id: 'analizada', label: 'Analizadas' }
+    ].map((t) => {
+      const active = t.id === filter;
+      return {
+        label: t.label,
+        count: counts[t.id],
+        bg: active ? accent : '#FFFDF9',
+        color: active ? '#FFFDF9' : '#453C31',
+        border: active ? accent : '#E3D9C8',
+        pick: () => this.setState({ filter: t.id })
+      };
+    });
+
+    const offers = data
+      .filter((d) => filter === 'todas' || d.status === filter)
+      .slice(0, 3)
+      .map((d) => {
+        const b = band(d.score);
+        const st = statusMap[d.status];
+        return {
+          initial: d.initial,
+          title: d.title,
+          meta: d.meta,
+          barW: (d.score === null ? 0 : d.score) + '%',
+          barColor: b.bar,
+          scoreColor: b.color,
+          scoreLabel: d.score === null ? '—' : d.score + '%',
+          statusLabel: st.label,
+          statusBg: st.bg,
+          statusColor: st.color
+        };
+      });
+
+    return { accent: accent, tabs: tabs, offers: offers };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "title": "Panel del usuario", "x": 0, "y": 0, "w": 1440, "h": 980 },
+    { "file": "Oferta.dc.html", "title": "Detalle de oferta · match ATS", "x": 1560, "y": 0, "w": 1440, "h": 1120 },
+    { "file": "CvAdaptado.dc.html", "title": "CV adaptado vs CV Maestro", "x": 0, "y": 1240, "w": 1440, "h": 1120 },
+    { "file": "Mobile.dc.html", "title": "Panel en móvil", "x": 1560, "y": 1240, "w": 390, "h": 844 }
+  ],
+  "annotations": [
+    {
+      "id": "sistema",
+      "x": 0,
+      "y": -150,
+      "w": 620,
+      "text": "Sistema: Gabarito (títulos) + Instrument Sans (texto).\nFondo hueso #F6F1E8 · superficie #FFFDF9 · verde profundo #1C4D3E (primario) · ámbar #DE8B2E y terracota #A63B2A como acentos.\nEl color del match no es decorativo: verde >=80, ámbar 65-79, terracota <65."
+    },
+    {
+      "id": "principio",
+      "x": 1560,
+      "y": -150,
+      "w": 620,
+      "text": "Principio del producto llevado a UI: el CV Maestro nunca se toca solo.\nLas palabras clave que faltan no se rellenan con IA — el usuario marca «Sí lo tengo» y el sistema le pide confirmarlo. El score sube como proyección, no como hecho."
+    }
+  ],
+  "launch": { "view": "canvas" }
+}
