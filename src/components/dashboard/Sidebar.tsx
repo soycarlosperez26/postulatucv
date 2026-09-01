@@ -9,12 +9,15 @@ import {
   GearIcon,
   PanelIcon,
   SendIcon,
+  ShieldIcon,
+  SparkIcon,
 } from "@/components/ui/Icons";
 
 const NAV = [
   { href: "/dashboard", label: "Panel", Icon: PanelIcon, exact: true },
   { href: "/dashboard/cv", label: "CV Maestro", Icon: DocIcon },
   { href: "/dashboard/offers", label: "Ofertas", Icon: BriefcaseIcon },
+  { href: "/dashboard/creditos", label: "Créditos", Icon: SparkIcon },
   { href: "/dashboard/ajustes", label: "Ajustes", Icon: GearIcon },
 ];
 
@@ -26,11 +29,13 @@ export function Sidebar({
   name,
   plan,
   offerCount,
+  isAdmin = false,
   signOutAction,
 }: {
   name: string;
   plan: string;
   offerCount: number;
+  isAdmin?: boolean;
   signOutAction: () => Promise<void>;
 }) {
   const pathname = usePathname();
@@ -91,6 +96,23 @@ export function Sidebar({
               </span>
             </span>
           ))}
+
+          {isAdmin && (
+            <>
+              <div className="my-2 h-px bg-forest-line" />
+              <Link
+                href="/dashboard/admin/creditos"
+                className={`flex items-center gap-2.5 rounded-[9px] px-3 py-2.5 text-sm transition ${
+                  pathname.startsWith("/dashboard/admin")
+                    ? "bg-forest-soft font-semibold text-surface"
+                    : "font-medium text-forest-ink hover:bg-forest-soft/60 hover:text-surface"
+                }`}
+              >
+                <ShieldIcon className="h-[19px] w-[19px]" />
+                Recargas
+              </Link>
+            </>
+          )}
         </nav>
       </div>
 

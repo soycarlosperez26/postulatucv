@@ -1,9 +1,10 @@
 "use client";
 
+import Link from "next/link";
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { generateCustomCvAction } from "@/lib/actions/cv";
-import { buttonClass, type ButtonVariant } from "@/components/ui/Button";
+import { buttonClass, ButtonLink, type ButtonVariant } from "@/components/ui/Button";
 import { FormError } from "@/components/FormError";
 import { SparkIcon } from "@/components/ui/Icons";
 
@@ -30,13 +31,31 @@ function Submit({
 export function GenerateCvButton({
   jobOfferId,
   hasCv,
+  balance,
   variant = "primary",
 }: {
   jobOfferId: string;
   hasCv: boolean;
+  /** Saldo total. `null` cuando no se pudo leer. */
+  balance: number | null;
   variant?: ButtonVariant;
 }) {
   const [state, formAction] = useActionState(generateCustomCvAction, undefined);
+
+  // Sin saldo no se muestra un botón que va a fallar: se ofrece comprar.
+  if (balance === 0) {
+    return (
+      <div className="flex flex-col items-end gap-1.5">
+        <ButtonLink href="/dashboard/creditos" variant={variant}>
+          <SparkIcon className="h-[17px] w-[17px]" />
+          Recargar créditos
+        </ButtonLink>
+        <p className="text-[12.5px] text-muted">
+          Te quedaste sin créditos este mes.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col items-end gap-2">
@@ -48,6 +67,14 @@ export function GenerateCvButton({
         />
       </form>
       <FormError message={state?.error} />
+      {state?.needsCredits && (
+        <Link
+          href="/dashboard/creditos"
+          className="text-[12.5px] font-semibold text-brand hover:text-rust"
+        >
+          Recargar créditos
+        </Link>
+      )}
     </div>
   );
 }

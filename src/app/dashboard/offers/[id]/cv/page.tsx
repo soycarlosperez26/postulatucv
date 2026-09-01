@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { getBalance } from "@/lib/credits";
 import { scoreBand } from "@/lib/score";
 import { Card, CardTitle } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -30,7 +31,8 @@ export default async function TailoredCvPage({
     redirect("/login");
   }
 
-  const [{ data: offer }, { data: profile }, { data: rows }] = await Promise.all([
+  const [{ data: offer }, { data: profile }, { data: rows }, creditBalance] =
+    await Promise.all([
     supabase
       .from("job_offers")
       .select("id, company, title")
@@ -48,7 +50,8 @@ export default async function TailoredCvPage({
       .eq("job_offer_id", id)
       .eq("user_id", user.id)
       .order("created_at", { ascending: false }),
-  ]);
+      getBalance(),
+    ]);
 
   if (!offer) {
     notFound();
@@ -59,6 +62,7 @@ export default async function TailoredCvPage({
     redirect(`/dashboard/offers/${id}`);
   }
 
+  const balance = creditBalance?.total ?? null;
   const score = Number(latest.match_score);
   const band = scoreBand(score);
   const total = rows?.length ?? 1;
@@ -96,7 +100,12 @@ export default async function TailoredCvPage({
               </span>
             </p>
           </div>
-          <GenerateCvButton jobOfferId={offer.id} hasCv variant="outline" />
+          <GenerateCvButton
+            jobOfferId={offer.id}
+            hasCv
+            balance={balance}
+            variant="outline"
+          />
         </div>
       </header>
 

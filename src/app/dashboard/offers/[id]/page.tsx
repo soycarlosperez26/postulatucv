@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { getBalance } from "@/lib/credits";
 import { scoreBand, scoreHeadline } from "@/lib/score";
 import { Card, CardTitle } from "@/components/ui/Card";
 import { Badge, KeywordChip } from "@/components/ui/Badge";
@@ -62,13 +63,17 @@ export default async function OfferDetailPage({
     notFound();
   }
 
-  const { data: tailoredRows } = await supabase
-    .from("tailored_cvs")
-    .select("match_score, matched_keywords, missing_keywords, created_at")
-    .eq("job_offer_id", id)
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false });
+  const [{ data: tailoredRows }, creditBalance] = await Promise.all([
+    supabase
+      .from("tailored_cvs")
+      .select("match_score, matched_keywords, missing_keywords, created_at")
+      .eq("job_offer_id", id)
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false }),
+    getBalance(),
+  ]);
 
+  const balance = creditBalance?.total ?? null;
   const latest = tailoredRows?.[0] ?? null;
   const versions = tailoredRows?.length ?? 0;
   const score = latest ? Number(latest.match_score) : null;
@@ -167,7 +172,11 @@ export default async function OfferDetailPage({
         esta vacante.
       </p>
       <div className="mt-1">
-        <GenerateCvButton jobOfferId={offer.id} hasCv={false} />
+        <GenerateCvButton
+          jobOfferId={offer.id}
+          hasCv={false}
+          balance={balance}
+        />
       </div>
     </Card>
   );
@@ -334,7 +343,11 @@ export default async function OfferDetailPage({
                 Ver CV adaptado
               </ButtonLink>
             ) : (
-              <GenerateCvButton jobOfferId={offer.id} hasCv={false} />
+              <GenerateCvButton
+                jobOfferId={offer.id}
+                hasCv={false}
+                balance={balance}
+              />
             )}
           </div>
         </div>
@@ -385,6 +398,7 @@ export default async function OfferDetailPage({
               <GenerateCvButton
                 jobOfferId={offer.id}
                 hasCv
+                balance={balance}
                 variant="outline"
               />
             )}

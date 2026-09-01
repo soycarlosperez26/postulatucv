@@ -157,6 +157,22 @@ export function EyeOffIcon(p: IconProps) {
   );
 }
 
+export function ChatIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M17 9.5c0 3.6-3.1 6.5-7 6.5-.9 0-1.7-.1-2.5-.4L3 17l1.5-3.4A6.2 6.2 0 0 1 3 9.5C3 5.9 6.1 3 10 3s7 2.9 7 6.5z" />
+    </Svg>
+  );
+}
+
+export function ShieldIcon(p: IconProps) {
+  return (
+    <Svg {...p}>
+      <path d="M10 2.5l6 2.2v4.6c0 3.5-2.4 6.7-6 8.2-3.6-1.5-6-4.7-6-8.2V4.7z" />
+    </Svg>
+  );
+}
+
 export function PencilIcon(p: IconProps) {
   return (
     <Svg {...p}>

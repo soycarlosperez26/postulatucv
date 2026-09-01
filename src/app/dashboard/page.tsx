@@ -2,22 +2,13 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { profileStats } from "@/lib/profileStats";
-import {
-  CREDIT_PACK_COP,
-  FREE_MONTHLY_CREDITS,
-  PLAN_LABEL,
-  PRO_MONTHLY_COP,
-} from "@/lib/plan";
+import { getBalance } from "@/lib/credits";
+import { FREE_MONTHLY_CREDITS } from "@/lib/plan";
 import { Card, CardTitle, Eyebrow } from "@/components/ui/Card";
 import { ButtonLink } from "@/components/ui/Button";
 import { Meter } from "@/components/ui/Meter";
 import { CheckIcon, PencilIcon, PlusIcon, UploadIcon } from "@/components/ui/Icons";
 import { OffersList, type OfferRow } from "@/components/dashboard/OffersList";
-
-function firstDayOfMonthISO(): string {
-  const now = new Date();
-  return new Date(now.getFullYear(), now.getMonth(), 1).toISOString();
-}
 
 export default async function DashboardPage() {
   const supabase = await createClient();
@@ -39,24 +30,19 @@ export default async function DashboardPage() {
     redirect("/onboarding");
   }
 
-  const [{ data: offers }, { data: tailored }, { count: usedThisMonth }] =
-    await Promise.all([
-      supabase
-        .from("job_offers")
-        .select("id, company, title, created_at")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false }),
-      supabase
-        .from("tailored_cvs")
-        .select("job_offer_id, match_score, created_at")
-        .eq("user_id", user.id)
-        .order("created_at", { ascending: false }),
-      supabase
-        .from("tailored_cvs")
-        .select("id", { count: "exact", head: true })
-        .eq("user_id", user.id)
-        .gte("created_at", firstDayOfMonthISO()),
-    ]);
+  const [{ data: offers }, { data: tailored }, balance] = await Promise.all([
+    supabase
+      .from("job_offers")
+      .select("id, company, title, created_at")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false }),
+    supabase
+      .from("tailored_cvs")
+      .select("job_offer_id, match_score, created_at")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false }),
+    getBalance(),
+  ]);
 
   // El score de cada oferta es el de su CV adaptado más reciente.
   const latestScore = new Map<string, number>();
@@ -79,8 +65,6 @@ export default async function DashboardPage() {
 
   const stats = profileStats(baseProfile.parsed);
   const listas = rows.filter((r) => r.score !== null).length;
-  const used = usedThisMonth ?? 0;
-  const remaining = Math.max(0, FREE_MONTHLY_CREDITS - used);
   const displayName = baseProfile.full_name?.trim() || "tu perfil";
   const firstName = displayName.split(" ")[0];
 
@@ -186,32 +170,63 @@ export default async function DashboardPage() {
             <div className="flex items-center justify-between bg-amber-tint px-5 py-3">
               <Eyebrow className="text-amber-ink">Créditos</Eyebrow>
               <span className="rounded-full bg-surface px-2.5 py-1 text-[11.5px] font-bold text-amber-ink">
-                {PLAN_LABEL}
+                1 CV = 1 crédito
               </span>
             </div>
             <div className="flex flex-col gap-3.5 px-5 pb-5 pt-4">
-              <div className="flex items-baseline gap-2">
-                <span className="font-display text-[40px] font-bold leading-none tracking-[-0.03em] text-ink">
-                  {remaining}
-                </span>
-                <span className="text-sm text-muted">
-                  de {FREE_MONTHLY_CREDITS} este mes
-                </span>
-              </div>
-              <Meter value={(remaining / FREE_MONTHLY_CREDITS) * 100} barClass="bg-amber" />
-              <p className="text-[12.5px] text-muted text-pretty">
-                Cada CV adaptado que generas consume 1 crédito. Llevas {used}{" "}
-                {used === 1 ? "generación" : "generaciones"} este mes.
-              </p>
-              <ButtonLink href="/dashboard/ajustes" className="w-full">
-                Pasar a Pro · {PRO_MONTHLY_COP}
+              {balance === null ? (
+                <p className="py-4 text-[13px] text-muted text-pretty">
+                  No pudimos leer tu saldo en este momento. Recarga la página
+                  para volver a intentarlo.
+                </p>
+              ) : (
+                <>
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-display text-[40px] font-bold leading-none tracking-[-0.03em] text-ink">
+                      {balance.total}
+                    </span>
+                    <span className="text-sm text-muted">
+                      {balance.total === 1 ? "disponible" : "disponibles"}
+                    </span>
+                  </div>
+
+                  <div className="flex flex-col gap-2">
+                    <div className="flex items-center justify-between text-[12.5px]">
+                      <span className="text-muted">Gratis este mes</span>
+                      <span className="font-semibold text-ink">
+                        {balance.free} de {FREE_MONTHLY_CREDITS}
+                      </span>
+                    </div>
+                    <Meter
+                      value={(balance.free / FREE_MONTHLY_CREDITS) * 100}
+                      barClass="bg-brand"
+                      height="h-1.5"
+                    />
+                    <div className="flex items-center justify-between text-[12.5px]">
+                      <span className="text-muted">Comprados</span>
+                      <span className="font-semibold text-ink">
+                        {balance.purchased}
+                      </span>
+                    </div>
+                  </div>
+
+                  <p className="text-[12.5px] text-muted text-pretty">
+                    {balance.total === 0
+                      ? "Te quedaste sin créditos. Tu crédito gratuito vuelve el 1 del próximo mes."
+                      : "Los créditos comprados no vencen; el gratuito se renueva cada mes."}
+                  </p>
+                </>
+              )}
+
+              <ButtonLink href="/dashboard/creditos" className="w-full">
+                Recargar créditos
               </ButtonLink>
               <p className="text-center text-[13px]">
                 <Link
-                  href="/dashboard/ajustes"
+                  href="/dashboard/creditos"
                   className="font-semibold text-brand hover:text-rust"
                 >
-                  o comprar {CREDIT_PACK_COP}
+                  Ver mis movimientos
                 </Link>
               </p>
             </div>

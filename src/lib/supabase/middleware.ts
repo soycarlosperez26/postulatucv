@@ -41,7 +41,12 @@ export async function updateSession(request: NextRequest) {
     path === "/" ||
     path.startsWith("/login") ||
     path.startsWith("/register") ||
-    path.startsWith("/auth");
+    path.startsWith("/auth") ||
+    // El webhook de Wompi llega servidor a servidor, sin cookies. Sin
+    // esta excepción se redirige a /login y Wompi recibe un 307 en vez
+    // del 200 que espera, así que los pagos nunca se acreditarían.
+    // Su autenticación es la firma del evento, no la sesión.
+    path.startsWith("/api/wompi");
 
   if (!user && !isPublicPath) {
     const url = request.nextUrl.clone();
