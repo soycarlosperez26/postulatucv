@@ -18,20 +18,26 @@ interface ConversionCardProps {
 export function ConversionCard({ beforeScore, afterScore }: ConversionCardProps) {
   const [state, formAction] = useActionState(requestCredits, undefined);
 
-  // Copy A: hay un antes y un después con mejora real
-  const hasImprovement = beforeScore !== undefined && afterScore > beforeScore;
-
-  // Copy B: score actual < 75 (no era match)
-  const belowThreshold = afterScore < 75;
-
   let copyText: string;
-  if (hasImprovement) {
-    copyText = `Tu score en esta vacante pasó de ${beforeScore}% a ${afterScore}%. El original no se tocó. Ya puedes bajar el PDF de esta vacante. La siguiente oferta cuesta 1 crédito. 15 créditos = $20.000. No vencen.`;
-  } else if (belowThreshold) {
-    copyText = `Esta oferta no era match. Ya puedes bajar el PDF de esta vacante. La siguiente sí puede serlo — 1 crédito. Pack 15 / $20.000, no vencen.`;
+
+  if (beforeScore !== undefined) {
+    // Hay un score anterior real: comparamos x vs y
+    if (afterScore > beforeScore) {
+      // JUMP: mejora real (incluso si y < 75)
+      copyText = `Tu score en esta vacante pasó de ${beforeScore}% a ${afterScore}%. El original no se tocó. Ya puedes bajar el PDF de esta vacante. La siguiente oferta cuesta 1 crédito. 15 créditos = $20.000. No vencen.`;
+    } else {
+      // NO-MATCH: y ≤ x (no mejoró o empeoró)
+      copyText = `Esta oferta no era match. Ya puedes bajar el PDF de esta vacante. La siguiente sí puede serlo — 1 crédito. Pack 15 / $20.000, no vencen.`;
+    }
   } else {
-    // Primer análisis con score >= 75: mostrar score, sin inventar mejora
-    copyText = `Score ${afterScore}%, original no se tocó. Ya puedes bajar el PDF de esta vacante. La siguiente oferta cuesta 1 crédito. Pack 15 / $20.000, no vencen.`;
+    // Primer análisis (no hay x): usamos threshold 75 solo aquí
+    if (afterScore >= 75) {
+      // Primer análisis con buen score
+      copyText = `Score ${afterScore}%, original no se tocó. Ya puedes bajar el PDF de esta vacante. La siguiente oferta cuesta 1 crédito. Pack 15 / $20.000, no vencen.`;
+    } else {
+      // NO-MATCH: primer análisis con score bajo
+      copyText = `Esta oferta no era match. Ya puedes bajar el PDF de esta vacante. La siguiente sí puede serlo — 1 crédito. Pack 15 / $20.000, no vencen.`;
+    }
   }
 
   return (
