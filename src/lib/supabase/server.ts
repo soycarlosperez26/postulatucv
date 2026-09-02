@@ -17,14 +17,14 @@ export function isSupabaseConfigured(): boolean {
  * request actual.
  */
 export async function createClient() {
-  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  const cookieStore = await cookies();
 
   if (!isSupabaseConfigured()) {
     throw new Error("Supabase is not configured");
   }
 
-  const cookieStore = await cookies();
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   return createServerClient<Database>(
     url!,
