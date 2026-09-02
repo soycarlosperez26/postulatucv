@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
@@ -17,16 +17,23 @@ export const metadata: Metadata = {
 };
 
 export default async function PreciosPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user = null;
+  let packs = null;
 
-  const { data: packs } = await supabase
-    .from("credit_packs")
-    .select("id, credits, amount_cop, label")
-    .eq("active", true)
-    .order("sort_order", { ascending: true });
+  if (isSupabaseConfigured()) {
+    const supabase = await createClient();
+    const {
+      data: { user: fetchedUser },
+    } = await supabase.auth.getUser();
+    user = fetchedUser;
+
+    const { data: packsData } = await supabase
+      .from("credit_packs")
+      .select("id, credits, amount_cop, label")
+      .eq("active", true)
+      .order("sort_order", { ascending: true });
+    packs = packsData;
+  }
 
   const ctaHref = user
     ? "/dashboard/creditos"

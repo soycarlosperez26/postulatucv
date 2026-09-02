@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { CheckIcon } from "@/components/ui/Icons";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -10,13 +10,18 @@ import { CtaButton } from "@/components/public/CtaButton";
 import { formatCop } from "@/lib/plan";
 
 export default async function HomePage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user = null;
 
-  if (user) {
-    redirect("/dashboard");
+  if (isSupabaseConfigured()) {
+    const supabase = await createClient();
+    const {
+      data: { user: fetchedUser },
+    } = await supabase.auth.getUser();
+    user = fetchedUser;
+
+    if (user) {
+      redirect("/dashboard");
+    }
   }
 
   return (
