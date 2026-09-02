@@ -49,7 +49,7 @@ export function Sidebar({
     .join("");
 
   return (
-    <aside className="flex w-[248px] shrink-0 flex-col justify-between bg-forest px-3.5 pb-4 pt-6">
+    <aside className="hidden w-[248px] shrink-0 flex-col justify-between bg-forest px-3.5 pb-4 pt-6 lg:flex">
       <div className="flex flex-col gap-7">
         <Link href="/dashboard" className="px-2">
           <Logo />

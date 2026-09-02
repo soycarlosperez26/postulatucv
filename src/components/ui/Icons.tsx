@@ -188,3 +188,11 @@ export function PuzzleIcon(p: IconProps) {
     </Svg>
   );
 }
+
+export function MenuIcon(p: IconProps) {
+  return (
+    <Svg {...p} strokeWidth={2}>
+      <path d="M3 5h14M3 10h14M3 15h14" />
+    </Svg>
+  );
+}

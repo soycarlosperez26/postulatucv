@@ -30,7 +30,7 @@ export default function OnboardingPage() {
             type="file"
             accept="application/pdf"
             required
-            className="w-full cursor-pointer rounded-control border border-dashed border-line-strong bg-canvas px-3 py-3 text-sm text-ink-soft file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-surface"
+            className="w-full min-w-0 cursor-pointer rounded-control border border-dashed border-line-strong bg-canvas px-3 py-3 text-sm text-ink-soft file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-surface"
           />
         </Field>
 

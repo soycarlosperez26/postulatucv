@@ -17,7 +17,7 @@ export function CtaButton({
   return (
     <ButtonLink
       href={href}
-      className={className}
+      className={`w-full whitespace-normal sm:w-auto ${className}`}
       onClick={() => trackCtaClick(location)}
     >
       {children}
