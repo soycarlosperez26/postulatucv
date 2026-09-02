@@ -97,7 +97,7 @@ export default async function PreciosPage() {
                       {pack.label}
                     </span>
                     {isRecommended && <Badge tone="brand">Mejor para empezar</Badge>}
-                    {isBestValue && <Badge tone="neutral">Mejor valor</Badge>}
+                    {isBestValue && <Badge tone="amber">Mejor valor</Badge>}
                   </div>
                   <span className="font-display text-[40px] font-bold leading-none tracking-[-0.03em] text-ink">
                     {formatCop(pack.amountCop)}

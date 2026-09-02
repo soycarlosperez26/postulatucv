@@ -287,15 +287,13 @@ export default async function HomePage() {
             </Card>
 
             <Card className="flex flex-col gap-4 border-brand px-5 py-5 ring-1 ring-brand">
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex flex-col gap-1">
-                  <span className="text-[13px] font-bold uppercase tracking-[0.1em] text-rust">
-                    15 créditos
-                  </span>
-                  <span className="font-display text-[32px] font-bold leading-none tracking-[-0.03em] text-ink">
-                    {formatCop(20000)}
-                  </span>
-                </div>
+              <div className="flex flex-col gap-1">
+                <span className="text-[13px] font-bold uppercase tracking-[0.1em] text-rust">
+                  15 créditos
+                </span>
+                <span className="font-display text-[32px] font-bold leading-none tracking-[-0.03em] text-ink">
+                  {formatCop(20000)}
+                </span>
               </div>
               <Badge tone="brand">Mejor para empezar</Badge>
             </Card>
@@ -309,7 +307,7 @@ export default async function HomePage() {
                   {formatCop(50000)}
                 </span>
               </div>
-              <Badge tone="neutral">Mejor valor</Badge>
+              <Badge tone="amber">Mejor valor</Badge>
             </Card>
           </div>
 
