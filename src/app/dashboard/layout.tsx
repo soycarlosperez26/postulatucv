@@ -5,23 +5,6 @@ import { Sidebar } from "@/components/dashboard/Sidebar";
 import { MobileNav } from "@/components/dashboard/MobileNav";
 import { getBalance } from "@/lib/credits";
 import { isAdminEmail } from "@/lib/admin";
-import {
-  PanelIcon,
-  DocIcon,
-  BriefcaseIcon,
-  SparkIcon,
-  PuzzleIcon,
-  GearIcon,
-} from "@/components/ui/Icons";
-
-const NAV = [
-  { href: "/dashboard", label: "Panel", Icon: PanelIcon, exact: true },
-  { href: "/dashboard/cv", label: "CV Maestro", Icon: DocIcon },
-  { href: "/dashboard/offers", label: "Ofertas", Icon: BriefcaseIcon },
-  { href: "/dashboard/creditos", label: "Créditos", Icon: SparkIcon },
-  { href: "/dashboard/extension", label: "Extensión", Icon: PuzzleIcon },
-  { href: "/dashboard/ajustes", label: "Ajustes", Icon: GearIcon },
-];
 
 export default async function DashboardLayout({
   children,
@@ -61,20 +44,22 @@ export default async function DashboardLayout({
         ? "1 crédito"
         : `${balance.total} créditos`;
 
+  const isAdmin = isAdminEmail(user.email);
+
   return (
     <div className="flex flex-1 flex-col lg:flex-row">
       <MobileNav
-        nav={NAV}
         name={name}
         plan={plan}
         offerCount={offerCount ?? 0}
+        isAdmin={isAdmin}
         signOutAction={signOut}
       />
       <Sidebar
         name={name}
         plan={plan}
         offerCount={offerCount ?? 0}
-        isAdmin={isAdminEmail(user.email)}
+        isAdmin={isAdmin}
         signOutAction={signOut}
       />
       <div className="flex min-w-0 flex-1 flex-col">{children}</div>

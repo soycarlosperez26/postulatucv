@@ -4,27 +4,38 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/ui/Logo";
-import { MenuIcon, CloseIcon } from "@/components/ui/Icons";
-import type { ComponentProps } from "react";
+import {
+  MenuIcon,
+  CloseIcon,
+  PanelIcon,
+  DocIcon,
+  BriefcaseIcon,
+  SparkIcon,
+  PuzzleIcon,
+  GearIcon,
+  ShieldIcon,
+} from "@/components/ui/Icons";
 
-type NavItem = {
-  href: string;
-  label: string;
-  Icon: React.ComponentType<{ className?: string }>;
-  exact?: boolean;
-};
+const NAV = [
+  { href: "/dashboard", label: "Panel", Icon: PanelIcon, exact: true },
+  { href: "/dashboard/cv", label: "CV Maestro", Icon: DocIcon },
+  { href: "/dashboard/offers", label: "Ofertas", Icon: BriefcaseIcon },
+  { href: "/dashboard/creditos", label: "Créditos", Icon: SparkIcon },
+  { href: "/dashboard/extension", label: "Extensión", Icon: PuzzleIcon },
+  { href: "/dashboard/ajustes", label: "Ajustes", Icon: GearIcon },
+];
 
 export function MobileNav({
-  nav,
   name,
   plan,
   offerCount,
+  isAdmin = false,
   signOutAction,
 }: {
-  nav: NavItem[];
   name: string;
   plan: string;
   offerCount: number;
+  isAdmin?: boolean;
   signOutAction: () => Promise<void>;
 }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,7 +80,7 @@ export function MobileNav({
             </div>
 
             <nav className="flex flex-1 flex-col gap-0.5 overflow-y-auto p-4">
-              {nav.map(({ href, label, Icon, exact }) => {
+              {NAV.map(({ href, label, Icon, exact }) => {
                 const active = exact
                   ? pathname === href
                   : pathname.startsWith(href);
@@ -98,6 +109,24 @@ export function MobileNav({
                   </Link>
                 );
               })}
+
+              {isAdmin && (
+                <>
+                  <div className="my-2 h-px bg-forest-line" />
+                  <Link
+                    href="/dashboard/admin/creditos"
+                    onClick={() => setIsOpen(false)}
+                    className={`flex items-center gap-2.5 rounded-[9px] px-3 py-2.5 text-sm transition ${
+                      pathname.startsWith("/dashboard/admin")
+                        ? "bg-forest-soft font-semibold text-surface"
+                        : "font-medium text-forest-ink hover:bg-forest-soft/60 hover:text-surface"
+                    }`}
+                  >
+                    <ShieldIcon className="h-[19px] w-[19px]" />
+                    Recargas
+                  </Link>
+                </>
+              )}
             </nav>
 
             <div className="border-t border-forest-line p-4">
