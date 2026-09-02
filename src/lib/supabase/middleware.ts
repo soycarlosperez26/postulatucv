@@ -50,7 +50,9 @@ export async function updateSession(request: NextRequest) {
     // Igual que el webhook: la extensión de Chrome no manda cookies, se
     // autentica con un token Bearer. Sin esta excepción recibiría un 307
     // a /login en vez del 401 que necesita para pedir reconexión.
-    path.startsWith("/api/extension");
+    path.startsWith("/api/extension") ||
+    // Archivos de verificación de Google Search Console
+    path === "/google7e7c0d192d94a50a.html";
 
   if (!user && !isPublicPath) {
     const url = request.nextUrl.clone();
