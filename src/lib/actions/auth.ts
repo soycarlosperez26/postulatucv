@@ -50,7 +50,7 @@ export async function signUp(_prevState: unknown, formData: FormData) {
   if (!data.session) {
     return {
       error:
-        'Tu cuenta se creó, pero el proyecto de Supabase pide confirmar el email antes de iniciar sesión. Ve a Authentication → Providers → Email en Supabase y desactiva "Confirm email" para que el registro entre directo, o revisa tu correo para confirmar la cuenta.',
+        "Tu cuenta se creó. Revisa tu correo y confirma el email para poder iniciar sesión.",
     };
   }
 

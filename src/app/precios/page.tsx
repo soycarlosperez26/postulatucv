@@ -5,7 +5,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { PublicHeader } from "@/components/public/PublicHeader";
 import { PublicFooter } from "@/components/public/PublicFooter";
-import { formatCop, pricePerCredit } from "@/lib/plan";
+import { formatCop, pricePerCredit, DISPLAY_CREDIT_PACKS } from "@/lib/plan";
 
 export const metadata: Metadata = {
   title: "Precios — Postula",
@@ -39,6 +39,16 @@ export default async function PreciosPage() {
     ? "/dashboard/creditos"
     : "/register?returnUrl=/precios";
 
+  const displayPacks =
+    packs && packs.length > 0
+      ? packs.map((p) => ({
+          id: p.id,
+          credits: p.credits,
+          amountCop: p.amount_cop,
+          label: p.label,
+        }))
+      : DISPLAY_CREDIT_PACKS;
+
   return (
     <main className="flex flex-1 flex-col">
       <PublicHeader />
@@ -70,7 +80,7 @@ export default async function PreciosPage() {
             </p>
           </Card>
 
-          {(packs ?? []).map((pack) => {
+          {displayPacks.map((pack) => {
             const isRecommended = pack.id === "p15";
             const isBestValue = pack.id === "p50";
 
@@ -90,10 +100,10 @@ export default async function PreciosPage() {
                     {isBestValue && <Badge tone="neutral">Mejor valor</Badge>}
                   </div>
                   <span className="font-display text-[40px] font-bold leading-none tracking-[-0.03em] text-ink">
-                    {formatCop(pack.amount_cop)}
+                    {formatCop(pack.amountCop)}
                   </span>
                   <span className="text-[13.5px] text-muted">
-                    {pricePerCredit(pack.amount_cop, pack.credits)} por crédito
+                    {pricePerCredit(pack.amountCop, pack.credits)} por crédito
                   </span>
                 </div>
                 <ButtonLink
