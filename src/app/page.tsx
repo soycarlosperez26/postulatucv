@@ -283,7 +283,6 @@ export default async function HomePage() {
                   {formatCop(10000)}
                 </span>
               </div>
-              <p className="text-[13.5px] text-muted">Para empezar</p>
             </Card>
 
             <Card className="flex flex-col gap-4 border-brand px-5 py-5 ring-1 ring-brand">

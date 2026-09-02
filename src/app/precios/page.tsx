@@ -105,6 +105,11 @@ export default async function PreciosPage() {
                   <span className="text-[13.5px] text-muted">
                     {pricePerCredit(pack.amountCop, pack.credits)} por crédito
                   </span>
+                  {isRecommended && (
+                    <p className="text-[13.5px] font-medium text-ink-soft">
+                      Una semana de postulaciones serias.
+                    </p>
+                  )}
                 </div>
                 <ButtonLink
                   href={ctaHref}
