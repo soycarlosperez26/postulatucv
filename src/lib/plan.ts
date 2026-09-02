@@ -20,6 +20,17 @@ export interface CreditPack {
   label: string;
 }
 
+/**
+ * Paquetes de crédito para mostrar cuando la base de datos no está disponible
+ * (Vercel Preview) o la consulta retorna vacío. Estos valores coinciden con
+ * los paquetes en producción.
+ */
+export const DISPLAY_CREDIT_PACKS: CreditPack[] = [
+  { id: "p5", credits: 5, amountCop: 10000, label: "5 créditos" },
+  { id: "p15", credits: 15, amountCop: 20000, label: "15 créditos" },
+  { id: "p50", credits: 50, amountCop: 50000, label: "50 créditos" },
+];
+
 export function formatCop(amount: number): string {
   return `$${amount.toLocaleString("es-CO")}`;
 }

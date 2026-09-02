@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
 import { ButtonLink } from "@/components/ui/Button";
 import { PublicHeader } from "@/components/public/PublicHeader";
 import { PublicFooter } from "@/components/public/PublicFooter";
-import { formatCop, pricePerCredit } from "@/lib/plan";
+import { formatCop, pricePerCredit, DISPLAY_CREDIT_PACKS } from "@/lib/plan";
 
 export const metadata: Metadata = {
   title: "Precios — Postula",
@@ -17,20 +17,37 @@ export const metadata: Metadata = {
 };
 
 export default async function PreciosPage() {
-  const supabase = await createClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  let user = null;
+  let packs = null;
 
-  const { data: packs } = await supabase
-    .from("credit_packs")
-    .select("id, credits, amount_cop, label")
-    .eq("active", true)
-    .order("sort_order", { ascending: true });
+  if (isSupabaseConfigured()) {
+    const supabase = await createClient();
+    const {
+      data: { user: fetchedUser },
+    } = await supabase.auth.getUser();
+    user = fetchedUser;
+
+    const { data: packsData } = await supabase
+      .from("credit_packs")
+      .select("id, credits, amount_cop, label")
+      .eq("active", true)
+      .order("sort_order", { ascending: true });
+    packs = packsData;
+  }
 
   const ctaHref = user
     ? "/dashboard/creditos"
     : "/register?returnUrl=/precios";
+
+  const displayPacks =
+    packs && packs.length > 0
+      ? packs.map((p) => ({
+          id: p.id,
+          credits: p.credits,
+          amountCop: p.amount_cop,
+          label: p.label,
+        }))
+      : DISPLAY_CREDIT_PACKS;
 
   return (
     <main className="flex flex-1 flex-col">
@@ -63,7 +80,7 @@ export default async function PreciosPage() {
             </p>
           </Card>
 
-          {(packs ?? []).map((pack) => {
+          {displayPacks.map((pack) => {
             const isRecommended = pack.id === "p15";
             const isBestValue = pack.id === "p50";
 
@@ -83,10 +100,10 @@ export default async function PreciosPage() {
                     {isBestValue && <Badge tone="neutral">Mejor valor</Badge>}
                   </div>
                   <span className="font-display text-[40px] font-bold leading-none tracking-[-0.03em] text-ink">
-                    {formatCop(pack.amount_cop)}
+                    {formatCop(pack.amountCop)}
                   </span>
                   <span className="text-[13.5px] text-muted">
-                    {pricePerCredit(pack.amount_cop, pack.credits)} por crédito
+                    {pricePerCredit(pack.amountCop, pack.credits)} por crédito
                   </span>
                 </div>
                 <ButtonLink

@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
+import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
 function getSiteUrl(): string {
   const url =
@@ -14,6 +14,10 @@ function getSiteUrl(): string {
 export async function signIn(_prevState: unknown, formData: FormData) {
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
+
+  if (!isSupabaseConfigured()) {
+    return { error: "El servicio de autenticación no está configurado." };
+  }
 
   const supabase = await createClient();
   const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -29,6 +33,10 @@ export async function signUp(_prevState: unknown, formData: FormData) {
   const email = String(formData.get("email") ?? "");
   const password = String(formData.get("password") ?? "");
 
+  if (!isSupabaseConfigured()) {
+    return { error: "El servicio de autenticación no está configurado." };
+  }
+
   const supabase = await createClient();
   const { data, error } = await supabase.auth.signUp({ email, password });
 
@@ -42,7 +50,7 @@ export async function signUp(_prevState: unknown, formData: FormData) {
   if (!data.session) {
     return {
       error:
-        'Tu cuenta se creó, pero el proyecto de Supabase pide confirmar el email antes de iniciar sesión. Ve a Authentication → Providers → Email en Supabase y desactiva "Confirm email" para que el registro entre directo, o revisa tu correo para confirmar la cuenta.',
+        "Tu cuenta se creó. Revisa tu correo y confirma el email para poder iniciar sesión.",
     };
   }
 
@@ -56,6 +64,10 @@ export async function signUp(_prevState: unknown, formData: FormData) {
  * sesión ocurre en /auth/callback cuando Google redirige de vuelta.
  */
 export async function signInWithGoogle() {
+  if (!isSupabaseConfigured()) {
+    throw new Error("El servicio de autenticación no está configurado.");
+  }
+
   const supabase = await createClient();
 
   const { data, error } = await supabase.auth.signInWithOAuth({

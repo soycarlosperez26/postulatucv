@@ -3,6 +3,15 @@ import { cookies } from "next/headers";
 import type { Database } from "@/types/database";
 
 /**
+ * Verifica si Supabase está configurado con las variables de entorno necesarias.
+ */
+export function isSupabaseConfigured(): boolean {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+  return typeof url === "string" && url.length > 0 && typeof key === "string" && key.length > 0;
+}
+
+/**
  * Cliente de Supabase para Server Components, Server Actions y
  * Route Handlers. Lee/escribe la sesión desde las cookies de la
  * request actual.
@@ -10,9 +19,16 @@ import type { Database } from "@/types/database";
 export async function createClient() {
   const cookieStore = await cookies();
 
+  if (!isSupabaseConfigured()) {
+    throw new Error("Supabase is not configured");
+  }
+
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
   return createServerClient<Database>(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url!,
+    key!,
     {
       cookies: {
         getAll() {
