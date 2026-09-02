@@ -339,8 +339,8 @@ export default async function HomePage() {
                 ¿Sirve para Computrabajo y Elempleo?
               </h3>
               <p className="text-[14.5px] leading-[1.6] text-muted text-pretty">
-                Sí. Pegas la oferta o usas la extensión. LinkedIn y ofertas de
-                empresa también, pegando el texto.
+                Sí. Pegas el texto de la oferta (Computrabajo, Elempleo, LinkedIn
+                o la web de la empresa).
               </p>
             </div>
 
