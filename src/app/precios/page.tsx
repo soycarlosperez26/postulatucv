@@ -109,7 +109,8 @@ export default async function PreciosPage() {
             <li className="flex gap-3">
               <span className="shrink-0">•</span>
               <span>
-                Los créditos comprados no vencen. No hay suscripción.
+                El crédito de bienvenida se renueva cada mes y no se acumula. Los
+                créditos comprados no vencen. No hay suscripción.
               </span>
             </li>
             <li className="flex gap-3">

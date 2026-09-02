@@ -369,8 +369,10 @@ export default async function HomePage() {
                 ¿La primera oferta es gratis?
               </h3>
               <p className="text-[14.5px] leading-[1.6] text-muted text-pretty">
-                Sí. Al crear cuenta tienes 1 crédito. Analizar una oferta gasta
-                1. Subir el CV maestro no gasta crédito.
+                Sí. Al crear cuenta tienes 1 crédito. Ese crédito de bienvenida se
+                renueva cada mes y no se acumula. Los créditos comprados no
+                vencen. Analizar una oferta gasta 1 crédito. Subir el CV maestro
+                no gasta crédito.
               </p>
             </div>
           </div>

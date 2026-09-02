@@ -180,9 +180,16 @@ export default function PrivacidadPage() {
             </h2>
             <p className="text-[15px] leading-[1.7] text-ink-soft text-pretty">
               Para eliminar tu cuenta y tus datos, envía un correo desde la
-              dirección registrada en tu cuenta solicitando la eliminación.
-              Borraremos tu cuenta, tu CV maestro, las ofertas que analizaste y
-              los CV adaptados. Esta acción es irreversible.
+              dirección registrada en tu cuenta a{" "}
+              <a
+                href="mailto:soycarlosperez26@gmail.com"
+                className="font-semibold text-brand hover:underline"
+              >
+                soycarlosperez26@gmail.com
+              </a>{" "}
+              solicitando la eliminación. Borraremos tu cuenta, tu CV maestro,
+              las ofertas que analizaste y los CV adaptados. Esta acción es
+              irreversible.
             </p>
           </div>
 
@@ -203,7 +210,14 @@ export default function PrivacidadPage() {
             </h2>
             <p className="text-[15px] leading-[1.7] text-ink-soft text-pretty">
               Si tienes preguntas sobre esta política o quieres ejercer tus
-              derechos, contáctanos desde tu correo registrado.
+              derechos, escríbenos a{" "}
+              <a
+                href="mailto:soycarlosperez26@gmail.com"
+                className="font-semibold text-brand hover:underline"
+              >
+                soycarlosperez26@gmail.com
+              </a>{" "}
+              desde tu correo registrado.
             </p>
           </div>
         </section>
