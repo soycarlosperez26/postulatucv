@@ -39,9 +39,15 @@ export async function updateSession(request: NextRequest) {
   const path = request.nextUrl.pathname;
   const isPublicPath =
     path === "/" ||
+    path === "/precios" ||
+    path === "/privacidad" ||
+    path === "/terminos" ||
+    path === "/robots.txt" ||
+    path === "/sitemap.xml" ||
     path.startsWith("/login") ||
     path.startsWith("/register") ||
     path.startsWith("/auth") ||
+    path.startsWith("/.well-known/") ||
     // El webhook de Wompi llega servidor a servidor, sin cookies. Sin
     // esta excepción se redirige a /login y Wompi recibe un 307 en vez
     // del 200 que espera, así que los pagos nunca se acreditarían.

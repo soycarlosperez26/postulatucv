@@ -1,10 +1,14 @@
+"use client";
+
 import { signInWithGoogle } from "@/lib/actions/auth";
+import { trackSignUp } from "@/lib/analytics";
 
 export function GoogleButton() {
   return (
     <form action={signInWithGoogle}>
       <button
         type="submit"
+        onClick={() => trackSignUp("google")}
         className="flex h-10 w-full items-center justify-center gap-2 rounded-control border border-line-strong text-sm font-semibold text-ink transition hover:bg-line-soft"
       >
         <svg viewBox="0 0 48 48" className="h-4 w-4" aria-hidden="true">

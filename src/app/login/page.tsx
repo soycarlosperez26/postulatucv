@@ -33,7 +33,17 @@ export default function LoginPage() {
         <span className="h-px flex-1 bg-line" />
       </div>
 
-      <form action={formAction} className="flex flex-col gap-4">
+      <form
+        action={formAction}
+        className="flex flex-col gap-4"
+        onSubmit={(e) => {
+          const form = e.currentTarget;
+          const email = (form.elements.namedItem("email") as HTMLInputElement)?.value;
+          if (email) {
+            import("@/lib/analytics").then((m) => m.trackLogin());
+          }
+        }}
+      >
         <FormError message={state?.error} />
 
         <Field id="email" label="Correo">
