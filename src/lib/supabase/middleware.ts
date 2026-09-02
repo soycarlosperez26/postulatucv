@@ -58,7 +58,8 @@ export async function updateSession(request: NextRequest) {
     // a /login en vez del 401 que necesita para pedir reconexión.
     path.startsWith("/api/extension") ||
     // Archivos de verificación de Google Search Console
-    path === "/google7e7c0d192d94a50a.html";
+    path === "/google7e7c0d192d94a50a.html" ||
+    path.startsWith("/guia");
 
   if (!user && !isPublicPath) {
     const url = request.nextUrl.clone();
