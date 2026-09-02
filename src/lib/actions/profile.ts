@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { extractTextFromPdf } from "@/lib/pdf";
 import { extractCvProfile } from "@/lib/ai/extractCvProfile";
+import { sanitizeFilename, validateCvFile } from "@/lib/fileUtils";
 
 const BUCKET = process.env.SUPABASE_CV_BUCKET ?? "cvs";
 
@@ -14,11 +15,13 @@ const BUCKET = process.env.SUPABASE_CV_BUCKET ?? "cvs";
 export async function uploadCv(_prevState: unknown, formData: FormData) {
   const file = formData.get("cv");
 
-  if (!(file instanceof File) || file.size === 0) {
+  if (!(file instanceof File)) {
     return { error: "Selecciona un archivo PDF." };
   }
-  if (file.type !== "application/pdf") {
-    return { error: "Por ahora solo se aceptan archivos PDF." };
+
+  const validation = validateCvFile(file);
+  if (!validation.valid) {
+    return { error: validation.error };
   }
 
   const supabase = await createClient();
@@ -42,13 +45,14 @@ export async function uploadCv(_prevState: unknown, formData: FormData) {
     };
   }
 
-  const storagePath = `${user.id}/${Date.now()}-${file.name}`;
+  const sanitizedFilename = sanitizeFilename(file.name);
+  const storagePath = `${user.id}/${Date.now()}-${sanitizedFilename}`;
   const { error: uploadError } = await supabase.storage
     .from(BUCKET)
     .upload(storagePath, buffer, { contentType: "application/pdf" });
 
   if (uploadError) {
-    return { error: `No se pudo guardar el archivo: ${uploadError.message}` };
+    return { error: "No se pudo guardar el archivo. Prueba de nuevo." };
   }
 
   let profile;
