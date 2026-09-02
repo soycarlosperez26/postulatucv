@@ -58,7 +58,7 @@ export default function PrivacidadPage() {
               </li>
               <li className="list-disc">
                 <strong>Ofertas laborales:</strong> el texto de las vacantes que
-                pegas o capturas con la extensión.
+                pegas.
               </li>
               <li className="list-disc">
                 <strong>Resultados del análisis:</strong> scores ATS, palabras
