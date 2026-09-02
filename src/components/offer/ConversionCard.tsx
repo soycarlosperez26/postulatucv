@@ -26,12 +26,12 @@ export function ConversionCard({ beforeScore, afterScore }: ConversionCardProps)
 
   let copyText: string;
   if (hasImprovement) {
-    copyText = `Tu score en esta vacante pasó de ${beforeScore}% a ${afterScore}%. El original no se tocó. La siguiente oferta cuesta 1 crédito. 15 créditos = $20.000. No vencen.`;
+    copyText = `Tu score en esta vacante pasó de ${beforeScore}% a ${afterScore}%. El original no se tocó. Ya puedes bajar el PDF de esta vacante. La siguiente oferta cuesta 1 crédito. 15 créditos = $20.000. No vencen.`;
   } else if (belowThreshold) {
-    copyText = `Esta oferta no era match. La siguiente sí puede serlo — 1 crédito. Pack 15 / $20.000, no vencen.`;
+    copyText = `Esta oferta no era match. Ya puedes bajar el PDF de esta vacante. La siguiente sí puede serlo — 1 crédito. Pack 15 / $20.000, no vencen.`;
   } else {
     // Primer análisis con score >= 75: mostrar score, sin inventar mejora
-    copyText = `Score ${afterScore}%, original no se tocó. La siguiente oferta cuesta 1 crédito. Pack 15 / $20.000, no vencen.`;
+    copyText = `Score ${afterScore}%, original no se tocó. Ya puedes bajar el PDF de esta vacante. La siguiente oferta cuesta 1 crédito. Pack 15 / $20.000, no vencen.`;
   }
 
   return (
