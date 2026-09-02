@@ -5,7 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 export function PublicHeader() {
   return (
     <header className="flex items-center justify-between gap-4 px-6 py-5 sm:px-10">
-      <Link href="/">
+      <Link href="/" className="shrink-0">
         <Logo wordClassName="text-ink" />
       </Link>
 
@@ -25,10 +25,10 @@ export function PublicHeader() {
       </nav>
 
       <div className="flex items-center gap-2.5">
-        <ButtonLink href="/login" variant="ghost" size="sm">
+        <ButtonLink href="/login" variant="ghost" size="sm" className="hidden sm:inline-flex">
           Iniciar sesión
         </ButtonLink>
-        <ButtonLink href="/register" size="sm">
+        <ButtonLink href="/register" size="sm" className="whitespace-nowrap text-[13px] sm:text-sm">
           Crear cuenta
         </ButtonLink>
       </div>

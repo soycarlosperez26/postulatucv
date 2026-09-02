@@ -20,7 +20,7 @@ export function AuthShell({
   return (
     <main className="flex flex-1 flex-col lg:flex-row">
       <aside className="flex flex-col justify-between gap-10 bg-forest px-8 py-8 lg:w-[420px] lg:px-12 lg:py-12">
-        <Link href="/">
+        <Link href="/" className="shrink-0">
           <Logo />
         </Link>
         <div className="hidden flex-col gap-4 lg:flex">

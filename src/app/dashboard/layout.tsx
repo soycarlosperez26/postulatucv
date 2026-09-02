@@ -2,8 +2,26 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { signOut } from "@/lib/actions/auth";
 import { Sidebar } from "@/components/dashboard/Sidebar";
+import { MobileNav } from "@/components/dashboard/MobileNav";
 import { getBalance } from "@/lib/credits";
 import { isAdminEmail } from "@/lib/admin";
+import {
+  PanelIcon,
+  DocIcon,
+  BriefcaseIcon,
+  SparkIcon,
+  PuzzleIcon,
+  GearIcon,
+} from "@/components/ui/Icons";
+
+const NAV = [
+  { href: "/dashboard", label: "Panel", Icon: PanelIcon, exact: true },
+  { href: "/dashboard/cv", label: "CV Maestro", Icon: DocIcon },
+  { href: "/dashboard/offers", label: "Ofertas", Icon: BriefcaseIcon },
+  { href: "/dashboard/creditos", label: "Créditos", Icon: SparkIcon },
+  { href: "/dashboard/extension", label: "Extensión", Icon: PuzzleIcon },
+  { href: "/dashboard/ajustes", label: "Ajustes", Icon: GearIcon },
+];
 
 export default async function DashboardLayout({
   children,
@@ -44,7 +62,14 @@ export default async function DashboardLayout({
         : `${balance.total} créditos`;
 
   return (
-    <div className="flex flex-1">
+    <div className="flex flex-1 flex-col lg:flex-row">
+      <MobileNav
+        nav={NAV}
+        name={name}
+        plan={plan}
+        offerCount={offerCount ?? 0}
+        signOutAction={signOut}
+      />
       <Sidebar
         name={name}
         plan={plan}
