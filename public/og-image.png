@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Canvas background (cream) -->
+  <rect width="1200" height="630" fill="#f6f1e8"/>
+  
+  <!-- Logo Mark (P in amber square) -->
+  <rect x="460" y="180" width="90" height="90" rx="27" fill="#de8b2e"/>
+  <path d="M481 245V215C481 209.5 485.5 205 491 205H500C507 205 512.5 210.5 512.5 217.5C512.5 224.5 507 230 500 230H489" 
+        stroke="#173f33" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Postula wordmark -->
+  <text x="600" y="245" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#201b14" letter-spacing="-0.02em">Postula</text>
+  
+  <!-- Tagline -->
+  <text x="600" y="330" font-family="system-ui, -apple-system, sans-serif" font-size="36" font-weight="400" fill="#7c7060" text-anchor="middle">Tu CV. Cada oportunidad.</text>
+  
+  <!-- Description -->
+  <text x="600" y="395" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="#453c31" text-anchor="middle">Adapta tu hoja de vida a cada oferta laboral</text>
+  <text x="600" y="430" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="400" fill="#453c31" text-anchor="middle">y mejora su compatibilidad con los filtros ATS.</text>
+</svg>
