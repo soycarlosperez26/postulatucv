@@ -1,6 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
+import { revalidatePath } from "next/cache";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
 function getSiteUrl(): string {
@@ -20,12 +21,23 @@ export async function signIn(_prevState: unknown, formData: FormData) {
   }
 
   const supabase = await createClient();
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    return { error: error.message };
+    const userFriendlyMessage = 
+      error.message.toLowerCase().includes("invalid") || 
+      error.message.toLowerCase().includes("credentials")
+        ? "Correo o contraseña incorrectos."
+        : "Error al iniciar sesión. Por favor, intenta de nuevo.";
+    return { error: userFriendlyMessage };
   }
 
+  if (!data.session) {
+    return { error: "No se pudo crear la sesión. Por favor, intenta de nuevo." };
+  }
+
+  // Revalidar las rutas para que Next.js reconozca el cambio de autenticación
+  revalidatePath("/", "layout");
   redirect("/dashboard");
 }
 
@@ -54,6 +66,8 @@ export async function signUp(_prevState: unknown, formData: FormData) {
     };
   }
 
+  // Revalidar las rutas para que Next.js reconozca el cambio de autenticación
+  revalidatePath("/", "layout");
   redirect("/onboarding");
 }
 
