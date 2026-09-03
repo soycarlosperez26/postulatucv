@@ -24,11 +24,28 @@ export async function signIn(_prevState: unknown, formData: FormData) {
   const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
   if (error) {
-    const userFriendlyMessage = 
-      error.message.toLowerCase().includes("invalid") || 
-      error.message.toLowerCase().includes("credentials")
-        ? "Correo o contraseña incorrectos."
-        : "Error al iniciar sesión. Por favor, intenta de nuevo.";
+    // Log el error real para debugging (visible en runtime logs de Vercel)
+    console.error("signIn error:", {
+      code: error.code,
+      message: error.message,
+      status: error.status,
+    });
+
+    // Mapear error.code a mensajes user-friendly en español
+    let userFriendlyMessage: string;
+    switch (error.code) {
+      case "invalid_credentials":
+        userFriendlyMessage = "Correo o contraseña incorrectos.";
+        break;
+      case "email_not_confirmed":
+        userFriendlyMessage = "Revisa tu correo y confirma el email para poder iniciar sesión.";
+        break;
+      case "over_request_rate_limit":
+        userFriendlyMessage = "Demasiados intentos. Espera un momento y vuelve a intentar.";
+        break;
+      default:
+        userFriendlyMessage = "Error al iniciar sesión. Por favor, intenta de nuevo.";
+    }
     return { error: userFriendlyMessage };
   }
 
@@ -58,7 +75,29 @@ export async function signUp(_prevState: unknown, formData: FormData) {
   const { data, error } = await supabase.auth.signUp({ email, password });
 
   if (error) {
-    return { error: error.message };
+    // Log el error real para debugging (visible en runtime logs de Vercel)
+    console.error("signUp error:", {
+      code: error.code,
+      message: error.message,
+      status: error.status,
+    });
+
+    // Mapear error.code a mensajes user-friendly en español
+    let userFriendlyMessage: string;
+    switch (error.code) {
+      case "user_already_exists":
+        userFriendlyMessage = "Ya existe una cuenta con este correo.";
+        break;
+      case "over_request_rate_limit":
+        userFriendlyMessage = "Demasiados intentos. Espera un momento y vuelve a intentar.";
+        break;
+      case "weak_password":
+        userFriendlyMessage = "La contraseña es muy débil. Usa al menos 6 caracteres.";
+        break;
+      default:
+        userFriendlyMessage = "Error al crear la cuenta. Por favor, intenta de nuevo.";
+    }
+    return { error: userFriendlyMessage };
   }
 
   // Si el proyecto de Supabase todavía tiene "Confirm email" activado,
