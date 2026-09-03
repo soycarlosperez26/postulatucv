@@ -36,8 +36,11 @@ export async function signIn(_prevState: unknown, formData: FormData) {
     return { error: "No se pudo crear la sesión. Por favor, intenta de nuevo." };
   }
 
-  // Revalidar las rutas para que Next.js reconozca el cambio de autenticación
+  // Revalidar primero el layout root para que Next.js reconozca el cambio de autenticación
   revalidatePath("/", "layout");
+  // Luego revalidar específicamente /dashboard para asegurar que se actualice
+  revalidatePath("/dashboard");
+  
   redirect("/dashboard");
 }
 
@@ -66,8 +69,11 @@ export async function signUp(_prevState: unknown, formData: FormData) {
     };
   }
 
-  // Revalidar las rutas para que Next.js reconozca el cambio de autenticación
+  // Revalidar primero el layout root para que Next.js reconozca el cambio de autenticación
   revalidatePath("/", "layout");
+  // Luego revalidar específicamente /onboarding para asegurar que se actualice
+  revalidatePath("/onboarding");
+  
   redirect("/onboarding");
 }
 
