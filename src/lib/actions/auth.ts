@@ -41,7 +41,9 @@ export async function signIn(_prevState: unknown, formData: FormData) {
   // Luego revalidar específicamente /dashboard para asegurar que se actualice
   revalidatePath("/dashboard");
   
-  redirect("/dashboard");
+  // Retornar success para que el cliente maneje el redirect
+  // Esto evita que el middleware intercepte el redirect del server action
+  return { success: true, redirectTo: "/dashboard" };
 }
 
 export async function signUp(_prevState: unknown, formData: FormData) {
@@ -74,7 +76,9 @@ export async function signUp(_prevState: unknown, formData: FormData) {
   // Luego revalidar específicamente /onboarding para asegurar que se actualice
   revalidatePath("/onboarding");
   
-  redirect("/onboarding");
+  // Retornar success para que el cliente maneje el redirect
+  // Esto evita que el middleware intercepte el redirect del server action
+  return { success: true, redirectTo: "/onboarding" };
 }
 
 /**
