@@ -4,7 +4,6 @@ import { createClient } from "@/lib/supabase/server";
 import { getBalance } from "@/lib/credits";
 import { scoreBand } from "@/lib/score";
 import { Card, CardTitle } from "@/components/ui/Card";
-import { Badge } from "@/components/ui/Badge";
 import { ChevronRightIcon, InfoIcon } from "@/components/ui/Icons";
 import { CvViewer } from "@/components/cv/CvViewer";
 import { GenerateCvButton } from "@/components/offer/GenerateCvButton";
@@ -193,12 +192,18 @@ export default async function TailoredCvPage({
             </Card>
           )}
 
-          <Card className="flex flex-col gap-2.5 px-5 py-4">
+          <Card className="flex flex-col gap-3 px-5 py-4">
             <CardTitle className="text-[15px]">Exportar</CardTitle>
-            <Badge tone="amber">Pendiente</Badge>
+            <a
+              href={`/api/cv/${offer.id}/download`}
+              download
+              className="flex h-10 items-center justify-center gap-2 rounded-control border border-brand bg-brand px-4 text-[14px] font-semibold text-paper transition hover:brightness-95"
+            >
+              Descargar PDF
+            </a>
             <p className="text-[12.5px] leading-[1.55] text-muted text-pretty">
-              La descarga en PDF y DOCX está en la hoja de ruta. Por ahora
-              copia el texto desde esta vista.
+              Descarga tu CV adaptado como PDF con texto seleccionable,
+              compatible con sistemas ATS.
             </p>
           </Card>
         </aside>
