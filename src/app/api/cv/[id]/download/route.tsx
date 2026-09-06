@@ -76,7 +76,8 @@ export async function GET(
 
     return new NextResponse(stream as unknown as ReadableStream, { headers });
   } catch (error) {
-    console.error("[pdf] error generando PDF:", error);
+    const errorMessage = error instanceof Error ? error.message : String(error);
+    console.error("[pdf] error generando PDF:", errorMessage, error);
     return NextResponse.json(
       { error: "Error generando el PDF" },
       { status: 500 }
