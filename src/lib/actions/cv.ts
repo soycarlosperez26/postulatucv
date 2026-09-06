@@ -68,6 +68,17 @@ export async function generateCustomCvAction(
     return { error: charge.message };
   }
 
+  if (!process.env.DEEPSEEK_API_KEY) {
+    const diagnostic = {
+      hasKey: false,
+      keyLength: 0,
+      modelPresent: Boolean(process.env.DEEPSEEK_MODEL),
+      vercelEnv: process.env.VERCEL_ENV,
+    };
+    console.error("DEEPSEEK_API_KEY missing before generateCustomCv", diagnostic);
+    return { error: "Falta DEEPSEEK_API_KEY en las variables de entorno." };
+  }
+
   try {
     await generateCustomCv({
       userId: user.id,
@@ -77,8 +88,18 @@ export async function generateCustomCvAction(
   } catch (err) {
     // La generación falló: el crédito no se cobra.
     await refundCredit(reference);
+    
+    const errorMessage = err instanceof Error ? err.message : "No se pudo generar el CV.";
+    if (errorMessage.includes("DEEPSEEK_API_KEY")) {
+      console.error("DEEPSEEK_API_KEY error in catch block", {
+        hasKey: Boolean(process.env.DEEPSEEK_API_KEY),
+        keyLength: (process.env.DEEPSEEK_API_KEY || '').length,
+        vercelEnv: process.env.VERCEL_ENV,
+      });
+    }
+    
     return {
-      error: err instanceof Error ? err.message : "No se pudo generar el CV.",
+      error: errorMessage,
     };
   }
 

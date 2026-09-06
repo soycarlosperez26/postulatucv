@@ -6,6 +6,11 @@ function getDeepSeekClient(): OpenAI {
   if (!client) {
     const apiKey = process.env.DEEPSEEK_API_KEY;
     if (!apiKey) {
+      console.error("DEEPSEEK_API_KEY missing in getDeepSeekClient", {
+        hasKey: false,
+        keyLength: 0,
+        vercelEnv: process.env.VERCEL_ENV,
+      });
       throw new Error("Falta DEEPSEEK_API_KEY en las variables de entorno.");
     }
     client = new OpenAI({
