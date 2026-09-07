@@ -194,6 +194,9 @@ export default async function TailoredCvPage({
 
           <Card className="flex flex-col gap-3 px-5 py-4">
             <CardTitle className="text-[15px]">Exportar</CardTitle>
+            <p className="text-[13px] leading-[1.55] text-ink-soft text-pretty">
+              Ya puedes bajar el PDF de esta vacante.
+            </p>
             <a
               href={`/api/cv/${offer.id}/download`}
               download
