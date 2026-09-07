@@ -132,18 +132,27 @@ export default async function CreditosPage() {
 
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {(packs ?? []).map((pack) => {
-              const destacado = pack.id === RECOMMENDED_PACK_ID;
+              const esRecomendado = pack.id === RECOMMENDED_PACK_ID;
+              const esMejorValor = pack.id === "p50";
+              let badge: { text: string; tone: "brand" | "amber" } | null = null;
+              
+              if (esRecomendado) {
+                badge = { text: "Mejor para empezar", tone: "brand" };
+              } else if (esMejorValor) {
+                badge = { text: "Mejor valor", tone: "amber" };
+              }
+
               return (
                 <Card
                   key={pack.id}
                   className={`flex flex-col gap-4 px-5 py-5 ${
-                    destacado ? "border-brand ring-1 ring-brand" : ""
+                    esRecomendado ? "border-brand ring-1 ring-brand" : ""
                   }`}
                 >
                   <div className="flex flex-col gap-1">
                     <div className="flex items-center justify-between gap-2">
                       <Eyebrow className="text-rust">{pack.label}</Eyebrow>
-                      {destacado && <Badge tone="brand">Mejor valor</Badge>}
+                      {badge && <Badge tone={badge.tone}>{badge.text}</Badge>}
                     </div>
                     <span className="font-display text-[30px] font-bold leading-none tracking-[-0.03em] text-ink">
                       {formatCop(pack.amount_cop)}
@@ -161,7 +170,7 @@ export default async function CreditosPage() {
                   <RequestPackForm
                     packId={pack.id}
                     label="Pedir por WhatsApp"
-                    variant={destacado ? "primary" : "outline"}
+                    variant={esRecomendado ? "primary" : "outline"}
                   />
                 </Card>
               );

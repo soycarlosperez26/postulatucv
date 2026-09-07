@@ -41,9 +41,14 @@ export async function createClient() {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)
             );
-          } catch {
+          } catch (error) {
             // Se llama desde un Server Component (no se pueden setear
             // cookies ahí); el middleware se encarga de refrescar la sesión.
+            // En Server Actions sí se pueden setear cookies, así que si falla
+            // ahí es un error real que deberíamos loggear.
+            if (process.env.NODE_ENV === "development") {
+              console.error("Error setting cookies:", error);
+            }
           }
         },
       },

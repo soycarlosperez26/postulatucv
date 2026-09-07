@@ -4,7 +4,8 @@ import { redirect } from "next/navigation";
 import { headers } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { buildCheckoutUrl } from "@/lib/wompi";
-import { toCents } from "@/lib/plan";
+import { toCents, formatCop } from "@/lib/plan";
+import { whatsappLink, creditRequestMessage } from "@/lib/whatsapp";
 
 /**
  * Origen público de la app, derivado de la petición.
@@ -30,8 +31,8 @@ export interface BuyCreditsState {
 }
 
 /**
- * Abre una solicitud de recarga y manda al usuario a la pantalla con su
- * código, desde donde escribe por WhatsApp.
+ * Abre una solicitud de recarga y redirige al usuario a WhatsApp con el
+ * mensaje prefillado (pack + código).
  *
  * No mueve el saldo: los créditos los acredita el administrador desde
  * /dashboard/admin/creditos cuando confirma el pago.
@@ -39,6 +40,9 @@ export interface BuyCreditsState {
  * Si el usuario ya tiene una solicitud pendiente del mismo paquete,
  * `create_credit_order` devuelve esa misma en vez de generar códigos
  * nuevos a cada clic.
+ *
+ * Si WHATSAPP_NUMBER no está configurado, cae de nuevo a la pantalla con
+ * el código y la advertencia de env.
  */
 export async function requestCredits(
   _prevState: unknown,
@@ -70,7 +74,22 @@ export async function requestCredits(
     };
   }
 
-  redirect(`/dashboard/creditos/solicitud?ref=${order.reference}`);
+  // Intentar redirigir a WhatsApp directamente
+  const message = creditRequestMessage({
+    reference: order.reference,
+    credits: order.credits,
+    amountLabel: formatCop(order.amount_cop),
+  });
+
+  const link = whatsappLink(message);
+
+  if (link) {
+    // WhatsApp configurado: 1-tap directo
+    redirect(link);
+  } else {
+    // Sin WHATSAPP_NUMBER: fallback a la pantalla del código
+    redirect(`/dashboard/creditos/solicitud?ref=${order.reference}`);
+  }
 }
 
 /**

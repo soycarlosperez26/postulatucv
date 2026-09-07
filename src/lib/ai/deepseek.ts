@@ -6,6 +6,11 @@ function getDeepSeekClient(): OpenAI {
   if (!client) {
     const apiKey = process.env.DEEPSEEK_API_KEY;
     if (!apiKey) {
+      console.error("DEEPSEEK_API_KEY missing in getDeepSeekClient", {
+        hasKey: false,
+        keyLength: 0,
+        vercelEnv: process.env.VERCEL_ENV,
+      });
       throw new Error("Falta DEEPSEEK_API_KEY en las variables de entorno.");
     }
     client = new OpenAI({
@@ -16,9 +21,10 @@ function getDeepSeekClient(): OpenAI {
   return client;
 }
 
-// DeepSeek es compatible con la API de OpenAI. "deepseek-chat" (DeepSeek-V3)
-// es el modelo con soporte de function calling; configurable por env var.
-export const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL ?? "deepseek-chat";
+// DeepSeek es compatible con la API de OpenAI.
+// Modelos válidos: deepseek-v4-pro, deepseek-v4-flash, deepseek-v4-flash-vision-exp
+// Usamos deepseek-v4-flash (rápido y económico) por defecto.
+export const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL?.trim() || "deepseek-v4-flash";
 
 /**
  * Llama a DeepSeek forzando que responda invocando una única tool
@@ -60,7 +66,10 @@ export async function callDeepSeekTool<T = unknown>(params: {
       type: "function",
       function: { name: params.toolName },
     },
-  });
+    // DeepSeek v4 models enable thinking mode by default, which rejects tool_choice.
+    // Disable thinking to allow forced tool calling.
+    thinking: { type: "disabled" },
+  } as OpenAI.Chat.ChatCompletionCreateParamsNonStreaming);
 
   const toolCall = response.choices[0]?.message?.tool_calls?.[0];
 
