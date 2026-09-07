@@ -18,8 +18,11 @@ export async function extractTextFromPdf(buffer: Buffer): Promise<string> {
     // - Encoding no estándar (ReportLab, etc.)
     // - PDFs de Word, Google Docs, Canva, etc.
     
+    // unpdf requiere Uint8Array, no Buffer
+    const data = new Uint8Array(buffer);
+    
     // mergePages: true une todo el texto en un solo string
-    const { text } = await extractText(buffer, { mergePages: true });
+    const { text } = await extractText(data, { mergePages: true });
     
     const trimmedText = text.trim();
     if (!trimmedText) {
