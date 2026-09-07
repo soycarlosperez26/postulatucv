@@ -73,10 +73,16 @@ export async function signIn(_prevState: unknown, formData: FormData) {
       return { error: "No se pudo crear la sesión. Por favor, intenta de nuevo." };
     }
 
-    // Revalidar primero el layout root para que Next.js reconozca el cambio de autenticación
-    revalidatePath("/", "layout");
-    // Luego revalidar específicamente /dashboard para asegurar que se actualice
-    revalidatePath("/dashboard");
+    // Revalidar rutas para que Next.js reconozca el cambio de autenticación.
+    // Envolvemos en try/catch: si revalidate falla, no debe bloquear el login exitoso.
+    try {
+      revalidatePath("/", "layout");
+      revalidatePath("/dashboard");
+    } catch (revalidateError) {
+      console.error("signIn revalidatePath failed (non-blocking):", {
+        message: revalidateError instanceof Error ? revalidateError.message : String(revalidateError),
+      });
+    }
     
     // Retornar success para que el cliente maneje el redirect
     // Esto evita que el middleware intercepte el redirect del server action
@@ -145,10 +151,16 @@ export async function signUp(_prevState: unknown, formData: FormData) {
       };
     }
 
-    // Revalidar primero el layout root para que Next.js reconozca el cambio de autenticación
-    revalidatePath("/", "layout");
-    // Luego revalidar específicamente /onboarding para asegurar que se actualice
-    revalidatePath("/onboarding");
+    // Revalidar rutas para que Next.js reconozca el cambio de autenticación.
+    // Envolvemos en try/catch: si revalidate falla, no debe bloquear el signup exitoso.
+    try {
+      revalidatePath("/", "layout");
+      revalidatePath("/onboarding");
+    } catch (revalidateError) {
+      console.error("signUp revalidatePath failed (non-blocking):", {
+        message: revalidateError instanceof Error ? revalidateError.message : String(revalidateError),
+      });
+    }
     
     // Retornar success para que el cliente maneje el redirect
     // Esto evita que el middleware intercepte el redirect del server action

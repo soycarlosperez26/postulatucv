@@ -41,12 +41,28 @@ export async function createClient() {
             cookiesToSet.forEach(({ name, value, options }) =>
               cookieStore.set(name, value, options)
             );
-          } catch (error) {
-            // Se llama desde un Server Component (no se pueden setear
-            // cookies ahí); el middleware se encarga de refrescar la sesión.
-            // En Server Actions sí se pueden setear cookies, así que si falla
-            // ahí es un error real que deberíamos loggear.
-            if (process.env.NODE_ENV === "development") {
+          } catch (error: unknown) {
+            // NEXT_REDIRECT y NEXT_NOT_FOUND son errores especiales de Next.js
+            // que deben propagarse siempre (son parte del flujo normal).
+            if (
+              error &&
+              typeof error === "object" &&
+              "digest" in error &&
+              typeof error.digest === "string" &&
+              (error.digest.startsWith("NEXT_REDIRECT") ||
+                error.digest.startsWith("NEXT_NOT_FOUND"))
+            ) {
+              throw error;
+            }
+
+            // En Server Actions y Route Handlers, errores de cookies deben
+            // propagarse (Supabase SSR requirement). Solo silenciar en
+            // Server Components donde setear cookies no es posible.
+            if (process.env.NODE_ENV !== "development") {
+              // En producción, propagar el error (Server Actions)
+              throw error;
+            } else {
+              // En desarrollo, loguear pero no lanzar (puede ser RSC)
               console.error("Error setting cookies:", error);
             }
           }
