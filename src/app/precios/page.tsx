@@ -97,7 +97,7 @@ export default async function PreciosPage() {
                       {pack.label}
                     </span>
                     {isRecommended && <Badge tone="brand">Mejor para empezar</Badge>}
-                    {isBestValue && <Badge tone="neutral">Mejor valor</Badge>}
+                    {isBestValue && <Badge tone="amber">Mejor valor</Badge>}
                   </div>
                   <span className="font-display text-[40px] font-bold leading-none tracking-[-0.03em] text-ink">
                     {formatCop(pack.amountCop)}
@@ -105,6 +105,11 @@ export default async function PreciosPage() {
                   <span className="text-[13.5px] text-muted">
                     {pricePerCredit(pack.amountCop, pack.credits)} por crédito
                   </span>
+                  {isRecommended && (
+                    <p className="text-[13.5px] font-medium text-ink-soft">
+                      Una semana de postulaciones serias.
+                    </p>
+                  )}
                 </div>
                 <ButtonLink
                   href={ctaHref}

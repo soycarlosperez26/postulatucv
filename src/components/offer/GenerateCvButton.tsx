@@ -42,8 +42,9 @@ export function GenerateCvButton({
 }) {
   const [state, formAction] = useActionState(generateCustomCvAction, undefined);
 
-  // Sin saldo no se muestra un botón que va a fallar: se ofrece comprar.
-  if (balance === 0) {
+  // Sin saldo: si YA tiene un CV, ofrece comprar (ya usó el crédito).
+  // Si NO tiene CV, deja generar (el welcome credit protege el primer análisis).
+  if (balance === 0 && hasCv) {
     return (
       <div className="flex flex-col items-end gap-1.5">
         <ButtonLink href="/dashboard/creditos" variant={variant}>

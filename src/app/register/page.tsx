@@ -1,6 +1,7 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { signUp } from "@/lib/actions/auth";
 import { SubmitButton } from "@/components/SubmitButton";
@@ -10,7 +11,14 @@ import { AuthShell } from "@/components/auth/AuthShell";
 import { Field, inputClass } from "@/components/ui/Field";
 
 export default function RegisterPage() {
+  const router = useRouter();
   const [state, formAction] = useActionState(signUp, undefined);
+
+  useEffect(() => {
+    if (state && 'success' in state && state.success && 'redirectTo' in state) {
+      router.push(state.redirectTo as string);
+    }
+  }, [state, router]);
 
   return (
     <AuthShell
