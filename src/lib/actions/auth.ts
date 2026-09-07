@@ -4,6 +4,14 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 
+function isNextControlFlowError(error: unknown): boolean {
+  if (!error || typeof error !== 'object') return false;
+  const digest = 'digest' in error && typeof (error as { digest?: unknown }).digest === 'string'
+    ? (error as { digest: string }).digest
+    : '';
+  return digest.startsWith('NEXT_REDIRECT') || digest.startsWith('NEXT_NOT_FOUND');
+}
+
 function getSiteUrl(): string {
   const url =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
@@ -74,20 +82,33 @@ export async function signIn(_prevState: unknown, formData: FormData) {
     }
 
     // Revalidar rutas para que Next.js reconozca el cambio de autenticación.
-    // Envolvemos en try/catch: si revalidate falla, no debe bloquear el login exitoso.
+    // non-blocking: catch y log, pero NO re-lanzar a menos que sea control-flow
     try {
       revalidatePath("/", "layout");
       revalidatePath("/dashboard");
-    } catch (revalidateError) {
-      console.error("signIn revalidatePath failed (non-blocking):", {
-        message: revalidateError instanceof Error ? revalidateError.message : String(revalidateError),
+    } catch (revalidateErr) {
+      // Si es control-flow de Next.js, re-lanzar
+      if (isNextControlFlowError(revalidateErr)) {
+        throw revalidateErr;
+      }
+      // Si es un error real, loggear pero no detener el login
+      console.error("signIn revalidatePath warning:", {
+        supabaseHostname,
+        message: revalidateErr instanceof Error ? revalidateErr.message : String(revalidateErr),
       });
     }
     
-    // Retornar success para que el cliente maneje el redirect
-    // Esto evita que el middleware intercepte el redirect del server action
-    return { success: true, redirectTo: "/dashboard" };
+    // CRITICAL: usar redirect() para que Next.js genere una respuesta HTTP 307
+    // real con los headers Set-Cookie. Si devolvemos { success, redirectTo }
+    // y el cliente hace router.push(), las cookies escritas por supabase.auth.signInWithPassword
+    // pueden perderse en producción (especialmente con custom domains).
+    redirect("/dashboard");
   } catch (err) {
+    // Si redirect() lanzó control-flow de Next.js, re-lanzar
+    if (isNextControlFlowError(err)) {
+      throw err;
+    }
+
     // Capturar errores de fetch/red que no generan error.code
     console.error("signIn exception:", {
       supabaseHostname,
@@ -152,20 +173,31 @@ export async function signUp(_prevState: unknown, formData: FormData) {
     }
 
     // Revalidar rutas para que Next.js reconozca el cambio de autenticación.
-    // Envolvemos en try/catch: si revalidate falla, no debe bloquear el signup exitoso.
+    // non-blocking: catch y log, pero NO re-lanzar a menos que sea control-flow
     try {
       revalidatePath("/", "layout");
       revalidatePath("/onboarding");
-    } catch (revalidateError) {
-      console.error("signUp revalidatePath failed (non-blocking):", {
-        message: revalidateError instanceof Error ? revalidateError.message : String(revalidateError),
+    } catch (revalidateErr) {
+      // Si es control-flow de Next.js, re-lanzar
+      if (isNextControlFlowError(revalidateErr)) {
+        throw revalidateErr;
+      }
+      // Si es un error real, loggear pero no detener el registro
+      console.error("signUp revalidatePath warning:", {
+        supabaseHostname,
+        message: revalidateErr instanceof Error ? revalidateErr.message : String(revalidateErr),
       });
     }
     
-    // Retornar success para que el cliente maneje el redirect
-    // Esto evita que el middleware intercepte el redirect del server action
-    return { success: true, redirectTo: "/onboarding" };
+    // CRITICAL: usar redirect() para que Next.js genere una respuesta HTTP 307
+    // real con los headers Set-Cookie, igual que signIn.
+    redirect("/onboarding");
   } catch (err) {
+    // Si redirect() lanzó control-flow de Next.js, re-lanzar
+    if (isNextControlFlowError(err)) {
+      throw err;
+    }
+
     // Capturar errores de fetch/red que no generan error.code
     console.error("signUp exception:", {
       supabaseHostname,

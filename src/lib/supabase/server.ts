@@ -2,6 +2,14 @@ import { createServerClient, type CookieOptions } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import type { Database } from "@/types/database";
 
+function isNextControlFlowError(error: unknown): boolean {
+  if (!error || typeof error !== 'object') return false;
+  const digest = 'digest' in error && typeof (error as { digest?: unknown }).digest === 'string'
+    ? (error as { digest: string }).digest
+    : '';
+  return digest.startsWith('NEXT_REDIRECT') || digest.startsWith('NEXT_NOT_FOUND');
+}
+
 /**
  * Verifica si Supabase está configurado con las variables de entorno necesarias.
  */
@@ -42,16 +50,8 @@ export async function createClient() {
               cookieStore.set(name, value, options)
             );
           } catch (error: unknown) {
-            // NEXT_REDIRECT y NEXT_NOT_FOUND son errores especiales de Next.js
-            // que deben propagarse siempre (son parte del flujo normal).
-            if (
-              error &&
-              typeof error === "object" &&
-              "digest" in error &&
-              typeof error.digest === "string" &&
-              (error.digest.startsWith("NEXT_REDIRECT") ||
-                error.digest.startsWith("NEXT_NOT_FOUND"))
-            ) {
+            // Si es control-flow de Next.js (redirect/notFound), re-lanzar siempre
+            if (isNextControlFlowError(error)) {
               throw error;
             }
 
