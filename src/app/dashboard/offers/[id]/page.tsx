@@ -18,6 +18,7 @@ import {
 } from "@/components/ui/Icons";
 import { OfferTabs } from "@/components/offer/OfferTabs";
 import { GenerateCvButton } from "@/components/offer/GenerateCvButton";
+import { ConversionCard } from "@/components/offer/ConversionCard";
 import type { JobRequirements } from "@/types/domain";
 
 function hostOf(url: string | null): string | null {
@@ -69,14 +70,17 @@ export default async function OfferDetailPage({
       .select("match_score, matched_keywords, missing_keywords, created_at")
       .eq("job_offer_id", id)
       .eq("user_id", user.id)
-      .order("created_at", { ascending: false }),
+      .order("created_at", { ascending: false })
+      .limit(2), // Traemos las 2 más recientes para obtener el before score
     getBalance(),
   ]);
 
   const balance = creditBalance?.total ?? null;
   const latest = tailoredRows?.[0] ?? null;
+  const previous = tailoredRows?.[1] ?? null; // Score anterior si existe
   const versions = tailoredRows?.length ?? 0;
   const score = latest ? Number(latest.match_score) : null;
+  const previousScore = previous ? Number(previous.match_score) : undefined;
   const band = scoreBand(score);
   const requirements = (offer.parsed ?? {}) as Partial<JobRequirements>;
   const required = requirements.requiredSkills ?? [];
@@ -111,6 +115,13 @@ export default async function OfferDetailPage({
           </div>
         </div>
       </Card>
+
+      {balance === 0 && (
+        <ConversionCard
+          beforeScore={previousScore}
+          afterScore={score ?? 0}
+        />
+      )}
 
       {matched.length > 0 && (
         <Card className="flex flex-col gap-3 px-6 py-5">
