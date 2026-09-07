@@ -1,15 +1,45 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { uploadCv } from "@/lib/actions/profile";
 import { SubmitButton } from "@/components/SubmitButton";
 import { FormError } from "@/components/FormError";
 import { AuthShell } from "@/components/auth/AuthShell";
 import { Field } from "@/components/ui/Field";
 import { CheckIcon } from "@/components/ui/Icons";
+import { MAX_CV_SIZE_BYTES } from "@/lib/fileUtils";
 
 export default function OnboardingPage() {
   const [state, formAction] = useActionState(uploadCv, undefined);
+  const [clientError, setClientError] = useState<string | undefined>();
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setClientError(undefined);
+    const file = e.target.files?.[0];
+    
+    if (!file) {
+      setSelectedFile(null);
+      return;
+    }
+
+    if (file.type !== "application/pdf") {
+      setClientError("Por ahora solo se aceptan archivos PDF.");
+      setSelectedFile(null);
+      e.target.value = "";
+      return;
+    }
+
+    if (file.size > MAX_CV_SIZE_BYTES) {
+      const maxSizeMB = Math.floor(MAX_CV_SIZE_BYTES / (1024 * 1024));
+      setClientError(`El archivo es muy grande. El tamaño máximo es ${maxSizeMB} MB.`);
+      setSelectedFile(null);
+      e.target.value = "";
+      return;
+    }
+
+    setSelectedFile(file);
+  };
 
   return (
     <AuthShell
@@ -17,7 +47,7 @@ export default function OnboardingPage() {
       subtitle="Lo leemos una sola vez y lo usamos como fuente para todas tus postulaciones."
     >
       <form action={formAction} className="flex flex-col gap-5">
-        <FormError message={state?.error} />
+        <FormError message={clientError || state?.error} />
 
         <Field
           id="cv"
@@ -29,6 +59,7 @@ export default function OnboardingPage() {
             name="cv"
             type="file"
             accept="application/pdf"
+            onChange={handleFileChange}
             required
             className="w-full min-w-0 cursor-pointer rounded-control border border-dashed border-line-strong bg-canvas px-3 py-3 text-sm text-ink-soft file:mr-3 file:cursor-pointer file:rounded-md file:border-0 file:bg-brand file:px-3 file:py-1.5 file:text-sm file:font-semibold file:text-surface"
           />
