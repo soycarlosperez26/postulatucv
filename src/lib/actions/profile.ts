@@ -6,7 +6,8 @@ import { extractTextFromPdf } from "@/lib/pdf";
 import { extractCvProfile } from "@/lib/ai/extractCvProfile";
 import { sanitizeFilename, validateCvFile } from "@/lib/fileUtils";
 
-const BUCKET = process.env.SUPABASE_CV_BUCKET ?? "cvs";
+// Usar || en lugar de ?? para manejar strings vacíos además de null/undefined
+const BUCKET = process.env.SUPABASE_CV_BUCKET?.trim() || "cvs";
 
 /**
  * Server action del onboarding: recibe el PDF del CV, extrae el texto,
@@ -80,18 +81,37 @@ export async function uploadCv(_prevState: unknown, formData: FormData) {
     bufferSize: buffer.length,
   });
 
+  // Supabase Storage acepta Uint8Array, Blob, o File
+  // Convertir Buffer a Uint8Array para compatibilidad
+  const fileData = new Uint8Array(buffer);
+  
   const { error: uploadError } = await supabase.storage
     .from(BUCKET)
-    .upload(storagePath, buffer, { contentType: "application/pdf" });
+    .upload(storagePath, fileData, { contentType: "application/pdf" });
 
   if (uploadError) {
     console.error("[uploadCv] Supabase Storage upload failed", {
       bucket: BUCKET,
       storagePath,
-      error: uploadError.message,
-      errorCode: (uploadError as any).statusCode,
+      errorMessage: uploadError.message,
+      errorName: uploadError.name,
+      errorDetails: uploadError,
     });
-    return { error: "No se pudo guardar el archivo. Prueba de nuevo." };
+    
+    // Dar mensaje más específico según el tipo de error
+    if (uploadError.message?.includes("Bucket not found") || 
+        uploadError.message?.includes("bucket")) {
+      return { error: "Error de configuración del almacenamiento. Contacta soporte." };
+    }
+    
+    if (uploadError.message?.includes("policy") || 
+        uploadError.message?.includes("permission") ||
+        uploadError.message?.includes("RLS")) {
+      return { error: "No tienes permisos para subir archivos. Intenta cerrar sesión y volver a entrar." };
+    }
+    
+    // Error genérico pero con más contexto en logs
+    return { error: `No se pudo guardar el archivo: ${uploadError.message}` };
   }
 
   console.log("[uploadCv] File uploaded successfully to Storage", { storagePath });
