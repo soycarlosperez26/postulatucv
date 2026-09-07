@@ -21,9 +21,10 @@ function getDeepSeekClient(): OpenAI {
   return client;
 }
 
-// DeepSeek es compatible con la API de OpenAI. "deepseek-chat" (DeepSeek-V3)
-// es el modelo con soporte de function calling; configurable por env var.
-export const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL ?? "deepseek-chat";
+// DeepSeek es compatible con la API de OpenAI.
+// Modelos válidos: deepseek-v4-pro, deepseek-v4-flash, deepseek-v4-flash-vision-exp
+// Usamos deepseek-v4-flash (rápido y económico) por defecto.
+export const DEEPSEEK_MODEL = process.env.DEEPSEEK_MODEL?.trim() || "deepseek-v4-flash";
 
 /**
  * Llama a DeepSeek forzando que responda invocando una única tool
