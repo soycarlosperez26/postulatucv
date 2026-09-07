@@ -66,7 +66,10 @@ export async function callDeepSeekTool<T = unknown>(params: {
       type: "function",
       function: { name: params.toolName },
     },
-  });
+    // DeepSeek v4 models enable thinking mode by default, which rejects tool_choice.
+    // Disable thinking to allow forced tool calling.
+    thinking: { type: "disabled" },
+  } as OpenAI.Chat.ChatCompletionCreateParamsNonStreaming);
 
   const toolCall = response.choices[0]?.message?.tool_calls?.[0];
 
