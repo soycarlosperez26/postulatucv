@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
+import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 
 export const metadata: Metadata = {
   title: "Adaptar la hoja de vida a una oferta (sin inventar experiencia)",
@@ -64,6 +65,8 @@ export default function AdaptarHojaDeVidaPage() {
             Analizar mi primera oferta — gratis
           </ButtonLink>
         </div>
+
+        <GuiaRelatedLinks currentPath="/guia/adaptar-hoja-de-vida-a-una-oferta" />
       </div>
     </article>
   );
