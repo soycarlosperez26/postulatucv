@@ -13,6 +13,19 @@ function isNextControlFlowError(error: unknown): boolean {
 }
 
 function getSiteUrl(): string {
+  // En Preview deployments, usar la URL del branch (estable) para que el callback
+  // vuelva a la misma URL sin importar el deployment específico.
+  // VERCEL_ENV = "production" | "preview" | "development"
+  // VERCEL_BRANCH_URL = URL estable del branch (e.g. project-git-branch-team.vercel.app)
+  // VERCEL_URL = URL única por deployment (e.g. project-f6kc2xaff-team.vercel.app)
+  if (process.env.VERCEL_ENV === "preview") {
+    const host = process.env.VERCEL_BRANCH_URL || process.env.VERCEL_URL;
+    if (host) {
+      return `https://${host}`.replace(/\/$/, "");
+    }
+  }
+  
+  // En producción y desarrollo, usar NEXT_PUBLIC_SITE_URL configurada
   const url =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
@@ -212,6 +225,9 @@ export async function signUp(_prevState: unknown, formData: FormData) {
  * `action` de un <form>: Supabase construye la URL de autorización de
  * Google y la devolvemos como redirect. El intercambio del código por
  * sesión ocurre en /auth/callback cuando Google redirige de vuelta.
+ * 
+ * En Preview deployments (VERCEL_ENV=preview), el callback apunta
+ * automáticamente a la URL del preview para permitir QA antes de merge.
  */
 export async function signInWithGoogle() {
   if (!isSupabaseConfigured()) {
@@ -219,20 +235,29 @@ export async function signInWithGoogle() {
   }
 
   const supabase = await createClient();
+  const siteUrl = getSiteUrl();
+  const redirectTo = `${siteUrl}/auth/callback?next=/dashboard`;
+
+  console.log("signInWithGoogle: requesting OAuth URL", {
+    siteUrl,
+    redirectTo,
+  });
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${getSiteUrl()}/auth/callback?next=/dashboard`,
+      redirectTo,
     },
   });
 
   if (error || !data?.url) {
+    console.error("signInWithGoogle error:", error);
     throw new Error(
       error?.message ?? "No se pudo iniciar el login con Google."
     );
   }
 
+  console.log("signInWithGoogle: redirecting to Google OAuth URL");
   redirect(data.url);
 }
 
