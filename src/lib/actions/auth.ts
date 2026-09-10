@@ -13,10 +13,32 @@ function isNextControlFlowError(error: unknown): boolean {
 }
 
 function getSiteUrl(): string {
+  // En producción, NUNCA usar VERCEL_URL (genera hostnames de deployment internos).
+  // OAuth requiere el dominio público real.
+  const isProduction = process.env.VERCEL_ENV === "production" || 
+                      (process.env.NODE_ENV === "production" && process.env.VERCEL);
+  
+  if (isProduction) {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+    if (siteUrl) {
+      return siteUrl.replace(/\/$/, "");
+    }
+    // Hard default para producción: el dominio personalizado real
+    console.warn(
+      "getSiteUrl: NEXT_PUBLIC_SITE_URL no configurado en producción. " +
+      "Usando hard default https://www.postulatucv.online. " +
+      "Configura NEXT_PUBLIC_SITE_URL=https://www.postulatucv.online en Vercel (Production env)."
+    );
+    return "https://www.postulatucv.online";
+  }
+  
+  // Preview/development: preferir VERCEL_BRANCH_URL, después VERCEL_URL, finalmente localhost
   const url =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
+    (process.env.VERCEL_BRANCH_URL ? `https://${process.env.VERCEL_BRANCH_URL}` : "") ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
     "http://localhost:3000";
+  
   return url.replace(/\/$/, "");
 }
 
