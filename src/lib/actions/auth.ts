@@ -20,12 +20,46 @@ function getSiteUrl(): string {
   
   if (isProduction) {
     const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+    
+    // Validar que el valor sea correcto para producción
     if (siteUrl) {
-      return siteUrl.replace(/\/$/, "");
+      try {
+        const url = new URL(siteUrl);
+        
+        // Rechazar URLs de .vercel.app en producción (son deployment internos)
+        if (url.hostname.endsWith('.vercel.app')) {
+          console.error(
+            "getSiteUrl: NEXT_PUBLIC_SITE_URL contiene hostname .vercel.app en producción: " +
+            `${url.hostname}. Esto causará fallos de OAuth. ` +
+            "Usando hard default https://www.postulatucv.online"
+          );
+          return "https://www.postulatucv.online";
+        }
+        
+        // Validar que tenga https (OAuth lo requiere)
+        if (url.protocol !== 'https:') {
+          console.error(
+            `getSiteUrl: NEXT_PUBLIC_SITE_URL usa protocolo no-https (${url.protocol}) en producción. ` +
+            "OAuth requiere https. Usando hard default https://www.postulatucv.online"
+          );
+          return "https://www.postulatucv.online";
+        }
+        
+        // Validación pasó: usar el valor configurado
+        return siteUrl.replace(/\/$/, "");
+      } catch (err) {
+        // URL inválida (mal formato, etc.)
+        console.error(
+          `getSiteUrl: NEXT_PUBLIC_SITE_URL tiene formato inválido: "${siteUrl}". ` +
+          "Usando hard default https://www.postulatucv.online"
+        );
+        return "https://www.postulatucv.online";
+      }
     }
-    // Hard default para producción: el dominio personalizado real
+    
+    // Variable no configurada o vacía
     console.warn(
-      "getSiteUrl: NEXT_PUBLIC_SITE_URL no configurado en producción. " +
+      "getSiteUrl: NEXT_PUBLIC_SITE_URL no configurado o vacío en producción. " +
       "Usando hard default https://www.postulatucv.online. " +
       "Configura NEXT_PUBLIC_SITE_URL=https://www.postulatucv.online en Vercel (Production env)."
     );

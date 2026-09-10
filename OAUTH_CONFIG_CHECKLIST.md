@@ -14,8 +14,12 @@ NEXT_PUBLIC_SITE_URL=https://www.postulatucv.online
 
 **Por qué es crítico:**
 - Google OAuth requiere un `redirectTo` URL que apunte al dominio público real.
-- Si `NEXT_PUBLIC_SITE_URL` no está configurada, el código caerá en el hard default `https://www.postulatucv.online`.
-- Sin esta variable, previamente el código usaba `VERCEL_URL`, que genera hostnames de deployment internos (ej: `postulatucv-dlhpca76s-projects.vercel.app`), causando que el callback de Google falle con `auth_callback_failed`.
+- El código valida el valor de `NEXT_PUBLIC_SITE_URL` y rechaza valores incorrectos:
+  - URLs con hostname `.vercel.app` (deployments internos)
+  - URLs sin `https://` (OAuth requiere SSL)
+  - Formato inválido o valor vacío
+- Si la validación falla o la variable no está configurada, el código usa el hard default `https://www.postulatucv.online` y loggea el error.
+- Previamente, el código usaba `VERCEL_URL` como fallback, causando que el callback de Google fallara con `auth_callback_failed`.
 
 ### 2. Configuración en Google Cloud Console
 
@@ -55,27 +59,41 @@ Síntomas:
 - UI muestra: "Error al iniciar sesión con Google. Por favor, intenta de nuevo."
 - No se crea sesión
 
-Causa:
-- `redirectTo` URL usaba hostname de deployment en lugar del dominio personalizado
-- Supabase no pudo completar el intercambio de código por sesión
+Causas posibles:
+- `NEXT_PUBLIC_SITE_URL` contiene un hostname `.vercel.app` (deployment interno)
+- `NEXT_PUBLIC_SITE_URL` usa `http://` en lugar de `https://`
+- `NEXT_PUBLIC_SITE_URL` tiene formato inválido o está vacía después de decrypt
+- Variable no configurada (usará hard default automáticamente)
 
 Solución:
-- Verificar que `NEXT_PUBLIC_SITE_URL=https://www.postulatucv.online` esté configurada en Production
-- Re-deployar si fue agregada recientemente
-- Verificar logs de runtime en Vercel para ver qué URL se construyó
+1. Verificar logs de runtime en Vercel para ver el error específico
+2. Buscar en logs: `"getSiteUrl:"` para ver qué validación falló
+3. Corregir el valor: `NEXT_PUBLIC_SITE_URL=https://www.postulatucv.online`
+4. Re-deployar para aplicar el cambio
+5. Hacer smoke test: logout → "Continuar con Google" → verificar redirect correcto
 
 ## Arquitectura del Fix
 
 La función `getSiteUrl()` en `src/lib/actions/auth.ts` ahora:
 
 1. **Detecta entorno de producción** vía `VERCEL_ENV === "production"` o `NODE_ENV === "production"` en Vercel
-2. **En producción:**
-   - Usa `NEXT_PUBLIC_SITE_URL` si está configurada
-   - Si no está configurada, usa hard default `https://www.postulatucv.online` y loggea un warning
-   - **NUNCA usa `VERCEL_URL`** en producción
+
+2. **En producción - Validación estricta:**
+   - Lee `NEXT_PUBLIC_SITE_URL` y la valida:
+     - ✅ Debe ser URL válida con formato correcto
+     - ✅ Debe usar protocolo `https://` (OAuth lo requiere)
+     - ✅ El hostname NO debe terminar en `.vercel.app` (son deployments internos)
+   - Si pasa validación: usa ese valor
+   - Si falla validación o está vacía: usa hard default `https://www.postulatucv.online` y loggea error específico
+   - **NUNCA usa `VERCEL_URL`** en producción bajo ninguna circunstancia
+
 3. **En preview/development:**
+   - Sin validación estricta (permite flexibilidad para testing)
    - Prioriza: `NEXT_PUBLIC_SITE_URL` → `VERCEL_BRANCH_URL` → `VERCEL_URL` → `localhost:3000`
-   - Permite flexibilidad para testing
+
+4. **Logging detallado:**
+   - Cada fallo de validación genera un log específico con el problema detectado
+   - Permite debugging rápido en Vercel runtime logs
 
 ## Historia
 
