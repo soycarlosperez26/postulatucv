@@ -1,6 +1,6 @@
 "use client";
 
-import { Suspense, useActionState, useEffect, useState } from "react";
+import { Suspense, useActionState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { signIn } from "@/lib/actions/auth";
@@ -14,14 +14,10 @@ function LoginForm() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const [state, formAction] = useActionState(signIn, undefined);
-  const [urlError, setUrlError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const error = searchParams.get("error");
-    if (error === "auth_callback_failed") {
-      setUrlError("Error al iniciar sesión con Google. Por favor, intenta de nuevo.");
-    }
-  }, [searchParams]);
+  
+  const urlError = searchParams.get("error") === "auth_callback_failed"
+    ? "Error al iniciar sesión con Google. Por favor, intenta de nuevo."
+    : null;
 
   useEffect(() => {
     if (state && 'success' in state && state.success && 'redirectTo' in state) {
