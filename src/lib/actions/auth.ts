@@ -219,20 +219,29 @@ export async function signInWithGoogle() {
   }
 
   const supabase = await createClient();
+  const siteUrl = getSiteUrl();
+  const redirectTo = `${siteUrl}/auth/callback?next=/dashboard`;
+
+  console.log("signInWithGoogle: requesting OAuth URL", {
+    siteUrl,
+    redirectTo,
+  });
 
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "google",
     options: {
-      redirectTo: `${getSiteUrl()}/auth/callback?next=/dashboard`,
+      redirectTo,
     },
   });
 
   if (error || !data?.url) {
+    console.error("signInWithGoogle error:", error);
     throw new Error(
       error?.message ?? "No se pudo iniciar el login con Google."
     );
   }
 
+  console.log("signInWithGoogle: redirecting to Google OAuth URL");
   redirect(data.url);
 }
 

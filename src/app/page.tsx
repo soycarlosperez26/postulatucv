@@ -8,6 +8,7 @@ import { PublicHeader } from "@/components/public/PublicHeader";
 import { PublicFooter } from "@/components/public/PublicFooter";
 import { CtaButton } from "@/components/public/CtaButton";
 import { formatCop } from "@/lib/plan";
+import { OAuthCallbackHandler } from "@/components/auth/OAuthCallbackHandler";
 
 export default async function HomePage() {
   let user = null;
@@ -26,6 +27,7 @@ export default async function HomePage() {
 
   return (
     <main className="flex flex-1 flex-col">
+      <OAuthCallbackHandler />
       <PublicHeader />
 
       {/* Héroe */}

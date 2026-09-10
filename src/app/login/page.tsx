@@ -1,7 +1,7 @@
 "use client";
 
-import { useActionState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useActionState, useEffect, useState } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { signIn } from "@/lib/actions/auth";
 import { SubmitButton } from "@/components/SubmitButton";
@@ -12,7 +12,16 @@ import { Field, inputClass } from "@/components/ui/Field";
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [state, formAction] = useActionState(signIn, undefined);
+  const [urlError, setUrlError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const error = searchParams.get("error");
+    if (error === "auth_callback_failed") {
+      setUrlError("Error al iniciar sesión con Google. Por favor, intenta de nuevo.");
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (state && 'success' in state && state.success && 'redirectTo' in state) {
@@ -52,7 +61,7 @@ export default function LoginPage() {
           }
         }}
       >
-        <FormError message={state?.error} />
+        <FormError message={urlError || state?.error} />
 
         <Field id="email" label="Correo">
           <input
