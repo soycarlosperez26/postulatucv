@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
+import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 
 export const metadata: Metadata = {
   title: "Por qué no te llaman si mandas el mismo CV a todas las vacantes",
@@ -65,6 +66,8 @@ export default function PorQueNoMeLlamanPage() {
             Analizar mi primera oferta — gratis
           </ButtonLink>
         </div>
+
+        <GuiaRelatedLinks currentPath="/guia/por-que-no-me-llaman" />
       </div>
     </article>
   );

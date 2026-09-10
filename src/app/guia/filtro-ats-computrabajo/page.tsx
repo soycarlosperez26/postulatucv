@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
+import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 
 export const metadata: Metadata = {
   title: "Filtro ATS en Computrabajo y Elempleo: cómo pasa tu hoja de vida",
@@ -88,6 +89,8 @@ export default function FiltroAtsComputrabajoPage() {
             Analizar mi primera oferta — gratis
           </ButtonLink>
         </div>
+
+        <GuiaRelatedLinks currentPath="/guia/filtro-ats-computrabajo" />
       </div>
     </article>
   );
