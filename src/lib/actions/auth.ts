@@ -222,6 +222,9 @@ export async function signUp(_prevState: unknown, formData: FormData) {
  * `action` de un <form>: Supabase construye la URL de autorización de
  * Google y la devolvemos como redirect. El intercambio del código por
  * sesión ocurre en /auth/callback cuando Google redirige de vuelta.
+ * 
+ * En Preview deployments (VERCEL_ENV=preview), el callback apunta
+ * automáticamente a la URL del preview para permitir QA antes de merge.
  */
 export async function signInWithGoogle() {
   if (!isSupabaseConfigured()) {
