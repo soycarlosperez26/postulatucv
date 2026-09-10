@@ -13,6 +13,16 @@ function isNextControlFlowError(error: unknown): boolean {
 }
 
 function getSiteUrl(): string {
+  // En Preview deployments, usar siempre VERCEL_URL para que el callback
+  // vuelva al preview en lugar de redirigir a producción.
+  // VERCEL_ENV = "production" | "preview" | "development"
+  const isPreview = process.env.VERCEL_ENV === "preview";
+  
+  if (isPreview && process.env.VERCEL_URL) {
+    return `https://${process.env.VERCEL_URL}`;
+  }
+  
+  // En producción y desarrollo, usar NEXT_PUBLIC_SITE_URL configurada
   const url =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
     (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||

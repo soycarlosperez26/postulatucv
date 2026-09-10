@@ -35,6 +35,8 @@ https://www.postulatucv.online/auth/callback
 https://www.postulatucv.online/*
 https://postulatucv.online/auth/callback
 https://postulatucv.online/*
+https://*-soycarlosperez26s-projects.vercel.app/auth/callback
+https://*-soycarlosperez26s-projects.vercel.app/*
 http://localhost:3000/auth/callback
 http://localhost:3000/*
 ```
@@ -47,6 +49,11 @@ http://localhost:3000/*
 **¿Por qué el wildcard (`/*`)?**
 - Permite que el callback funcione en `/` además de `/auth/callback`
 - Es un fallback seguro para configuraciones complejas
+
+**¿Por qué Preview URLs (`*-soycarlosperez26s-projects.vercel.app`)?**
+- Permite QA de OAuth en Preview deployments antes de producción
+- El wildcard `*` cubre todos los branch names y PR previews
+- Sin esto, OAuth en Preview redirige siempre a producción
 
 ### 3. Verificar variables de entorno
 
@@ -88,6 +95,8 @@ https://www.postulatucv.online/auth/callback
 https://www.postulatucv.online/
 https://postulatucv.online/auth/callback
 https://postulatucv.online/
+https://*-soycarlosperez26s-projects.vercel.app/auth/callback
+https://*-soycarlosperez26s-projects.vercel.app/
 http://localhost:3000/auth/callback
 ```
 
@@ -95,6 +104,7 @@ http://localhost:3000/auth/callback
 - La primera URI (`.supabase.co/auth/v1/callback`) es la que Supabase usa internamente
 - Las demás son fallbacks y para desarrollo local
 - Google necesita la barra final `/` para considerar la home como redirect URI válida
+- **Preview URLs** (`*-...-projects.vercel.app`) permiten QA de OAuth en Vercel Preview deployments antes de producción
 
 ### 4. Guardar cambios
 
