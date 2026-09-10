@@ -54,6 +54,7 @@ http://localhost:3000/*
 - Permite QA de OAuth en Preview deployments antes de producción
 - El wildcard `*` cubre todos los branch names y PR previews
 - Sin esto, OAuth en Preview redirige siempre a producción
+- **Nota:** El código usa `VERCEL_BRANCH_URL` (URL estable del branch) para que el callback funcione incluso después de nuevos deployments en el mismo branch
 
 ### 3. Verificar variables de entorno
 
@@ -105,6 +106,7 @@ http://localhost:3000/auth/callback
 - Las demás son fallbacks y para desarrollo local
 - Google necesita la barra final `/` para considerar la home como redirect URI válida
 - **Preview URLs** (`*-...-projects.vercel.app`) permiten QA de OAuth en Vercel Preview deployments antes de producción
+- **Nota técnica:** El código usa `VERCEL_BRANCH_URL` (URL estable del branch) en lugar de `VERCEL_URL` (única por deployment)
 
 ### 4. Guardar cambios
 

@@ -13,13 +13,16 @@ function isNextControlFlowError(error: unknown): boolean {
 }
 
 function getSiteUrl(): string {
-  // En Preview deployments, usar siempre VERCEL_URL para que el callback
-  // vuelva al preview en lugar de redirigir a producción.
+  // En Preview deployments, usar la URL del branch (estable) para que el callback
+  // vuelva a la misma URL sin importar el deployment específico.
   // VERCEL_ENV = "production" | "preview" | "development"
-  const isPreview = process.env.VERCEL_ENV === "preview";
-  
-  if (isPreview && process.env.VERCEL_URL) {
-    return `https://${process.env.VERCEL_URL}`;
+  // VERCEL_BRANCH_URL = URL estable del branch (e.g. project-git-branch-team.vercel.app)
+  // VERCEL_URL = URL única por deployment (e.g. project-f6kc2xaff-team.vercel.app)
+  if (process.env.VERCEL_ENV === "preview") {
+    const host = process.env.VERCEL_BRANCH_URL || process.env.VERCEL_URL;
+    if (host) {
+      return `https://${host}`.replace(/\/$/, "");
+    }
   }
   
   // En producción y desarrollo, usar NEXT_PUBLIC_SITE_URL configurada
