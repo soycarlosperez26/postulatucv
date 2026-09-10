@@ -13,6 +13,58 @@ function isNextControlFlowError(error: unknown): boolean {
 }
 
 function getSiteUrl(): string {
+  // En producción, NUNCA usar VERCEL_URL (genera hostnames de deployment internos).
+  // OAuth requiere el dominio público real.
+  const isProduction = process.env.VERCEL_ENV === "production";
+  
+  if (isProduction) {
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+    
+    // Validar que el valor sea correcto para producción
+    if (siteUrl) {
+      try {
+        const url = new URL(siteUrl);
+        
+        // Rechazar URLs de .vercel.app en producción (son deployment internos)
+        if (url.hostname.endsWith('.vercel.app')) {
+          console.error(
+            "getSiteUrl: NEXT_PUBLIC_SITE_URL contiene hostname .vercel.app en producción: " +
+            `${url.hostname}. Esto causará fallos de OAuth. ` +
+            "Usando hard default https://www.postulatucv.online"
+          );
+          return "https://www.postulatucv.online";
+        }
+        
+        // Validar que tenga https (OAuth lo requiere)
+        if (url.protocol !== 'https:') {
+          console.error(
+            `getSiteUrl: NEXT_PUBLIC_SITE_URL usa protocolo no-https (${url.protocol}) en producción. ` +
+            "OAuth requiere https. Usando hard default https://www.postulatucv.online"
+          );
+          return "https://www.postulatucv.online";
+        }
+        
+        // Validación pasó: usar el valor configurado
+        return siteUrl.replace(/\/$/, "");
+      } catch (err) {
+        // URL inválida (mal formato, etc.)
+        console.error(
+          `getSiteUrl: NEXT_PUBLIC_SITE_URL tiene formato inválido: "${siteUrl}". ` +
+          "Usando hard default https://www.postulatucv.online"
+        );
+        return "https://www.postulatucv.online";
+      }
+    }
+    
+    // Variable no configurada o vacía
+    console.warn(
+      "getSiteUrl: NEXT_PUBLIC_SITE_URL no configurado o vacío en producción. " +
+      "Usando hard default https://www.postulatucv.online. " +
+      "Configura NEXT_PUBLIC_SITE_URL=https://www.postulatucv.online en Vercel (Production env)."
+    );
+    return "https://www.postulatucv.online";
+  }
+  
   // En Preview deployments, usar la URL del branch (estable) para que el callback
   // vuelva a la misma URL sin importar el deployment específico.
   // VERCEL_ENV = "production" | "preview" | "development"
@@ -25,11 +77,11 @@ function getSiteUrl(): string {
     }
   }
   
-  // En producción y desarrollo, usar NEXT_PUBLIC_SITE_URL configurada
+  // En desarrollo, usar NEXT_PUBLIC_SITE_URL configurada o localhost
   const url =
     process.env.NEXT_PUBLIC_SITE_URL?.trim() ||
-    (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "") ||
     "http://localhost:3000";
+  
   return url.replace(/\/$/, "");
 }
 
