@@ -19,7 +19,7 @@ export const CvProfileSchema = z.object({
         company: z.string(),
         role: z.string(),
         startDate: z.string().optional().default(""),
-        endDate: z.string().optional().default(""),
+        endDate: z.string().nullish().transform((val) => val ?? ""),
         current: z.boolean().optional().default(false),
         achievements: z.array(z.string()).default([]),
       })
@@ -29,7 +29,7 @@ export const CvProfileSchema = z.object({
     .array(
       z.object({
         institution: z.string(),
-        degree: z.string().optional().default(""),
+        degree: z.string().nullish().transform((val) => val ?? ""),
         field: z.string().optional().default(""),
         startDate: z.string().optional().default(""),
         endDate: z.string().optional().default(""),
