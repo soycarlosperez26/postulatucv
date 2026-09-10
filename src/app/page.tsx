@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
@@ -27,7 +28,9 @@ export default async function HomePage() {
 
   return (
     <main className="flex flex-1 flex-col">
-      <OAuthCallbackHandler />
+      <Suspense fallback={null}>
+        <OAuthCallbackHandler />
+      </Suspense>
       <PublicHeader />
 
       {/* Héroe */}
