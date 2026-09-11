@@ -4,37 +4,52 @@ import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Hoja de vida para Computrabajo: qué miran antes del reclutador",
+  title: "Hoja de vida para Computrabajo: qué miran primero",
   description:
-    "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera.",
+    "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera del filtro.",
   alternates: {
     canonical:
       "https://www.postulatucv.online/guia/hoja-de-vida-computrabajo",
   },
   openGraph: {
-    title: "Hoja de vida para Computrabajo: qué miran antes del reclutador",
+    title: "Hoja de vida para Computrabajo: qué miran primero",
     description:
-      "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera.",
+      "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera del filtro.",
     url: "https://www.postulatucv.online/guia/hoja-de-vida-computrabajo",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hoja de vida para Computrabajo: qué miran antes del reclutador",
+    title: "Hoja de vida para Computrabajo: qué miran primero",
     description:
-      "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera.",
+      "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera del filtro.",
   },
 };
 
 const faqs = [
   {
-    question: "¿Qué revisa el filtro de Computrabajo?",
+    question: "¿Qué miran en la hoja de vida en Computrabajo?",
     answer:
-      "PDF de texto (no escaneo), secciones claras de Experiencia/Educación/Habilidades, perfil alineado al cargo de esa vacante, y palabras clave de la oferta que ya estén en tu experiencia.",
+      "Perfil completo + archivo adjunto legible. Muchas empresas ordenan por coincidencia con la vacante antes de la revisión humana.",
   },
   {
-    question: "¿Cómo adapto mi HV para múltiples ofertas en Computrabajo?",
+    question: "¿Basta el perfil del portal sin PDF?",
     answer:
-      "Mantén un CV maestro como fuente de verdad. Por cada oferta: pega el texto, ve el score ATS, y descarga la versión adaptada. El maestro no se toca.",
+      "Mejor ambos: perfil al día y un PDF de texto alineado a esa oferta cuando postulas.",
+  },
+  {
+    question: "¿Debo usar la misma HV en todas las vacantes?",
+    answer:
+      "No es lo ideal. Un maestro + una versión (o enfoque) por aviso mejora el match.",
+  },
+  {
+    question: "¿Postula reemplaza Computrabajo?",
+    answer:
+      "No. Te ayuda a analizar la oferta y enfocar la HV; la postulación la haces tú en el portal.",
+  },
+  {
+    question: "¿Puedo probar gratis?",
+    answer:
+      "Sí: 1 crédito al registrarte para analizar tu primera oferta.",
   },
 ];
 

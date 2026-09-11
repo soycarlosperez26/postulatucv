@@ -4,21 +4,21 @@ import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Por qué no te llaman si mandas el mismo CV a todas las vacantes",
+  title: "Por qué no me llaman si mando el mismo CV",
   description:
     "Si postulas mucho y no te llaman, el primer filtro puede estar botando un HV genérico. Cómo ver el match con la oferta antes de enviar.",
   alternates: {
     canonical: "https://www.postulatucv.online/guia/por-que-no-me-llaman",
   },
   openGraph: {
-    title: "Por qué no te llaman si mandas el mismo CV a todas las vacantes",
+    title: "Por qué no me llaman si mando el mismo CV",
     description:
       "Si postulas mucho y no te llaman, el primer filtro puede estar botando un HV genérico. Cómo ver el match con la oferta antes de enviar.",
     url: "https://www.postulatucv.online/guia/por-que-no-me-llaman",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Por qué no te llaman si mandas el mismo CV a todas las vacantes",
+    title: "Por qué no me llaman si mando el mismo CV",
     description:
       "Si postulas mucho y no te llaman, el primer filtro puede estar botando un HV genérico. Cómo ver el match con la oferta antes de enviar.",
   },
@@ -26,19 +26,29 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "¿Por qué no me llaman si postulo a muchas vacantes?",
+    question: "¿Por qué postulo a muchas vacantes y no me llaman?",
     answer:
-      "El reclutador casi no ve todas las HV. Ve las que el ATS dejó arriba. Un archivo único para 30 vacantes diferentes te hace desaparecer sin llegar a entrevista.",
+      "A menudo el reclutador solo ve lo que el filtro dejó arriba. Un mismo PDF para 20 avisos distintos suele quedar mal rankeado.",
   },
   {
-    question: "¿Cuáles son las causas más comunes?",
+    question: "¿Es siempre culpa de la HV?",
     answer:
-      "El PDF no es texto legible para el filtro, las palabras clave de la oferta no aparecen aunque sepas hacer el trabajo, o el perfil profesional habla de otro cargo distinto al de esa vacante.",
+      "No. También hay cupos, timing y fit real. Pero formato ilegible y cero keywords de la oferta son causas frecuentes y arreglables.",
   },
   {
-    question: "¿Qué debo hacer para mejorar mis postulaciones?",
+    question: "¿Qué reviso primero?",
     answer:
-      "Toma una oferta real, pégala en Postula, mira el score ATS y las palabras faltantes. Si el hueco es real (no lo hiciste), esa vacante no es para estirar el CV. Si es de lenguaje, adapta la versión.",
+      "PDF de texto (no escaneo), perfil alineado al cargo de esa vacante, y palabras de la oferta que sí tengas en tu experiencia.",
+  },
+  {
+    question: "¿Postula garantiza que me llamen?",
+    answer:
+      "No. Te muestra compatibilidad ATS y una versión más enfocada. La llamada depende del proceso de la empresa.",
+  },
+  {
+    question: "¿Puedo diagnosticar mi HV sin pagar?",
+    answer:
+      "Sí: puedes empezar con diagnóstico de completitud al subir el PDF y 1 crédito gratis para analizar una oferta.",
   },
 ];
 

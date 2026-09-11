@@ -4,42 +4,52 @@ import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Adaptar la hoja de vida a una oferta (sin inventar experiencia)",
+  title: "Adaptar hoja de vida a una oferta (sin inventar)",
   description:
-    "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, palabras clave que sí tienes y una versión por oferta. El original no se modifica.",
+    "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, keywords que sí tienes y una versión por oferta. Tu archivo maestro no se modifica.",
   alternates: {
     canonical:
       "https://www.postulatucv.online/guia/adaptar-hoja-de-vida-a-una-oferta",
   },
   openGraph: {
-    title: "Adaptar la hoja de vida a una oferta (sin inventar experiencia)",
+    title: "Adaptar hoja de vida a una oferta (sin inventar)",
     description:
-      "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, palabras clave que sí tienes y una versión por oferta. El original no se modifica.",
+      "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, keywords que sí tienes y una versión por oferta. Tu archivo maestro no se modifica.",
     url: "https://www.postulatucv.online/guia/adaptar-hoja-de-vida-a-una-oferta",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adaptar la hoja de vida a una oferta (sin inventar experiencia)",
+    title: "Adaptar hoja de vida a una oferta (sin inventar)",
     description:
-      "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, palabras clave que sí tienes y una versión por oferta. El original no se modifica.",
+      "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, keywords que sí tienes y una versión por oferta. Tu archivo maestro no se modifica.",
   },
 };
 
 const faqs = [
   {
-    question: "¿Qué es el CV maestro?",
+    question: "¿Adaptar es mentir en la HV?",
     answer:
-      "Es tu fuente de verdad con todos tus cargos, fechas y logros. Postula no lo reescribe. Cada oferta genera un archivo adaptado aparte.",
+      "No. Es priorizar logros, herramientas y lenguaje que ya están en tu trayectoria y coinciden con esa vacante.",
   },
   {
-    question: "¿Cómo funciona el proceso de adaptación?",
+    question: "¿Debo reescribir el CV maestro cada vez?",
     answer:
-      "Pegas la oferta, ves la compatibilidad ATS (un cálculo real), revisas las palabras clave cubiertas y faltantes, y descargas la versión enfocada en esa vacante.",
+      "No. El maestro es la fuente de verdad. Por oferta se genera (o se guía) una versión enfocada; el original queda intacto.",
   },
   {
-    question: "¿Postula inventa experiencia?",
+    question: "¿Sirve para Computrabajo y Elempleo?",
     answer:
-      "No. No convertimos recomendaciones en cargos que no tuviste. Si el score sale bajo, es información real: esa oferta pide algo que tu maestro no cubre.",
+      "Sí: pegas el texto de la oferta de cualquiera de esos portales (o de la web de la empresa) y comparas.",
+  },
+  {
+    question: "¿Qué pasa si el score sale bajo?",
+    answer:
+      "Es información: la oferta pide algo que tu maestro no cubre. No inventes el hueco; busca otra vacante o suma evidencia real antes.",
+  },
+  {
+    question: "¿Cuánto cuesta adaptar con Postula?",
+    answer:
+      "1 crédito gratis al empezar. Luego packs: 5/$10.000, 15/$20.000, 50/$50.000 COP. Sin plan mensual.",
   },
 ];
 

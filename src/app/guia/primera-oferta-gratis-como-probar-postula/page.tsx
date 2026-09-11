@@ -4,37 +4,52 @@ import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Cómo probar Postula gratis: tu primera oferta con score ATS",
+  title: "Cómo probar Postula gratis: 1 crédito, sin Pro",
   description:
-    "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS sin tocar tu original.",
+    "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS. Packs en COP, sin plan mensual.",
   alternates: {
     canonical:
       "https://www.postulatucv.online/guia/primera-oferta-gratis-como-probar-postula",
   },
   openGraph: {
-    title: "Cómo probar Postula gratis: tu primera oferta con score ATS",
+    title: "Cómo probar Postula gratis: 1 crédito, sin Pro",
     description:
-      "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS sin tocar tu original.",
+      "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS. Packs en COP, sin plan mensual.",
     url: "https://www.postulatucv.online/guia/primera-oferta-gratis-como-probar-postula",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cómo probar Postula gratis: tu primera oferta con score ATS",
+    title: "Cómo probar Postula gratis: 1 crédito, sin Pro",
     description:
-      "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS sin tocar tu original.",
+      "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS. Packs en COP, sin plan mensual.",
   },
 };
 
 const faqs = [
   {
-    question: "¿Qué incluye la oferta gratis?",
+    question: "¿Qué incluye el crédito gratis?",
     answer:
-      "Al crear cuenta tienes 1 crédito para analizar una oferta completa: compatibilidad ATS, palabras cubiertas vs faltantes, y versión adaptada del CV. Tu maestro no se modifica.",
+      "Analizar una oferta contra tu HV maestro: compatibilidad ATS, keywords cubiertas/faltantes y enfoque de postulación. El original no se toca.",
   },
   {
-    question: "¿Cuánto cuestan los créditos adicionales?",
+    question: "¿Qué son los créditos CV en Postula?",
     answer:
-      "Packs desde $10.000 (5 créditos). 15 créditos cuestan $20.000. Los créditos comprados no vencen y no hay plan mensual obligatorio.",
+      "Unidades para analizar ofertas. Compras packs; no hay Pro mensual.",
+  },
+  {
+    question: "¿Cuánto cuestan los packs?",
+    answer:
+      "5 créditos $10.000 · 15 créditos $20.000 · 50 créditos $50.000 COP (precios live en /precios).",
+  },
+  {
+    question: "¿Los créditos vencen?",
+    answer:
+      "Los comprados no vencen (según política publicada en precios). El gratis es para probar.",
+  },
+  {
+    question: "¿Inventan experiencia para subir el score?",
+    answer:
+      "No. Si falta evidencia real, el score lo refleja. Tú decides.",
   },
 ];
 
@@ -43,7 +58,7 @@ export default function PrimeraOfertaGratisPage() {
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
       <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-        Una oferta gratis. Sin suscripción en dólares.
+        Una oferta gratis. Créditos en pesos. Sin suscripción mensual.
       </h1>
 
       <div className="mt-8 space-y-6 text-lg leading-relaxed text-ink-soft">

@@ -4,42 +4,52 @@ import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Formato ATS para hoja de vida en Colombia",
+  title: "Formato ATS hoja de vida Colombia (guía clara)",
   description:
-    "Cómo armar una HV en Colombia que un ATS pueda leer: estructura, PDF, palabras clave y lo que no debes inventar.",
+    "Cómo armar una HV en Colombia que un ATS pueda leer: una columna, PDF de texto, secciones estándar y keywords honestas de la vacante.",
   alternates: {
     canonical:
       "https://www.postulatucv.online/guia/formato-ats-hoja-de-vida-colombia",
   },
   openGraph: {
-    title: "Formato ATS para hoja de vida en Colombia",
+    title: "Formato ATS hoja de vida Colombia (guía clara)",
     description:
-      "Cómo armar una HV en Colombia que un ATS pueda leer: estructura, PDF, palabras clave y lo que no debes inventar.",
+      "Cómo armar una HV en Colombia que un ATS pueda leer: una columna, PDF de texto, secciones estándar y keywords honestas de la vacante.",
     url: "https://www.postulatucv.online/guia/formato-ats-hoja-de-vida-colombia",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Formato ATS para hoja de vida en Colombia",
+    title: "Formato ATS hoja de vida Colombia (guía clara)",
     description:
-      "Cómo armar una HV en Colombia que un ATS pueda leer: estructura, PDF, palabras clave y lo que no debes inventar.",
+      "Cómo armar una HV en Colombia que un ATS pueda leer: una columna, PDF de texto, secciones estándar y keywords honestas de la vacante.",
   },
 };
 
 const faqs = [
   {
-    question: "¿Qué estructura debe tener una HV compatible con ATS?",
+    question: "¿Qué es una hoja de vida ATS en Colombia?",
     answer:
-      "Nombre y contacto en el cuerpo del documento, perfil profesional corto, experiencia de más reciente a más vieja con logros, educación, habilidades con nombres reales de herramientas, y ciudad.",
+      "Una HV con texto recuperable, secciones reconocibles (Experiencia, Educación, Habilidades) y sin adornos que rompan la lectura automática.",
   },
   {
-    question: "¿Qué elementos rompen la lectura del ATS?",
+    question: "¿PDF o plantilla con mucho diseño?",
     answer:
-      "Tablas, dos columnas, iconos, texto en imagen, encabezados/pies de página con información de contacto, y PDFs escaneados.",
+      "PDF de texto seleccionable, una columna. Evita tablas complejas, iconos que esconden cargos y escaneos.",
   },
   {
-    question: "¿Cómo uso las palabras clave correctamente?",
+    question: "¿Debo poner foto y cédula?",
     answer:
-      "Copia de la oferta solo los términos que ya aplican a tu experiencia. No agregues habilidades que no tienes. Postula te muestra el delta entre lo que tienes y lo que piden.",
+      "No es obligatorio para la mayoría de postulaciones privadas; prioriza contacto claro en el cuerpo del documento.",
+  },
+  {
+    question: "¿El formato solo basta?",
+    answer:
+      "No. Sin adaptar palabras reales de la oferta, un formato limpio sigue perdiendo match.",
+  },
+  {
+    question: "¿Postula cambia el formato de mi original?",
+    answer:
+      "No reescribe tu maestro a tus espaldas. Analiza y ayuda a enfocar una versión por oferta sin inventar experiencia.",
   },
 ];
 

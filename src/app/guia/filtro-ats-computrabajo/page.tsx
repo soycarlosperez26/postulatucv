@@ -4,41 +4,51 @@ import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Filtro ATS en Computrabajo y Elempleo: cómo pasa tu hoja de vida",
+  title: "Filtro ATS Computrabajo: cómo pasa tu hoja de vida",
   description:
-    "Cómo leen el ATS de Computrabajo y Elempleo tu HV, qué palabras clave miran y cómo adaptar cada postulación sin inventar experiencia.",
+    "Qué mira el filtro ATS en Computrabajo y Elempleo, por qué un PDF genérico te deja fuera y cómo adaptar tu HV sin inventar experiencia.",
   alternates: {
     canonical: "https://www.postulatucv.online/guia/filtro-ats-computrabajo",
   },
   openGraph: {
-    title: "Filtro ATS en Computrabajo y Elempleo: cómo pasa tu hoja de vida",
+    title: "Filtro ATS Computrabajo: cómo pasa tu hoja de vida",
     description:
-      "Cómo leen el ATS de Computrabajo y Elempleo tu HV, qué palabras clave miran y cómo adaptar cada postulación sin inventar experiencia.",
+      "Qué mira el filtro ATS en Computrabajo y Elempleo, por qué un PDF genérico te deja fuera y cómo adaptar tu HV sin inventar experiencia.",
     url: "https://www.postulatucv.online/guia/filtro-ats-computrabajo",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Filtro ATS en Computrabajo y Elempleo: cómo pasa tu hoja de vida",
+    title: "Filtro ATS Computrabajo: cómo pasa tu hoja de vida",
     description:
-      "Cómo leen el ATS de Computrabajo y Elempleo tu HV, qué palabras clave miran y cómo adaptar cada postulación sin inventar experiencia.",
+      "Qué mira el filtro ATS en Computrabajo y Elempleo, por qué un PDF genérico te deja fuera y cómo adaptar tu HV sin inventar experiencia.",
   },
 };
 
 const faqs = [
   {
-    question: "¿Qué es un ATS?",
+    question: "¿Qué es el filtro ATS en Computrabajo?",
     answer:
-      "Un ATS (Applicant Tracking System) es un software que extrae texto de tu hoja de vida: cargo, habilidades, herramientas, ciudad. Compara con lo que escribió la empresa en la oferta.",
+      "Es el software (o el orden automático) que lee el texto de tu hoja de vida antes que muchas personas. Busca coincidencias con la vacante: cargo, habilidades, herramientas, ciudad.",
   },
   {
-    question: "¿Qué formato de archivo acepta el ATS?",
+    question: "¿Elempleo también usa filtros por palabras?",
     answer:
-      "PDF de texto (no imagen), sin columnas complejas ni iconos que escondan información. Debe tener títulos de sección claros como Experiencia, Educación y Habilidades.",
+      "Sí: reclutadores y sistemas buscan perfiles y HV con términos de la oferta. Las mismas reglas de claridad y keywords honestas aplican.",
   },
   {
-    question: "¿Cómo adapto mi HV sin mentir?",
+    question: "¿Un diseño \"bonito\" ayuda al ATS?",
     answer:
-      "Sube tu HV maestro que no se modifica, pega el texto de la oferta de Computrabajo, Elempleo o LinkedIn, y revisa el score ATS. Usa solo las palabras clave que ya están en tu experiencia real.",
+      "Suele estorbar: columnas, iconos y PDF escaneado dificultan la lectura. Mejor una columna, texto seleccionable, secciones claras.",
+  },
+  {
+    question: "¿Postula inventa palabras para subir el score?",
+    answer:
+      "No. Compara tu HV maestro con la oferta, muestra cubiertas vs. faltantes y reordena lo que ya tienes. El original no se toca.",
+  },
+  {
+    question: "¿Cómo pruebo si mi HV pasa mejor el filtro?",
+    answer:
+      "Sube tu PDF, pega una vacante real y mira el score ATS con 1 crédito gratis al registrarte.",
   },
 ];
 

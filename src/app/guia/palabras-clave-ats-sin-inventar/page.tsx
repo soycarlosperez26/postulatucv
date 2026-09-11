@@ -4,7 +4,7 @@ import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
 import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Palabras clave ATS: cómo usarlas sin inventar experiencia",
+  title: "Palabras clave ATS sin inventar experiencia",
   description:
     "Cómo sacar palabras clave de una oferta de Computrabajo o Elempleo e integrarlas en tu HV solo si ya las tienes. Score ATS honesto.",
   alternates: {
@@ -12,14 +12,14 @@ export const metadata: Metadata = {
       "https://www.postulatucv.online/guia/palabras-clave-ats-sin-inventar",
   },
   openGraph: {
-    title: "Palabras clave ATS: cómo usarlas sin inventar experiencia",
+    title: "Palabras clave ATS sin inventar experiencia",
     description:
       "Cómo sacar palabras clave de una oferta de Computrabajo o Elempleo e integrarlas en tu HV solo si ya las tienes. Score ATS honesto.",
     url: "https://www.postulatucv.online/guia/palabras-clave-ats-sin-inventar",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Palabras clave ATS: cómo usarlas sin inventar experiencia",
+    title: "Palabras clave ATS sin inventar experiencia",
     description:
       "Cómo sacar palabras clave de una oferta de Computrabajo o Elempleo e integrarlas en tu HV solo si ya las tienes. Score ATS honesto.",
   },
@@ -27,19 +27,29 @@ export const metadata: Metadata = {
 
 const faqs = [
   {
-    question: "¿De dónde salen las palabras clave ATS?",
+    question: "¿De dónde salen las palabras clave?",
     answer:
-      "Del texto de la vacante: herramientas, verbos de la función, certificaciones pedidas. Debes pegar el texto completo de la oferta, no solo el título.",
+      "Del texto de la vacante: herramientas, verbos de la función, certificaciones, cargo. Pega el aviso completo, no solo el título.",
   },
   {
-    question: "¿Qué hago si me faltan palabras clave?",
+    question: "¿Cómo optimizo para Elempleo?",
     answer:
-      "Si el score marca huecos reales, esa oferta pide algo que tu trayectoria no cubre. No las inventes. Busca otra vacante o suma evidencia real (un curso, un logro) en tu CV maestro antes de volver a analizar.",
+      "Incluye en perfil y experiencia términos reales de tu sector y de la oferta. Completa el perfil del portal; claridad + keywords verídicas.",
   },
   {
-    question: "¿Qué hace Postula con las palabras clave?",
+    question: "¿Qué hago con keywords que no tengo?",
     answer:
-      "Postula compara tu HV maestro con la oferta, te muestra las palabras cubiertas vs. faltantes y arma una versión enfocada. Tu CV original no se modifica.",
+      "No las metas. El score bajo es una señal: esa vacante pide algo que tu trayectoria no cubre.",
+  },
+  {
+    question: "¿Sirve copiar la oferta palabra por palabra?",
+    answer:
+      "No. Usa solo lo que ya hiciste, con el idioma de la empresa. Inventar es riesgo; Postula no lo hace.",
+  },
+  {
+    question: "¿Postula marca cubiertas vs. faltantes?",
+    answer:
+      "Sí. Ves qué ya cubres y qué falta, y reordenas lo existente. El CV maestro no se auto-edita.",
   },
 ];
 
