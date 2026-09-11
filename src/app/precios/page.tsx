@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { createClient, isSupabaseConfigured } from "@/lib/supabase/server";
 import { Card } from "@/components/ui/Card";
 import { Badge } from "@/components/ui/Badge";
@@ -148,6 +149,46 @@ export default async function PreciosPage() {
                 La recarga se coordina por WhatsApp: eliges el paquete, te damos
                 un código, nos escribes y acordamos el medio de pago.
               </span>
+            </li>
+          </ul>
+        </div>
+
+        <div className="mx-auto flex w-full max-w-3xl flex-col gap-6">
+          <h2 className="font-display text-xl font-bold tracking-[-0.02em] text-ink">
+            Aprende más
+          </h2>
+          <ul className="grid gap-3 sm:grid-cols-2">
+            <li>
+              <Link
+                href="/guia/filtro-ats-computrabajo"
+                className="text-[15px] font-medium text-brand transition hover:underline"
+              >
+                Cómo pasa el filtro ATS en Computrabajo
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/adaptar-hoja-de-vida-a-una-oferta"
+                className="text-[15px] font-medium text-brand transition hover:underline"
+              >
+                Adaptar tu HV a una oferta
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/hoja-de-vida-computrabajo"
+                className="text-[15px] font-medium text-brand transition hover:underline"
+              >
+                HV para Computrabajo
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/primera-oferta-gratis-como-probar-postula"
+                className="text-[15px] font-medium text-brand transition hover:underline"
+              >
+                Primera oferta gratis: cómo probar Postula
+              </Link>
             </li>
           </ul>
         </div>

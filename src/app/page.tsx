@@ -386,6 +386,88 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* Guías */}
+      <section className="border-t border-line bg-surface px-6 py-16 sm:py-20">
+        <div className="mx-auto flex max-w-3xl flex-col gap-8">
+          <h2 className="text-center font-display text-[clamp(1.75rem,4vw,2.5rem)] font-bold leading-[1.1] tracking-[-0.03em] text-ink">
+            Guías para postular mejor
+          </h2>
+
+          <ul className="grid gap-4 sm:grid-cols-2">
+            <li>
+              <Link
+                href="/guia/filtro-ats-computrabajo"
+                className="flex flex-col gap-1.5 rounded-card border border-line bg-surface p-4 transition hover:border-brand"
+              >
+                <span className="font-semibold text-ink">
+                  Cómo pasa el filtro ATS en Computrabajo
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/adaptar-hoja-de-vida-a-una-oferta"
+                className="flex flex-col gap-1.5 rounded-card border border-line bg-surface p-4 transition hover:border-brand"
+              >
+                <span className="font-semibold text-ink">
+                  Adaptar tu HV a una oferta
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/por-que-no-me-llaman"
+                className="flex flex-col gap-1.5 rounded-card border border-line bg-surface p-4 transition hover:border-brand"
+              >
+                <span className="font-semibold text-ink">
+                  Por qué no me llaman
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/formato-ats-hoja-de-vida-colombia"
+                className="flex flex-col gap-1.5 rounded-card border border-line bg-surface p-4 transition hover:border-brand"
+              >
+                <span className="font-semibold text-ink">
+                  Formato ATS en Colombia
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/palabras-clave-ats-sin-inventar"
+                className="flex flex-col gap-1.5 rounded-card border border-line bg-surface p-4 transition hover:border-brand"
+              >
+                <span className="font-semibold text-ink">
+                  Palabras clave ATS sin inventar
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/hoja-de-vida-computrabajo"
+                className="flex flex-col gap-1.5 rounded-card border border-line bg-surface p-4 transition hover:border-brand"
+              >
+                <span className="font-semibold text-ink">
+                  HV para Computrabajo
+                </span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/primera-oferta-gratis-como-probar-postula"
+                className="flex flex-col gap-1.5 rounded-card border border-line bg-surface p-4 transition hover:border-brand"
+              >
+                <span className="font-semibold text-ink">
+                  Primera oferta gratis: cómo probar Postula
+                </span>
+              </Link>
+            </li>
+          </ul>
+        </div>
+      </section>
+
       {/* CTA final */}
       <section className="border-t border-line bg-surface px-6 py-16 sm:py-20">
         <div className="mx-auto flex max-w-2xl flex-col items-center gap-7 text-center">
