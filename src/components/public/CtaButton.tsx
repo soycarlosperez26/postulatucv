@@ -9,7 +9,7 @@ export function CtaButton({
   children,
   className = "",
 }: {
-  location: "hero" | "pricing" | "final" | "diagnostico-hero" | "diagnostico-final";
+  location: "hero" | "pricing" | "final";
   href: string;
   children: React.ReactNode;
   className?: string;

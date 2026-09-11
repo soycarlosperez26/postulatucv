@@ -22,9 +22,7 @@ export function trackEvent(
   window.gtag("event", eventName, params);
 }
 
-export function trackCtaClick(
-  location: "hero" | "pricing" | "final" | "diagnostico-hero" | "diagnostico-final"
-) {
+export function trackCtaClick(location: "hero" | "pricing" | "final") {
   trackEvent("cta_click", { location });
 }
 
