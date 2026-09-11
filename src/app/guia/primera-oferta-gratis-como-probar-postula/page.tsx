@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
   title: "Cómo probar Postula gratis: tu primera oferta con score ATS",
@@ -24,9 +25,23 @@ export const metadata: Metadata = {
   },
 };
 
+const faqs = [
+  {
+    question: "¿Qué incluye la oferta gratis?",
+    answer:
+      "Al crear cuenta tienes 1 crédito para analizar una oferta completa: compatibilidad ATS, palabras cubiertas vs faltantes, y versión adaptada del CV. Tu maestro no se modifica.",
+  },
+  {
+    question: "¿Cuánto cuestan los créditos adicionales?",
+    answer:
+      "Packs desde $10.000 (5 créditos). 15 créditos cuestan $20.000. Los créditos comprados no vencen y no hay plan mensual obligatorio.",
+  },
+];
+
 export default function PrimeraOfertaGratisPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         Una oferta gratis. Sin suscripción en dólares.
       </h1>

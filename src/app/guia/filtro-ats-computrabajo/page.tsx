@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
   title: "Filtro ATS en Computrabajo y Elempleo: cómo pasa tu hoja de vida",
@@ -23,9 +24,28 @@ export const metadata: Metadata = {
   },
 };
 
+const faqs = [
+  {
+    question: "¿Qué es un ATS?",
+    answer:
+      "Un ATS (Applicant Tracking System) es un software que extrae texto de tu hoja de vida: cargo, habilidades, herramientas, ciudad. Compara con lo que escribió la empresa en la oferta.",
+  },
+  {
+    question: "¿Qué formato de archivo acepta el ATS?",
+    answer:
+      "PDF de texto (no imagen), sin columnas complejas ni iconos que escondan información. Debe tener títulos de sección claros como Experiencia, Educación y Habilidades.",
+  },
+  {
+    question: "¿Cómo adapto mi HV sin mentir?",
+    answer:
+      "Sube tu HV maestro que no se modifica, pega el texto de la oferta de Computrabajo, Elempleo o LinkedIn, y revisa el score ATS. Usa solo las palabras clave que ya están en tu experiencia real.",
+  },
+];
+
 export default function FiltroAtsComputrabajoPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         El filtro ATS de Computrabajo no odia tu experiencia. Odia el PDF
         genérico.

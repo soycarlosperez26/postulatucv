@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
   title: "Hoja de vida para Computrabajo: qué miran antes del reclutador",
@@ -24,9 +25,23 @@ export const metadata: Metadata = {
   },
 };
 
+const faqs = [
+  {
+    question: "¿Qué revisa el filtro de Computrabajo?",
+    answer:
+      "PDF de texto (no escaneo), secciones claras de Experiencia/Educación/Habilidades, perfil alineado al cargo de esa vacante, y palabras clave de la oferta que ya estén en tu experiencia.",
+  },
+  {
+    question: "¿Cómo adapto mi HV para múltiples ofertas en Computrabajo?",
+    answer:
+      "Mantén un CV maestro como fuente de verdad. Por cada oferta: pega el texto, ve el score ATS, y descarga la versión adaptada. El maestro no se toca.",
+  },
+];
+
 export default function HojaDeVidaComputrabajoPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         En Computrabajo el reclutador casi no ve tu HV primero. El filtro sí.
       </h1>

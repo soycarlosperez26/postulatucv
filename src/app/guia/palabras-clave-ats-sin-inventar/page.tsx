@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
   title: "Palabras clave ATS: cómo usarlas sin inventar experiencia",
@@ -24,9 +25,28 @@ export const metadata: Metadata = {
   },
 };
 
+const faqs = [
+  {
+    question: "¿De dónde salen las palabras clave ATS?",
+    answer:
+      "Del texto de la vacante: herramientas, verbos de la función, certificaciones pedidas. Debes pegar el texto completo de la oferta, no solo el título.",
+  },
+  {
+    question: "¿Qué hago si me faltan palabras clave?",
+    answer:
+      "Si el score marca huecos reales, esa oferta pide algo que tu trayectoria no cubre. No las inventes. Busca otra vacante o suma evidencia real (un curso, un logro) en tu CV maestro antes de volver a analizar.",
+  },
+  {
+    question: "¿Qué hace Postula con las palabras clave?",
+    answer:
+      "Postula compara tu HV maestro con la oferta, te muestra las palabras cubiertas vs. faltantes y arma una versión enfocada. Tu CV original no se modifica.",
+  },
+];
+
 export default function PalabrasClaveAtsSinInventarPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         Las palabras clave del ATS no se inventan. Se reordenan.
       </h1>

@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
   title: "Por qué no te llaman si mandas el mismo CV a todas las vacantes",
@@ -23,9 +24,28 @@ export const metadata: Metadata = {
   },
 };
 
+const faqs = [
+  {
+    question: "¿Por qué no me llaman si postulo a muchas vacantes?",
+    answer:
+      "El reclutador casi no ve todas las HV. Ve las que el ATS dejó arriba. Un archivo único para 30 vacantes diferentes te hace desaparecer sin llegar a entrevista.",
+  },
+  {
+    question: "¿Cuáles son las causas más comunes?",
+    answer:
+      "El PDF no es texto legible para el filtro, las palabras clave de la oferta no aparecen aunque sepas hacer el trabajo, o el perfil profesional habla de otro cargo distinto al de esa vacante.",
+  },
+  {
+    question: "¿Qué debo hacer para mejorar mis postulaciones?",
+    answer:
+      "Toma una oferta real, pégala en Postula, mira el score ATS y las palabras faltantes. Si el hueco es real (no lo hiciste), esa vacante no es para estirar el CV. Si es de lenguaje, adapta la versión.",
+  },
+];
+
 export default function PorQueNoMeLlamanPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         &quot;Postulo a todo y no me llaman&quot; suele ser el filtro, no tu
         vida laboral.

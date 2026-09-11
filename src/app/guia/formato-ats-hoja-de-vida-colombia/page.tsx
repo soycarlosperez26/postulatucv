@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
   title: "Formato ATS para hoja de vida en Colombia",
@@ -24,9 +25,28 @@ export const metadata: Metadata = {
   },
 };
 
+const faqs = [
+  {
+    question: "¿Qué estructura debe tener una HV compatible con ATS?",
+    answer:
+      "Nombre y contacto en el cuerpo del documento, perfil profesional corto, experiencia de más reciente a más vieja con logros, educación, habilidades con nombres reales de herramientas, y ciudad.",
+  },
+  {
+    question: "¿Qué elementos rompen la lectura del ATS?",
+    answer:
+      "Tablas, dos columnas, iconos, texto en imagen, encabezados/pies de página con información de contacto, y PDFs escaneados.",
+  },
+  {
+    question: "¿Cómo uso las palabras clave correctamente?",
+    answer:
+      "Copia de la oferta solo los términos que ya aplican a tu experiencia. No agregues habilidades que no tienes. Postula te muestra el delta entre lo que tienes y lo que piden.",
+  },
+];
+
 export default function FormatoAtsColombiaPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         Formato ATS: claro para la máquina, honesto para el reclutador.
       </h1>

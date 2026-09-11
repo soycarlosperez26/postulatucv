@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
   title: "Adaptar la hoja de vida a una oferta (sin inventar experiencia)",
@@ -24,9 +25,28 @@ export const metadata: Metadata = {
   },
 };
 
+const faqs = [
+  {
+    question: "¿Qué es el CV maestro?",
+    answer:
+      "Es tu fuente de verdad con todos tus cargos, fechas y logros. Postula no lo reescribe. Cada oferta genera un archivo adaptado aparte.",
+  },
+  {
+    question: "¿Cómo funciona el proceso de adaptación?",
+    answer:
+      "Pegas la oferta, ves la compatibilidad ATS (un cálculo real), revisas las palabras clave cubiertas y faltantes, y descargas la versión enfocada en esa vacante.",
+  },
+  {
+    question: "¿Postula inventa experiencia?",
+    answer:
+      "No. No convertimos recomendaciones en cargos que no tuviste. Si el score sale bajo, es información real: esa oferta pide algo que tu maestro no cubre.",
+  },
+];
+
 export default function AdaptarHojaDeVidaPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         Una hoja de vida. Cada oferta, una versión.
       </h1>
