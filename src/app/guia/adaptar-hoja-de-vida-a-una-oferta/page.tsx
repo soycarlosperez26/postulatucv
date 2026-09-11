@@ -1,32 +1,62 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Adaptar la hoja de vida a una oferta (sin inventar experiencia)",
+  title: "Adaptar hoja de vida a una oferta (sin inventar)",
   description:
-    "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, palabras clave que sí tienes y una versión por oferta. El original no se modifica.",
+    "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, keywords que sí tienes y una versión por oferta. Tu archivo maestro no se modifica.",
   alternates: {
     canonical:
       "https://www.postulatucv.online/guia/adaptar-hoja-de-vida-a-una-oferta",
   },
   openGraph: {
-    title: "Adaptar la hoja de vida a una oferta (sin inventar experiencia)",
+    title: "Adaptar hoja de vida a una oferta (sin inventar)",
     description:
-      "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, palabras clave que sí tienes y una versión por oferta. El original no se modifica.",
+      "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, keywords que sí tienes y una versión por oferta. Tu archivo maestro no se modifica.",
     url: "https://www.postulatucv.online/guia/adaptar-hoja-de-vida-a-una-oferta",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Adaptar la hoja de vida a una oferta (sin inventar experiencia)",
+    title: "Adaptar hoja de vida a una oferta (sin inventar)",
     description:
-      "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, palabras clave que sí tienes y una versión por oferta. El original no se modifica.",
+      "Cómo adaptar tu HV a cada vacante en Colombia: score ATS, keywords que sí tienes y una versión por oferta. Tu archivo maestro no se modifica.",
   },
 };
+
+const faqs = [
+  {
+    question: "¿Adaptar es mentir en la HV?",
+    answer:
+      "No. Es priorizar logros, herramientas y lenguaje que ya están en tu trayectoria y coinciden con esa vacante.",
+  },
+  {
+    question: "¿Debo reescribir el CV maestro cada vez?",
+    answer:
+      "No. El maestro es la fuente de verdad. Por oferta se genera (o se guía) una versión enfocada; el original queda intacto.",
+  },
+  {
+    question: "¿Sirve para Computrabajo y Elempleo?",
+    answer:
+      "Sí: pegas el texto de la oferta de cualquiera de esos portales (o de la web de la empresa) y comparas.",
+  },
+  {
+    question: "¿Qué pasa si el score sale bajo?",
+    answer:
+      "Es información: la oferta pide algo que tu maestro no cubre. No inventes el hueco; busca otra vacante o suma evidencia real antes.",
+  },
+  {
+    question: "¿Cuánto cuesta adaptar con Postula?",
+    answer:
+      "1 crédito gratis al empezar. Luego packs: 5/$10.000, 15/$20.000, 50/$50.000 COP. Sin plan mensual.",
+  },
+];
 
 export default function AdaptarHojaDeVidaPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         Una hoja de vida. Cada oferta, una versión.
       </h1>
@@ -64,6 +94,20 @@ export default function AdaptarHojaDeVidaPage() {
           <ButtonLink href="/register" className="h-12 px-8 text-[15px]">
             Analizar mi primera oferta — gratis
           </ButtonLink>
+        </div>
+
+        <div className="mt-16 border-t border-line-soft pt-10">
+          <h2 className="text-2xl font-bold text-ink">Preguntas frecuentes</h2>
+          <div className="mt-6 flex flex-col gap-6">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-ink">{faq.question}</h3>
+                <p className="text-[15px] leading-[1.6] text-ink-soft">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <GuiaRelatedLinks currentPath="/guia/adaptar-hoja-de-vida-a-una-oferta" />

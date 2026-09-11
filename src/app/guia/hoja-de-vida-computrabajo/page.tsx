@@ -1,32 +1,62 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Hoja de vida para Computrabajo: qué miran antes del reclutador",
+  title: "Hoja de vida para Computrabajo: qué miran primero",
   description:
-    "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera.",
+    "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera del filtro.",
   alternates: {
     canonical:
       "https://www.postulatucv.online/guia/hoja-de-vida-computrabajo",
   },
   openGraph: {
-    title: "Hoja de vida para Computrabajo: qué miran antes del reclutador",
+    title: "Hoja de vida para Computrabajo: qué miran primero",
     description:
-      "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera.",
+      "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera del filtro.",
     url: "https://www.postulatucv.online/guia/hoja-de-vida-computrabajo",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Hoja de vida para Computrabajo: qué miran antes del reclutador",
+    title: "Hoja de vida para Computrabajo: qué miran primero",
     description:
-      "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera.",
+      "Cómo preparar tu HV para Computrabajo en Colombia: formato ATS, palabras de la vacante y por qué un PDF genérico te deja fuera del filtro.",
   },
 };
+
+const faqs = [
+  {
+    question: "¿Qué miran en la hoja de vida en Computrabajo?",
+    answer:
+      "Perfil completo + archivo adjunto legible. Muchas empresas ordenan por coincidencia con la vacante antes de la revisión humana.",
+  },
+  {
+    question: "¿Basta el perfil del portal sin PDF?",
+    answer:
+      "Mejor ambos: perfil al día y un PDF de texto alineado a esa oferta cuando postulas.",
+  },
+  {
+    question: "¿Debo usar la misma HV en todas las vacantes?",
+    answer:
+      "No es lo ideal. Un maestro + una versión (o enfoque) por aviso mejora el match.",
+  },
+  {
+    question: "¿Postula reemplaza Computrabajo?",
+    answer:
+      "No. Te ayuda a analizar la oferta y enfocar la HV; la postulación la haces tú en el portal.",
+  },
+  {
+    question: "¿Puedo probar gratis?",
+    answer:
+      "Sí: 1 crédito al registrarte para analizar tu primera oferta.",
+  },
+];
 
 export default function HojaDeVidaComputrabajoPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         En Computrabajo el reclutador casi no ve tu HV primero. El filtro sí.
       </h1>
@@ -62,6 +92,20 @@ export default function HojaDeVidaComputrabajoPage() {
           <ButtonLink href="/register" className="h-12 px-8 text-[15px]">
             Analizar mi primera oferta — gratis
           </ButtonLink>
+        </div>
+
+        <div className="mt-16 border-t border-line-soft pt-10">
+          <h2 className="text-2xl font-bold text-ink">Preguntas frecuentes</h2>
+          <div className="mt-6 flex flex-col gap-6">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-ink">{faq.question}</h3>
+                <p className="text-[15px] leading-[1.6] text-ink-soft">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <GuiaRelatedLinks currentPath="/guia/hoja-de-vida-computrabajo" />

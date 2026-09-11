@@ -1,9 +1,10 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Palabras clave ATS: cómo usarlas sin inventar experiencia",
+  title: "Palabras clave ATS sin inventar experiencia",
   description:
     "Cómo sacar palabras clave de una oferta de Computrabajo o Elempleo e integrarlas en tu HV solo si ya las tienes. Score ATS honesto.",
   alternates: {
@@ -11,22 +12,51 @@ export const metadata: Metadata = {
       "https://www.postulatucv.online/guia/palabras-clave-ats-sin-inventar",
   },
   openGraph: {
-    title: "Palabras clave ATS: cómo usarlas sin inventar experiencia",
+    title: "Palabras clave ATS sin inventar experiencia",
     description:
       "Cómo sacar palabras clave de una oferta de Computrabajo o Elempleo e integrarlas en tu HV solo si ya las tienes. Score ATS honesto.",
     url: "https://www.postulatucv.online/guia/palabras-clave-ats-sin-inventar",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Palabras clave ATS: cómo usarlas sin inventar experiencia",
+    title: "Palabras clave ATS sin inventar experiencia",
     description:
       "Cómo sacar palabras clave de una oferta de Computrabajo o Elempleo e integrarlas en tu HV solo si ya las tienes. Score ATS honesto.",
   },
 };
 
+const faqs = [
+  {
+    question: "¿De dónde salen las palabras clave?",
+    answer:
+      "Del texto de la vacante: herramientas, verbos de la función, certificaciones, cargo. Pega el aviso completo, no solo el título.",
+  },
+  {
+    question: "¿Cómo optimizo para Elempleo?",
+    answer:
+      "Incluye en perfil y experiencia términos reales de tu sector y de la oferta. Completa el perfil del portal; claridad + keywords verídicas.",
+  },
+  {
+    question: "¿Qué hago con keywords que no tengo?",
+    answer:
+      "No las metas. El score bajo es una señal: esa vacante pide algo que tu trayectoria no cubre.",
+  },
+  {
+    question: "¿Sirve copiar la oferta palabra por palabra?",
+    answer:
+      "No. Usa solo lo que ya hiciste, con el idioma de la empresa. Inventar es riesgo; Postula no lo hace.",
+  },
+  {
+    question: "¿Postula marca cubiertas vs. faltantes?",
+    answer:
+      "Sí. Ves qué ya cubres y qué falta, y reordenas lo existente. El CV maestro no se auto-edita.",
+  },
+];
+
 export default function PalabrasClaveAtsSinInventarPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         Las palabras clave del ATS no se inventan. Se reordenan.
       </h1>
@@ -68,6 +98,20 @@ export default function PalabrasClaveAtsSinInventarPage() {
           <ButtonLink href="/register" className="h-12 px-8 text-[15px]">
             Analizar mi primera oferta — gratis
           </ButtonLink>
+        </div>
+
+        <div className="mt-16 border-t border-line-soft pt-10">
+          <h2 className="text-2xl font-bold text-ink">Preguntas frecuentes</h2>
+          <div className="mt-6 flex flex-col gap-6">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-ink">{faq.question}</h3>
+                <p className="text-[15px] leading-[1.6] text-ink-soft">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <GuiaRelatedLinks currentPath="/guia/palabras-clave-ats-sin-inventar" />

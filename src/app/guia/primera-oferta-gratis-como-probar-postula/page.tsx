@@ -1,34 +1,64 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Cómo probar Postula gratis: tu primera oferta con score ATS",
+  title: "Cómo probar Postula gratis: 1 crédito, sin Pro",
   description:
-    "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS sin tocar tu original.",
+    "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS. Packs en COP, sin plan mensual.",
   alternates: {
     canonical:
       "https://www.postulatucv.online/guia/primera-oferta-gratis-como-probar-postula",
   },
   openGraph: {
-    title: "Cómo probar Postula gratis: tu primera oferta con score ATS",
+    title: "Cómo probar Postula gratis: 1 crédito, sin Pro",
     description:
-      "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS sin tocar tu original.",
+      "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS. Packs en COP, sin plan mensual.",
     url: "https://www.postulatucv.online/guia/primera-oferta-gratis-como-probar-postula",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Cómo probar Postula gratis: tu primera oferta con score ATS",
+    title: "Cómo probar Postula gratis: 1 crédito, sin Pro",
     description:
-      "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS sin tocar tu original.",
+      "La primera oferta en Postula es gratis: sube tu HV, pega una vacante de Computrabajo o Elempleo y mira el score ATS. Packs en COP, sin plan mensual.",
   },
 };
+
+const faqs = [
+  {
+    question: "¿Qué incluye el crédito gratis?",
+    answer:
+      "Analizar una oferta contra tu HV maestro: compatibilidad ATS, keywords cubiertas/faltantes y enfoque de postulación. El original no se toca.",
+  },
+  {
+    question: "¿Qué son los créditos CV en Postula?",
+    answer:
+      "Unidades para analizar ofertas. Compras packs; no hay Pro mensual.",
+  },
+  {
+    question: "¿Cuánto cuestan los packs?",
+    answer:
+      "5 créditos $10.000 · 15 créditos $20.000 · 50 créditos $50.000 COP (precios live en /precios).",
+  },
+  {
+    question: "¿Los créditos vencen?",
+    answer:
+      "Los comprados no vencen (según política publicada en precios). El gratis es para probar.",
+  },
+  {
+    question: "¿Inventan experiencia para subir el score?",
+    answer:
+      "No. Si falta evidencia real, el score lo refleja. Tú decides.",
+  },
+];
 
 export default function PrimeraOfertaGratisPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
-        Una oferta gratis. Sin suscripción en dólares.
+        Una oferta gratis. Créditos en pesos. Sin suscripción mensual.
       </h1>
 
       <div className="mt-8 space-y-6 text-lg leading-relaxed text-ink-soft">
@@ -55,6 +85,20 @@ export default function PrimeraOfertaGratisPage() {
           <ButtonLink href="/register" className="h-12 px-8 text-[15px]">
             Analizar mi primera oferta — gratis
           </ButtonLink>
+        </div>
+
+        <div className="mt-16 border-t border-line-soft pt-10">
+          <h2 className="text-2xl font-bold text-ink">Preguntas frecuentes</h2>
+          <div className="mt-6 flex flex-col gap-6">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-ink">{faq.question}</h3>
+                <p className="text-[15px] leading-[1.6] text-ink-soft">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <GuiaRelatedLinks currentPath="/guia/primera-oferta-gratis-como-probar-postula" />

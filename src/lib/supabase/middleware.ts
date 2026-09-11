@@ -11,6 +11,11 @@ export async function updateSession(request: NextRequest) {
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   const path = request.nextUrl.pathname;
+  
+  // Rutas que explícitamente requieren autenticación
+  const requiresAuth = path.startsWith("/dashboard") || path.startsWith("/onboarding");
+  
+  // Rutas públicas conocidas (no redirigen a login)
   const isPublicPath =
     path === "/" ||
     path === "/precios" ||
@@ -36,12 +41,12 @@ export async function updateSession(request: NextRequest) {
     path.startsWith("/guia");
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    if (isPublicPath) {
-      return NextResponse.next({ request });
+    if (requiresAuth) {
+      const url = request.nextUrl.clone();
+      url.pathname = "/login";
+      return NextResponse.redirect(url);
     }
-    const url = request.nextUrl.clone();
-    url.pathname = "/login";
-    return NextResponse.redirect(url);
+    return NextResponse.next({ request });
   }
 
   let supabaseResponse = NextResponse.next({ request });
@@ -73,7 +78,7 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  if (!user && !isPublicPath) {
+  if (!user && requiresAuth) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);

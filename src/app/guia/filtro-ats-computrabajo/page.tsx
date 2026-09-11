@@ -1,31 +1,61 @@
 import { Metadata } from "next";
 import { ButtonLink } from "@/components/ui/Button";
 import { GuiaRelatedLinks } from "@/components/guia/GuiaRelatedLinks";
+import { FaqSchema } from "@/components/guia/FaqSchema";
 
 export const metadata: Metadata = {
-  title: "Filtro ATS en Computrabajo y Elempleo: cómo pasa tu hoja de vida",
+  title: "Filtro ATS Computrabajo: cómo pasa tu hoja de vida",
   description:
-    "Cómo leen el ATS de Computrabajo y Elempleo tu HV, qué palabras clave miran y cómo adaptar cada postulación sin inventar experiencia.",
+    "Qué mira el filtro ATS en Computrabajo y Elempleo, por qué un PDF genérico te deja fuera y cómo adaptar tu HV sin inventar experiencia.",
   alternates: {
     canonical: "https://www.postulatucv.online/guia/filtro-ats-computrabajo",
   },
   openGraph: {
-    title: "Filtro ATS en Computrabajo y Elempleo: cómo pasa tu hoja de vida",
+    title: "Filtro ATS Computrabajo: cómo pasa tu hoja de vida",
     description:
-      "Cómo leen el ATS de Computrabajo y Elempleo tu HV, qué palabras clave miran y cómo adaptar cada postulación sin inventar experiencia.",
+      "Qué mira el filtro ATS en Computrabajo y Elempleo, por qué un PDF genérico te deja fuera y cómo adaptar tu HV sin inventar experiencia.",
     url: "https://www.postulatucv.online/guia/filtro-ats-computrabajo",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Filtro ATS en Computrabajo y Elempleo: cómo pasa tu hoja de vida",
+    title: "Filtro ATS Computrabajo: cómo pasa tu hoja de vida",
     description:
-      "Cómo leen el ATS de Computrabajo y Elempleo tu HV, qué palabras clave miran y cómo adaptar cada postulación sin inventar experiencia.",
+      "Qué mira el filtro ATS en Computrabajo y Elempleo, por qué un PDF genérico te deja fuera y cómo adaptar tu HV sin inventar experiencia.",
   },
 };
+
+const faqs = [
+  {
+    question: "¿Qué es el filtro ATS en Computrabajo?",
+    answer:
+      "Es el software (o el orden automático) que lee el texto de tu hoja de vida antes que muchas personas. Busca coincidencias con la vacante: cargo, habilidades, herramientas, ciudad.",
+  },
+  {
+    question: "¿Elempleo también usa filtros por palabras?",
+    answer:
+      "Sí: reclutadores y sistemas buscan perfiles y HV con términos de la oferta. Las mismas reglas de claridad y keywords honestas aplican.",
+  },
+  {
+    question: "¿Un diseño \"bonito\" ayuda al ATS?",
+    answer:
+      "Suele estorbar: columnas, iconos y PDF escaneado dificultan la lectura. Mejor una columna, texto seleccionable, secciones claras.",
+  },
+  {
+    question: "¿Postula inventa palabras para subir el score?",
+    answer:
+      "No. Compara tu HV maestro con la oferta, muestra cubiertas vs. faltantes y reordena lo que ya tienes. El original no se toca.",
+  },
+  {
+    question: "¿Cómo pruebo si mi HV pasa mejor el filtro?",
+    answer:
+      "Sube tu PDF, pega una vacante real y mira el score ATS con 1 crédito gratis al registrarte.",
+  },
+];
 
 export default function FiltroAtsComputrabajoPage() {
   return (
     <article className="mx-auto max-w-3xl px-6 py-12 sm:px-10 sm:py-16">
+      <FaqSchema faqs={faqs} />
       <h1 className="font-display text-4xl font-bold leading-tight tracking-tight text-ink sm:text-5xl">
         El filtro ATS de Computrabajo no odia tu experiencia. Odia el PDF
         genérico.
@@ -88,6 +118,20 @@ export default function FiltroAtsComputrabajoPage() {
           <ButtonLink href="/register" className="h-12 px-8 text-[15px]">
             Analizar mi primera oferta — gratis
           </ButtonLink>
+        </div>
+
+        <div className="mt-16 border-t border-line-soft pt-10">
+          <h2 className="text-2xl font-bold text-ink">Preguntas frecuentes</h2>
+          <div className="mt-6 flex flex-col gap-6">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-ink">{faq.question}</h3>
+                <p className="text-[15px] leading-[1.6] text-ink-soft">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
 
         <GuiaRelatedLinks currentPath="/guia/filtro-ats-computrabajo" />

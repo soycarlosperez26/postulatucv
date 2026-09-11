@@ -40,10 +40,46 @@ const ALL_GUIDES: GuideLink[] = [
   },
 ];
 
+const THREE_NEWER_GUIDES = [
+  "/guia/palabras-clave-ats-sin-inventar",
+  "/guia/hoja-de-vida-computrabajo",
+  "/guia/primera-oferta-gratis-como-probar-postula",
+];
+
+const FOUR_OLDER_GUIDES = [
+  "/guia/filtro-ats-computrabajo",
+  "/guia/adaptar-hoja-de-vida-a-una-oferta",
+  "/guia/por-que-no-me-llaman",
+  "/guia/formato-ats-hoja-de-vida-colombia",
+];
+
+const TWO_NEWER_TO_ADD = [
+  "/guia/hoja-de-vida-computrabajo",
+  "/guia/primera-oferta-gratis-como-probar-postula",
+];
+
+function getRelatedGuides(currentPath: string): string[] {
+  if (THREE_NEWER_GUIDES.includes(currentPath)) {
+    return THREE_NEWER_GUIDES.filter((href) => href !== currentPath);
+  }
+
+  if (FOUR_OLDER_GUIDES.includes(currentPath)) {
+    const otherOlderGuides = FOUR_OLDER_GUIDES.filter(
+      (href) => href !== currentPath
+    );
+    return [...TWO_NEWER_TO_ADD, ...otherOlderGuides].slice(0, 4);
+  }
+
+  return ALL_GUIDES.filter((guide) => guide.href !== currentPath)
+    .map((g) => g.href)
+    .slice(0, 4);
+}
+
 export function GuiaRelatedLinks({ currentPath }: GuiaRelatedLinksProps) {
-  const relatedGuides = ALL_GUIDES.filter(
-    (guide) => guide.href !== currentPath
-  ).slice(0, 4);
+  const relatedHrefs = getRelatedGuides(currentPath);
+  const relatedGuides = relatedHrefs
+    .map((href) => ALL_GUIDES.find((g) => g.href === href))
+    .filter((g): g is GuideLink => g !== undefined);
 
   if (relatedGuides.length === 0) return null;
 
