@@ -176,6 +176,30 @@ export default async function PreciosPage() {
             </li>
             <li>
               <Link
+                href="/guia/por-que-no-me-llaman"
+                className="text-[15px] font-medium text-brand transition hover:underline"
+              >
+                Por qué no me llaman
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/formato-ats-hoja-de-vida-colombia"
+                className="text-[15px] font-medium text-brand transition hover:underline"
+              >
+                Formato ATS en Colombia
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/guia/palabras-clave-ats-sin-inventar"
+                className="text-[15px] font-medium text-brand transition hover:underline"
+              >
+                Palabras clave ATS sin inventar
+              </Link>
+            </li>
+            <li>
+              <Link
                 href="/guia/hoja-de-vida-computrabajo"
                 className="text-[15px] font-medium text-brand transition hover:underline"
               >

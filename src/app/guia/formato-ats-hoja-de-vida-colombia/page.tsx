@@ -98,6 +98,20 @@ export default function FormatoAtsColombiaPage() {
           </ButtonLink>
         </div>
 
+        <div className="mt-16 border-t border-line-soft pt-10">
+          <h2 className="text-2xl font-bold text-ink">Preguntas frecuentes</h2>
+          <div className="mt-6 flex flex-col gap-6">
+            {faqs.map((faq) => (
+              <div key={faq.question} className="flex flex-col gap-2">
+                <h3 className="text-lg font-bold text-ink">{faq.question}</h3>
+                <p className="text-[15px] leading-[1.6] text-ink-soft">
+                  {faq.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+
         <GuiaRelatedLinks currentPath="/guia/formato-ats-hoja-de-vida-colombia" />
       </div>
     </article>
